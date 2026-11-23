@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kirubananth Sankar · AI systems that work when nobody is watching</title>
-<meta name="description" content="AI engineer in Hyderabad. Three years of multi-agent AI systems that work for a day with nobody steering, one of them first on MLE-Bench at submission, and one AI system taken to paying customers in eight weeks.">
+<meta name="description" content="AI engineer in Hyderabad. Three years of multi-agent AI systems that work for a day unattended, one of them first on MLE-Bench at submission, and one AI system taken to paying customers in eight weeks.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Kirubananth Sankar">
 <meta property="og:description" content="I build AI systems that work when nobody is watching. Research to production.">
@@ -20,18 +20,18 @@
 @font-face{font-family:"DM Mono";src:url("fonts/dmmono-500.woff2") format("woff2");font-weight:500;font-display:swap}
 
 :root{
-  --bg:#F8F3E8; --paper:#FFFCF5; --ink:#26211C; --muted:#62594D; --line:#26211C; --tomato:#2F5D50; --tomato-ink:#FBF6EA; --mustard:#EBD398; --leaf:#2F5D50; --soft:#EFE7D6; --hl:#EBD398; --shade:#D8CBB2;
-  --shadow:5px 5px 0 var(--shade);
+  --bg:#F9F2E6; --paper:#FFFBF3; --ink:#2B241D; --muted:#655A4C; --line:#4B3D30; --clay:#B4583A; --tomato:#2F5D50; --tomato-ink:#FBF6EA; --mustard:#EBD398; --leaf:#2F5D50; --soft:#F1E7D4; --hl:#EBD398; --shade:#DCCDB2;
+  --shadow:0 4px 0 var(--shade),0 18px 30px -22px rgba(70,48,20,.45);
   --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
   --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 :root[data-theme="dark"]{
-  --bg:#181613; --paper:#211E1A; --ink:#EFE7D8; --muted:#B3A998; --line:#EFE7D8; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#D9BE7A; --leaf:#8CC5AE; --soft:#2A2620; --hl:#5E4E1E; --shade:#0B0A08;
+  --bg:#1F1A15; --paper:#2A231C; --ink:#F1E7D6; --muted:#BBAE99; --line:#8A7964; --clay:#E39A76; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#DDBF78; --leaf:#8CC5AE; --soft:#261F18; --hl:#6A5620; --shade:#120E0A;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#181613; --paper:#211E1A; --ink:#EFE7D8; --muted:#B3A998; --line:#EFE7D8; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#D9BE7A; --leaf:#8CC5AE; --soft:#2A2620; --hl:#5E4E1E; --shade:#0B0A08;
+    --bg:#1F1A15; --paper:#2A231C; --ink:#F1E7D6; --muted:#BBAE99; --line:#8A7964; --clay:#E39A76; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#DDBF78; --leaf:#8CC5AE; --soft:#261F18; --hl:#6A5620; --shade:#120E0A;
   }
 }
 *{box-sizing:border-box}
@@ -79,26 +79,26 @@ img{max-width:100%}
 .hero{position:relative;padding:72px 0 64px;background-image:radial-gradient(color-mix(in srgb,var(--ink) 16%,transparent) 1px,transparent 1.4px);background-size:22px 22px}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:56px;align-items:center}
 .eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
-.eyebrow b{color:var(--tomato);font-weight:500}
+.eyebrow b{color:var(--clay);font-weight:500}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(2.3rem,5vw,3.9rem);line-height:1.0;letter-spacing:-.035em;margin:0 0 26px;text-wrap:balance}
 h1 mark{background:linear-gradient(var(--tomato),var(--tomato)) no-repeat left center/100% 100%;color:var(--tomato-ink);padding:0 .14em;border-radius:.12em;display:inline-block;transform:rotate(-1.6deg);white-space:nowrap;animation:swipe .7s .45s cubic-bezier(.2,.7,.2,1) backwards}
-@keyframes swipe{from{background-size:0% 100%;color:var(--ink)}60%{color:var(--ink)}to{background-size:100% 100%;color:var(--tomato-ink)}}
-.lede{font-size:1.16rem;max-width:36em;margin:0 0 30px;color:var(--ink)}
+@keyframes swipe{from{background-size:0% 100%;color:var(--ink)}30%{color:var(--ink)}70%{color:var(--tomato-ink)}to{background-size:100% 100%;color:var(--tomato-ink)}}
+.lede{font-size:1.1rem;max-width:36em;margin:0 0 30px;color:var(--ink)}
 .lede em{font-style:normal;background:linear-gradient(transparent 62%,var(--hl) 62%);padding:0 2px}
 .cta{display:flex;flex-wrap:wrap;gap:14px}
-.btn{font-family:var(--display);font-weight:700;font-size:1.02rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:2px solid var(--line);border-radius:12px;background:var(--paper);box-shadow:4px 4px 0 var(--shade);transition:transform .12s ease,box-shadow .12s ease}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shade)}
-.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--shade)}
+.btn{font-family:var(--display);font-weight:700;font-size:1.02rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:2px solid var(--line);border-radius:12px;background:var(--paper);box-shadow:0 4px 0 var(--shade);transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--shade)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--shade)}
 .btn.primary{background:var(--tomato);color:var(--tomato-ink)}
 
 /* permissions card */
-.perm{animation:settle .8s .15s cubic-bezier(.2,.8,.2,1) backwards;background:var(--paper);border:2px solid var(--line);border-radius:16px;box-shadow:8px 8px 0 var(--shade);transform:rotate(1.4deg);overflow:hidden}
-.perm-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--soft);font-family:var(--mono);font-size:.78rem;letter-spacing:.04em}
+.perm{animation:settle .8s .15s cubic-bezier(.2,.8,.2,1) backwards;background:var(--paper);border:2px solid var(--line);border-radius:16px;box-shadow:0 6px 0 var(--shade),0 26px 44px -26px rgba(70,48,20,.55);transform:rotate(1.4deg);overflow:hidden}
+.perm-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--soft);font-family:var(--mono);font-size:.8rem;letter-spacing:.04em}
 .dots{display:flex;gap:6px;margin-right:6px}
 .dots i{width:11px;height:11px;border-radius:50%;border:2px solid var(--line);display:block}
 .dots i:first-child{background:#D98A72}.dots i:nth-child(2){background:var(--mustard)}.dots i:nth-child(3){background:var(--leaf)}
 .perm ul{list-style:none;margin:0;padding:8px 16px 4px}
-.perm li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1.5px dashed color-mix(in srgb,var(--ink) 28%,transparent);font-size:.98rem;font-weight:500}
+.perm li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1.5px dashed color-mix(in srgb,var(--ink) 28%,transparent);font-size:.94rem;font-weight:500}
 .perm li:last-child{border-bottom:0}
 .sw{flex:none;position:relative;width:52px;height:28px;border-radius:999px;border:2px solid var(--line);background:var(--soft);cursor:pointer;padding:0;transition:background .15s}
 .sw::after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--ink);transition:transform .15s}
@@ -119,7 +119,7 @@ h1 mark{background:linear-gradient(var(--tomato),var(--tomato)) no-repeat left c
 .ticker div{display:inline-block;padding:11px 0;font-family:var(--mono);font-weight:500;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;animation:tick 46s linear infinite}
 .ticker:hover div{animation-play-state:paused}
 .ticker span{margin:0 22px}
-.ticker span::after{content:"✦";margin-left:44px;color:var(--tomato)}
+.ticker span::after{content:"✦";margin-left:44px;color:var(--clay)}
 @keyframes tick{to{transform:translateX(-50%)}}
 
 /* sections */
@@ -131,16 +131,15 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4vw,3rem);l
 @media (max-width:600px){.sec-head{grid-template-columns:1fr;row-gap:12px}.num{justify-self:start}.sec-sub{grid-column:1}}
 
 .card{background:var(--paper);border:2px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px 26px 24px;transition:transform .14s ease,box-shadow .14s ease}
-.card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--shade)}
-.tag{display:inline-block;font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--line);border-radius:999px;padding:2px 10px;margin:0 6px 14px 0;background:var(--soft)}
+.tag{display:inline-block;font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:0;border-radius:999px;padding:4px 11px;margin:0 6px 14px 0;background:var(--soft)}
 .tag.hot{background:var(--tomato);color:var(--tomato-ink)}
 .tag.sun{background:var(--mustard);color:#26211C}
 h3{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.1;letter-spacing:-.02em;margin:0 0 6px}
-.meta{font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.meta{font-family:var(--mono);font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
 .card p{margin:0 0 12px}
-.aside{border-left:4px solid var(--tomato);padding:2px 0 2px 14px;color:var(--muted);font-size:.98rem}
+.aside{border-left:4px solid var(--tomato);padding:2px 0 2px 14px;color:var(--muted);font-size:.94rem}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.chips span{font-family:var(--mono);font-size:.8rem;border:1.5px solid color-mix(in srgb,var(--ink) 45%,transparent);border-radius:6px;padding:2px 8px}
+.chips span{font-family:var(--mono);font-size:.8rem;background:var(--soft);border-radius:6px;padding:3px 9px}
 .more{font-family:var(--display);font-weight:700;text-decoration:none;border-bottom:3px solid var(--tomato);padding-bottom:1px}
 .more:hover{background:var(--tomato);color:var(--tomato-ink)}
 
@@ -150,59 +149,137 @@ h3{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.1;l
 .stat{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:20px 20px 18px;box-shadow:var(--shadow)}
 .stat b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;letter-spacing:-.04em}
 .stat b small{font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tomato);margin-left:6px}
-.stat p{margin:10px 0 0;font-size:.96rem}
+.stat p{margin:10px 0 0;font-size:.94rem}
 .stat i{display:block;font-style:normal;color:var(--muted);font-size:.9rem;margin-top:6px}
-.stat:nth-child(2){background:var(--tomato);color:var(--tomato-ink)}
-.stat:nth-child(2) b small,.stat:nth-child(2) i{color:inherit;opacity:.9}
-.numnote{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin:18px 0 0;letter-spacing:.03em}
+.numnote{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin:22px 0 0;text-align:center;letter-spacing:.03em}
 @media (max-width:900px){.numgrid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:480px){.numgrid{grid-template-columns:1fr}}
+@media (max-width:480px){.numgrid{gap:12px}.stat{padding:16px 14px 14px}.stat b{font-size:2.3rem}.stat b small{display:block;margin:6px 0 0}}
 
-/* work */
-.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.work .wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:30px;align-items:start}
-.work .wide .side{background:var(--soft);border:2px dashed color-mix(in srgb,var(--ink) 45%,transparent);border-radius:12px;padding:16px 18px;font-size:.98rem}
-.work .wide .side b{font-family:var(--mono);font-weight:500;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tomato);display:block;margin-bottom:6px}
-.score{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 4px}
-.score div{border:2px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--bg)}
+/* the route: one line down the page. Work branches from each stop, notes and stories branch from the work */
+[id]{scroll-margin-top:84px}
+.route{background:var(--soft);border-block:2px solid var(--line);margin-top:64px}
+.tl{position:relative;--sx:132px;--gap:38px;padding-left:calc(var(--sx) + var(--gap));margin-top:8px}
+.tl::before{content:"";position:absolute;left:var(--sx);top:6px;height:var(--tlh,calc(100% - 14px));border-left:2px dashed color-mix(in srgb,var(--ink) 40%,transparent)}
+.tl-go{position:absolute;left:var(--sx);top:6px;width:2px;height:0;background:var(--tomato)}
+.tl-dot{position:absolute;left:calc(var(--sx) + 1px);top:6px;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--clay);border:3px solid var(--soft);box-shadow:0 0 0 2px var(--clay);z-index:2;will-change:transform}
+.stop{position:relative;padding-bottom:60px}
+.stop.small{padding-bottom:30px}
+.stop.end{padding-bottom:0}
+.stop::before{content:"";position:absolute;left:calc(1px - var(--gap) - 9px);top:7px;width:18px;height:18px;border-radius:50%;background:var(--soft);border:2px solid var(--ink);transition:background .3s;z-index:1}
+.stop.small::before{width:12px;height:12px;left:calc(1px - var(--gap) - 6px);top:6px}
+.stop.on::before{background:var(--tomato)}
+.yr{position:absolute;right:calc(100% + var(--gap) + 20px);top:6px;white-space:nowrap;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .3s}
+.stop.on .yr{color:var(--ink)}
+.stop-t{font-size:clamp(1.7rem,3.2vw,2.3rem);margin:0 0 6px}
+.stop-t a{text-decoration:none;border-bottom:4px solid var(--tomato)}
+.stop-t a:hover{background:var(--tomato);color:var(--tomato-ink)}
+.stop.small h3{font-size:1.2rem;margin:0}
+.stop.small .meta{margin:3px 0 0}
+.stop-sub{max-width:42em;color:var(--muted);margin:0 0 30px}
+
+/* two branches leave the line at one stop */
+.fork{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto;gap:0 28px;padding-top:26px}
+.fork::before{content:"";position:absolute;left:calc(1px - var(--gap));top:0;width:calc(var(--gap) + 50% + 14px + 45px);border-top:2px solid var(--ink);transform-origin:0 50%;transform:scaleX(0);transition:transform .7s ease}
+.col{position:relative;min-width:0;display:grid;grid-row:span 2;grid-template-rows:subgrid;align-content:start}
+.col>.leaves{align-self:start}
+.fork>.col::before{content:"";position:absolute;left:44px;top:-26px;height:26px;border-left:2px solid var(--ink);transform-origin:50% 0;transform:scaleY(0);transition:transform .3s ease .55s}
+.solo{position:relative}
+.solo::before{content:"";position:absolute;left:calc(1px - var(--gap));top:44px;width:var(--gap);border-top:2px solid var(--ink);transform-origin:0 50%;transform:scaleX(0);transition:transform .5s ease}
+.stop.on .fork::before,.stop.on .fork>.col::before,.stop.on .solo::before{transform:none}
+
+/* work cards: the drawing leads */
+.card h4{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.1;letter-spacing:-.02em;margin:0 0 6px}
+.pcard{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.pcard .art{height:182px;display:grid;place-items:center;background:var(--bg);border-bottom:2px solid var(--line)}
+.pcard .art .diag{width:134px;margin:0}
+.pcard .art .diag.big{width:196px}
+.pcard .body{padding:20px 24px 22px;flex:1;display:flex;flex-direction:column;align-items:flex-start}
+.pcard .body>*{max-width:100%}
+.pcard .body>.score{align-self:stretch}
+.pcard .body>details.fold{margin-top:auto;padding-top:12px}
+.score{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 12px}
+.score div{border-radius:10px;padding:10px 12px;background:var(--soft)}
 .score strong{font-family:var(--display);font-size:1.5rem;font-weight:800;letter-spacing:-.02em;display:block;line-height:1.1}
-.score span{font-size:.82rem;color:var(--muted)}
-@media (max-width:860px){.work{grid-template-columns:1fr}.work .wide{grid-template-columns:1fr}}
+.score span{font-size:.8rem;color:var(--muted)}
+.score.one{grid-template-columns:1fr}
+.score.one div{display:flex;align-items:baseline;gap:12px}
+.score.one strong{font-size:2.1rem}
+.score.one span{font-size:.94rem;color:var(--ink)}
+.prod{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:30px;align-items:center}
+.prod>div{min-width:0}
 
-/* notes */
-.notes{background:var(--soft);border-block:2px solid var(--line)}
-.notegrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:n}
-.note{counter-increment:n;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:22px 22px 18px;position:relative}
-.note::before{content:"NOTE " counter(n,decimal-leading-zero);font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;color:var(--tomato);display:block;margin-bottom:10px}
-.note h3{font-size:1.28rem;margin-bottom:10px}
-.note p{margin:0;font-size:1rem;color:var(--muted)}
-.note:nth-child(3n+1){transform:rotate(-.5deg)}.note:nth-child(3n){transform:rotate(.5deg)}
-@media (max-width:900px){.notegrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.notegrid{grid-template-columns:1fr}.note{transform:none!important}}
+/* fold-outs */
+details.fold{margin-top:12px}
+details.fold>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid var(--tomato);padding:2px 0 1px}
+details.fold>summary::-webkit-details-marker,details.twig>summary::-webkit-details-marker{display:none}
+details.fold>summary::before,details.twig>summary::before{content:"+";font-family:var(--mono);color:var(--clay);font-size:1.15rem;line-height:1;flex:none;transition:transform .15s}
+details.fold[open]>summary::before,details.twig[open]>summary::before{transform:rotate(45deg)}
+details.fold>summary:hover{background:var(--tomato);color:var(--tomato-ink)}
+details.fold>summary:hover::before{color:inherit}
+details.fold>summary~*{margin-top:12px}
+
+/* leaves: notes and stories hang under the work they came from */
+.leaves{position:relative;margin:0 0 0 44px;padding:28px 0 2px 26px;border-left:2px dashed color-mix(in srgb,var(--ink) 40%,transparent)}
+.lf-h{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;line-height:1.15;margin:0 0 4px}
+.lf-sub{color:var(--muted);font-size:.94rem;margin:0 0 12px}
+.lf-k{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tomato)}
+.twig{position:relative;padding:9px 0}
+.twig::before{content:"";position:absolute;left:-26px;top:21px;width:18px;border-top:2px dashed color-mix(in srgb,var(--ink) 40%,transparent)}
+details.twig>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px;font-family:var(--display);font-weight:700;font-size:1.12rem;line-height:1.3}
+details.twig>summary::before{width:.75em;text-align:center}
+details.twig>p{margin:8px 0 6px calc(.75em + 10px);color:var(--muted);font-size:.94rem;max-width:36em}
+.lf-t span{background:linear-gradient(var(--hl),var(--hl)) no-repeat 0 88%/0% 36%;transition:background-size 1s cubic-bezier(.2,.7,.2,1);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.twig.read .lf-t span{background-size:100% 36%}
+.twig.story{padding:14px 0 16px}
+.twig.story::before{top:26px}
+.lf-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.story h4{font-family:var(--display);font-weight:800;font-size:1.22rem;line-height:1.15;letter-spacing:-.01em;margin:6px 0 6px}
+.story .punch{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.35;margin:0}
+.story details.fold p{color:var(--muted);font-size:.94rem;margin-bottom:0;max-width:36em}
+.alsoline{margin:34px 0 0}
+.alsoline .lf-k{margin-right:10px}
+.alsogrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.alsogrid b{font-family:var(--display);font-size:1.08rem;display:block;margin-bottom:4px}
+.alsogrid p{margin:0;color:var(--muted);font-size:.94rem}
 
 /* side quests */
-.quests{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px}
 .pommy{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start}
 .pommy .pic{width:96px;height:96px;border:2px solid var(--line);border-radius:22px;background:var(--mustard);display:grid;place-items:center;font-size:3rem;overflow:hidden;transform:rotate(-4deg)}
 .pommy .pic img{width:78%;height:78%;object-fit:contain}
 blockquote{margin:0 0 12px;font-style:italic;color:var(--muted);border-left:4px solid var(--mustard);padding-left:14px}
-@media (max-width:860px){.quests{grid-template-columns:1fr}}
-@media (max-width:480px){.pommy{grid-template-columns:1fr}}
 
-/* stories */
-.stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.story .punch{font-family:var(--display);font-weight:700;font-size:1.12rem;margin:14px 0 0;color:var(--ink)}
-@media (max-width:860px){.stories{grid-template-columns:1fr}}
+@media (max-width:980px){
+  .fork{grid-template-columns:1fr;grid-template-rows:none;padding-top:0;gap:34px}
+  .col{display:block;grid-row:auto}
+  .fork::before{display:none}
+  .fork>.col::before{left:calc(1px - var(--gap));top:44px;height:0;width:var(--gap);border-left:0;border-top:2px solid var(--ink);transform-origin:0 50%;transform:scaleX(0);transition:transform .5s ease}
+  .prod{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .tl{--sx:7px;--gap:24px}
+  .yr{position:static;display:block;margin:0 0 4px}
+  .stop::before{top:3px}
+  .stop.small::before{top:5px}
+  .stop{padding-bottom:56px}
+  .leaves{margin-left:16px;padding-left:20px}
+  .twig::before{left:-20px;width:13px}
+  .alsogrid{grid-template-columns:1fr}
+  .pcard .art{height:176px}
+  .pcard .art .diag{width:128px}
+  .pcard .art .diag.big{width:188px}
+  .pcard .body{padding:18px 18px 20px}
+}
+@media (max-width:480px){.wrap{padding:0 18px}.card{padding:20px 18px}.pcard{padding:0}.perm-bar{font-size:.74rem;letter-spacing:0;overflow-wrap:anywhere}.perm ul{padding:6px 12px 2px}.pommy{grid-template-columns:1fr}.score strong{font-size:1.22rem}.score strong span{white-space:nowrap}}
 
 /* faq */
 .faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 22px;align-items:start}
 @media (max-width:760px){.faq{grid-template-columns:1fr}}
-details{border:2px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}
-summary{cursor:pointer;list-style:none;padding:16px 52px 16px 20px;font-family:var(--display);font-weight:700;font-size:1.14rem;position:relative}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:1.5rem;color:var(--tomato);transition:transform .15s}
-details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
-details p{margin:0;padding:0 20px 18px;color:var(--muted)}
+.faq details{border:2px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}
+.faq summary{cursor:pointer;list-style:none;padding:16px 52px 16px 20px;font-family:var(--display);font-weight:700;font-size:1.14rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:1.5rem;color:var(--clay);transition:transform .15s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 
 /* easter egg */
 .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.86rem;padding:10px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:30;white-space:nowrap}
@@ -211,7 +288,7 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 @keyframes fall{to{transform:translateY(calc(100vh + 80px)) rotate(300deg)}}
 
 /* the paper plane above the two stories */
-.flight{position:relative;height:96px;margin:-8px 0 26px}
+.flight{position:relative;height:84px;margin:0 0 22px}
 .flight svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .flight .route{fill:none;stroke:color-mix(in srgb,var(--ink) 38%,transparent);stroke-width:2;stroke-dasharray:2 9;stroke-linecap:round}
 .flight .flown{fill:none;stroke:var(--tomato);stroke-width:2.5;stroke-linecap:round}
@@ -223,7 +300,7 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 .flight.done .landed{opacity:1}
 
 /* the sky over Hyderabad */
-.sky{position:relative;height:236px;max-width:760px;margin:0 auto 34px;border:2px solid #26211C;border-radius:18px;overflow:hidden;box-shadow:5px 5px 0 rgba(0,0,0,.28);background:linear-gradient(var(--s1,#BFDDEE),var(--s2,#F6EBD0));transition:background 1s}
+.sky{position:relative;height:236px;max-width:760px;margin:0 auto 34px;border:2px solid #26211C;border-radius:18px;overflow:hidden;box-shadow:0 5px 0 rgba(0,0,0,.22);background:linear-gradient(var(--s1,#BFDDEE),var(--s2,#F6EBD0));transition:background 1s}
 .sky .orb{position:absolute;left:var(--ox,50%);top:var(--oy,40%);width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;background:var(--oc,#F6C644);box-shadow:0 0 0 8px color-mix(in srgb,var(--oc,#F6C644) 28%,transparent),0 0 34px 10px color-mix(in srgb,var(--oc,#F6C644) 45%,transparent);transition:left 1.2s ease,top 1.2s ease;animation:glow 5s ease-in-out infinite}
 .sky.night .orb{box-shadow:0 0 0 6px rgba(255,253,244,.12),0 0 26px 6px rgba(255,253,244,.25)}
 .sky.night .orb::after{content:"";position:absolute;left:11px;top:-5px;width:40px;height:40px;border-radius:50%;background:var(--s1)}
@@ -239,7 +316,7 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 @keyframes drift{to{transform:translateX(calc(100vw + 300px))}}
 .sky .land{position:absolute;left:0;right:0;bottom:0;width:100%;height:46px;display:block}
 .sky .land path{fill:#26211C}
-.skyline{font-family:var(--mono);font-size:.95rem;letter-spacing:.02em;margin:0 auto 26px !important;max-width:40em}
+.skyline{font-family:var(--mono);font-size:.94rem;letter-spacing:.02em;margin:0 auto 26px !important;max-width:40em}
 .skyline b{font-weight:500;border-bottom:2px solid currentColor}
 
 /* the tree in the sky scene: shake it and leaves fall */
@@ -272,10 +349,10 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 
 /* the run log in the hero */
 .perm .log{list-style:none;margin:0;padding:14px 18px 10px;min-height:14.6em}
-.perm .log li{display:flex;justify-content:flex-start;gap:14px;padding:4px 0;border:0;font-family:var(--mono);font-size:.86rem;font-weight:400;opacity:0;transform:translateY(5px);transition:opacity .4s,transform .4s}
+.perm .log li{display:flex;justify-content:flex-start;gap:14px;padding:4px 0;border:0;font-family:var(--mono);font-size:.8rem;font-weight:400;opacity:0;transform:translateY(5px);transition:opacity .4s,transform .4s}
 .perm .log li.on{opacity:1;transform:none}
 .perm .log time{color:var(--tomato);flex:none}
-.perm-sm{transform:none;animation:none;box-shadow:5px 5px 0 var(--shade)}
+.perm-sm{transform:none;animation:none;box-shadow:0 4px 0 var(--shade)}
 
 /* drawings that ink themselves as you scroll */
 .cardhead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
@@ -296,19 +373,9 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 .weeks svg{height:100%}
 .weeks.done .d-flag,.weeks.done .d-live{opacity:1}
 .d-live{opacity:0;transition:opacity .35s;fill:var(--ink)}
-.flight.path{height:128px;margin:38px 0 0}
-.flight.path .on{fill:var(--tomato)}
-.flight.path .city.name{fill:var(--ink);font-size:13px;letter-spacing:.02em;font-family:var(--display);font-weight:700}
 .count{font-family:var(--mono);text-align:right;line-height:1.1}
 .count b{display:block;font-size:1.5rem;font-weight:500;color:var(--tomato)}
 .count i{font-style:normal;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.note h3 span{background:linear-gradient(var(--hl),var(--hl)) no-repeat 0 88%/0% 36%;transition:background-size 1s cubic-bezier(.2,.7,.2,1);-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.note.read h3 span{background-size:100% 36%}
-.also{display:block !important}
-.alsogrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:10px}
-.alsogrid b{font-family:var(--display);font-size:1.08rem;display:block;margin-bottom:4px}
-.alsogrid p{margin:0;color:var(--muted);font-size:.98rem}
-@media (max-width:760px){.alsogrid{grid-template-columns:1fr}.diag{width:92px}.diag.big{width:140px}}
 
 /* Pommy's door */
 .cameo{position:fixed;right:7%;bottom:0;width:132px;height:168px;z-index:40;pointer-events:none;transform:translateY(105%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
@@ -327,7 +394,7 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--muted);letter-spacing:.02em}
 .ftop{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:22px 40px}
 .ftop .logo{color:var(--ink)}
-.ftop p{margin:8px 0 0;font-family:var(--body);font-size:.98rem;letter-spacing:0;color:var(--ink)}
+.ftop p{margin:8px 0 0;font-family:var(--body);font-size:.94rem;letter-spacing:0;color:var(--ink)}
 .ftop nav{display:flex;flex-wrap:wrap;gap:10px 26px;padding-top:6px}
 .ftop nav a{text-transform:uppercase;letter-spacing:.07em;text-decoration:none;color:var(--ink);border-bottom:2px solid transparent;padding-bottom:2px}
 .ftop nav a:hover{border-bottom-color:var(--tomato)}
@@ -340,13 +407,50 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
 .contact h2{font-size:clamp(2.6rem,8vw,5.4rem)}
 .contact p{max-width:34em;margin:16px auto 30px;font-size:1.1rem}
 .contact .cta{justify-content:center}
-.contact .btn{color:#26211C;background:#FFFCF5;border-color:#26211C;box-shadow:4px 4px 0 rgba(0,0,0,.3)}
-.contact .btn:hover{box-shadow:6px 6px 0 rgba(0,0,0,.3)}
+.contact .btn{color:#26211C;background:#FFFCF5;border-color:#26211C;box-shadow:0 4px 0 rgba(0,0,0,.3)}
+.contact .btn:hover{box-shadow:0 6px 0 rgba(0,0,0,.3)}
 
+/* if it looks pressable, it does something */
+::selection{background:var(--hl);color:var(--ink)}
+html{interpolate-size:allow-keywords}
+.nav nav a.here{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:7px;text-decoration-color:var(--clay)}
+.lede a{text-decoration:none;color:inherit}
+.lede a:hover em{background:var(--hl)}
+.ticker a{color:inherit;text-decoration:none}
+.ticker a:hover{text-decoration:underline;text-underline-offset:4px}
+a.num{text-decoration:none}
+a.num:hover{background:var(--tomato);color:var(--tomato-ink)}
+a.stat{position:relative;display:block;text-decoration:none;color:inherit;transition:transform .14s ease,box-shadow .14s ease}
+a.stat::after{content:"↓";position:absolute;right:16px;top:14px;font-family:var(--mono);font-size:.94rem;color:var(--muted);opacity:.5;transition:opacity .14s,transform .14s}
+a.stat:hover{transform:translateY(-3px);box-shadow:0 7px 0 var(--shade),0 18px 30px -22px rgba(70,48,20,.5)}
+a.stat:hover::after{opacity:1;transform:translateY(3px);color:var(--clay)}
+a.yr{text-decoration:none}
+a.yr:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.stop::before{cursor:pointer}
+.dots{background:none;border:0;padding:0;cursor:pointer}
+.dots:hover i{transform:scale(1.18)}
+.dots i{transition:transform .12s}
+.art{position:relative;cursor:pointer}
+.art::after,.weeks::after{content:"↻ again";position:absolute;right:12px;bottom:9px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;color:var(--muted);opacity:0;transition:opacity .2s}
+.art:hover::after,.art:focus-visible::after,.weeks:hover::after,.weeks:focus-visible::after{opacity:1}
+.weeks{position:relative;cursor:pointer}
+.weeks::after{right:0;bottom:auto;top:-22px}
+button.count{background:none;border:0;padding:0;cursor:pointer;color:inherit}
+button.count:hover b{text-decoration:underline;text-underline-offset:4px}
+.flight{cursor:pointer}
+.pommy .pic{padding:0;cursor:pointer;font:inherit;transition:transform .15s}
+.pommy .pic:hover{transform:rotate(4deg) scale(1.05)}
+.col.wide{margin-top:28px}
+@media (min-width:981px){.fork>.col.wide{grid-column:1/-1;grid-row:auto;display:block}.fork>.col.wide::before{display:none}}
+@media (max-width:980px){.col.wide{margin-top:0}}
+/* fold-outs open smoothly where the browser can do it */
+details.fold::details-content,details.twig::details-content,.faq details::details-content{block-size:0;overflow:clip;opacity:0;transition:block-size .32s ease,opacity .32s ease,content-visibility .32s allow-discrete}
+details.fold[open]::details-content,details.twig[open]::details-content,.faq details[open]::details-content{block-size:auto;opacity:1}
+@media (hover:none){.art::after,.weeks::after{opacity:.6}}
+@media (prefers-reduced-motion:reduce){a.stat,.dots i,.pommy .pic{transition:none}details.fold::details-content,details.twig::details-content,.faq details::details-content{transition:none}}
 
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .reveal.in{opacity:1;transform:none}
-.note.reveal.in:nth-child(3n+1){transform:rotate(-.5deg)}.note.reveal.in:nth-child(3n){transform:rotate(.5deg)}
 @media (max-width:1100px){h1 mark{display:inline;white-space:normal;transform:none;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:.02em .14em;line-height:1.22}}
 @media (max-width:900px){.hero{padding:48px 0}.hero .wrap{grid-template-columns:1fr;gap:40px}.perm{transform:none;max-width:460px}section{padding:60px 0}}
 @media (prefers-reduced-motion:reduce){
@@ -356,7 +460,7 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
   .reveal{opacity:1;transform:none;transition:none}
   .btn,.card,.sw,.sw::after{transition:none}
   .sw.nope,.perm,h1 mark,.perm-status::after{animation:none}
-  .toast,.perm .log li,.note h3 span,.cameo,.cameo .tom2,.cameo .leaf2,.cord-line{transition:none}
+  .toast,.perm .log li,.lf-t span,.stop::before,.fork::before,.fork>.col::before,.solo::before,.cameo,.cameo .tom2,.cameo .leaf2,.cord-line{transition:none}
   .cord,.cord:hover{animation:none}
   .tree.run svg,.tree.run .legs line{animation:none}
   .sky .orb,.sky .star,.sky .cloud,.tree .canopy{animation:none}
@@ -374,10 +478,10 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
     <a class="logo" href="#top" aria-label="Kirubananth Sankar, home">kirubananth<span>.</span></a>
     <nav aria-label="Sections">
       <a href="#research">Research</a>
-      <a href="#production">Production</a>
       <a href="#notes">Field notes</a>
-      <a href="#quests">Side quests</a>
       <a href="#stories">Stories</a>
+      <a href="#production">Production</a>
+      <a href="#quests">Side quests</a>
       <a href="#faq">FAQ</a>
       <button class="cord" id="theme" type="button" aria-label="Switch the lights between light and dark" aria-pressed="false"><span class="cord-in"><span class="cord-line"></span><svg class="bulb" viewBox="0 0 24 31" aria-hidden="true"><path class="rays" d="M2 27 l-2 3 M22 27 l2 3 M12 30 v1"/><rect class="cap" x="8" y="0" width="8" height="7" rx="1.5"/><circle class="glass" cx="12" cy="17" r="10"/><path class="fil" d="M8.5 16 l2 3 1.5 -3 1.5 3 2 -3"/></svg></span><span class="cord-tip" id="cordTip">Turn the lights off</span></button>
     </nav>
@@ -391,16 +495,16 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
     <div>
       <p class="eyebrow"><b>●</b> AI engineer · research to production · Hyderabad</p>
       <h1>I build AI systems that work when <mark>nobody is watching</mark>.</h1>
-      <p class="lede">Hi, I'm Kirubananth. Eleven letters, take your time. I spent three years in research on multi-agent systems that work on a problem for 24 hours with nobody steering. One of them ranked first on OpenAI's MLE-Bench when we submitted it. Then I took an AI system to <em>paying customers in eight weeks</em>. This page is what I learned on both sides.</p>
+      <p class="lede">Hi, I'm Kirubananth. Eleven letters, take your time. I spent three years in research on multi-agent systems that work on a problem for 24 hours straight. Then I took an AI system to <a href="#production"><em>paying customers in eight weeks</em></a>.</p>
       <div class="cta">
-        <a class="btn primary" href="#research">See the work <span aria-hidden="true">↓</span></a>
+        <a class="btn primary" href="#route">See the work <span aria-hidden="true">↓</span></a>
         <a class="btn" href="https://proceedings.mlr.press/v293/chopde25a.html" rel="noopener">Read the paper</a>
       </div>
     </div>
 
     <div>
       <div class="perm logcard" aria-label="One 24-hour run of the system, shown as a log">
-        <div class="perm-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>one_run.log</div>
+        <div class="perm-bar"><button class="dots" id="logDots" type="button" aria-label="Run the log again"><i></i><i></i><i></i></button>one_run.log</div>
         <ul class="log" id="log">
           <li><time>00:00</time><span>task read, plan drafted</span></li>
           <li><time>00:09</time><span>first solution scored</span></li>
@@ -419,214 +523,252 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
 
 <div class="ticker" aria-hidden="true">
   <div>
-    <span>24-hour runs, zero babysitters</span><span>Published at AutoML 2025</span><span>First on MLE-Bench at submission</span><span>Paying customers in eight weeks</span><span>Every model call traced</span><span>No numbers were invented in the making of this page</span>
-    <span>24-hour runs, zero babysitters</span><span>Published at AutoML 2025</span><span>First on MLE-Bench at submission</span><span>Paying customers in eight weeks</span><span>Every model call traced</span><span>No numbers were invented in the making of this page</span>
+    <span><a tabindex="-1" href="#cardEvolve">24-hour runs, zero babysitters</a></span><span><a tabindex="-1" href="#cardPiml">Published at AutoML 2025</a></span><span><a tabindex="-1" href="#cardEvolve">First on MLE-Bench at submission</a></span><span><a tabindex="-1" href="#production">Paying customers in eight weeks</a></span><span><a tabindex="-1" href="#notes">Every model call traced</a></span><span><a tabindex="-1" href="#faq">No numbers were invented in the making of this page</a></span>
+    <span><a tabindex="-1" href="#cardEvolve">24-hour runs, zero babysitters</a></span><span><a tabindex="-1" href="#cardPiml">Published at AutoML 2025</a></span><span><a tabindex="-1" href="#cardEvolve">First on MLE-Bench at submission</a></span><span><a tabindex="-1" href="#production">Paying customers in eight weeks</a></span><span><a tabindex="-1" href="#notes">Every model call traced</a></span><span><a tabindex="-1" href="#faq">No numbers were invented in the making of this page</a></span>
   </div>
 </div>
 
 <section class="numbers" aria-label="A few numbers">
   <div class="wrap">
     <div class="numgrid">
-      <div class="stat reveal"><b>3<small>years</small></b><p>building AI systems, most of them multi-agent</p><i>Research first, then production.</i></div>
-      <div class="stat reveal"><b>24<small>hours</small></b><p>in a single run, with nobody steering</p><i>Hundreds of experiments in each.</i></div>
-      <div class="stat reveal"><b>#1</b><p>on OpenAI's MLE-Bench, at submission</p><i>Leaderboards move. It was true when we said it.</i></div>
-      <div class="stat reveal"><b>8<small>weeks</small></b><p>from joining to paying customers</p><i>As the only engineer on the system.</i></div>
+      <a class="stat reveal" href="#research"><b>3<small>years</small></b><p>building AI systems, most of them multi-agent</p></a>
+      <a class="stat reveal" href="#cardEvolve"><b>24<small>hours</small></b><p>in a single run, unattended</p></a>
+      <a class="stat reveal" href="#cardEvolve"><b>#1</b><p>on OpenAI's MLE-Bench, at submission</p></a>
+      <a class="stat reveal" href="#production"><b>8<small>weeks</small></b><p>from joining to paying customers</p></a>
     </div>
     <p class="numnote">Numbers typed by a human. House rules.</p>
-    <div class="flight path" id="path" aria-hidden="true"><svg></svg></div>
-    <p class="sr">The route so far: IIT Roorkee, B.Tech, 2022. Plaksha University, Tech Leaders Program, 2023. Fractal Analytics, AI research, 2023 to 2026. Mirian AI, Founding AI Engineer, 2026.</p>
   </div>
 </section>
 
-<section class="notes" id="research">
+<section class="route" id="route">
   <div class="wrap">
     <div class="sec-head">
-      <span class="num">01</span>
-      <h2>Research: systems that work alone</h2>
-      <p class="sec-sub">Three years on the AI research team at Fractal Analytics. The question was always the same: how long can a system keep improving with nobody steering it?</p>
+      <a class="num" href="#route">01</a>
+      <h2>The route so far</h2>
+      <p class="sec-sub">What I built at each stop, and what it taught me. Anything with a plus opens.</p>
     </div>
-    <div class="work">
-      <article class="card reveal" id="cardEvolve">
-        <div class="cardhead">
-          <div><span class="tag sun">Research</span><span class="tag">Manuscript</span>
-            <h3>PiEvolve</h3>
-            <p class="meta">Fractal Analytics · I led it</p></div>
-          <div class="diag" aria-hidden="true"><svg viewBox="0 0 120 126">
-            <circle class="d-track" cx="60" cy="56" r="44"/>
-            <circle class="d-go" id="dialGo" cx="60" cy="56" r="44" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 60 56)"/>
-            <line class="d-ink" id="dialHand" x1="60" y1="56" x2="60" y2="22"/>
-            <circle class="d-dot" cx="60" cy="56" r="5"/>
-            <text class="d-txt d-mid" id="dialT" x="60" y="122" text-anchor="middle">0 H</text>
-          </svg><span class="dcap" id="dialCap">nobody touched it</span></div>
-        </div>
-        <p>A multi-agent system that works on one machine learning problem for about 24 hours and runs hundreds of experiments in that time. It drafts solutions, improves them, merges the good ones and learns from its own failures.</p>
-        <p>The agents, every prompt and the code template are my work. The scoring model was joint work with a teammate. It ranked first on OpenAI's MLE-Bench when we submitted it.</p>
-        <p class="aside">It is a manuscript for now, so there is no link yet.</p>
-      </article>
 
-      <article class="card reveal" id="cardPiml">
-        <div class="cardhead">
-          <div><span class="tag sun">Research</span><span class="tag">AutoML 2025</span>
-            <h3>PiML</h3>
-            <p class="meta">Fractal Analytics · Co-author</p></div>
-          <div class="diag big" aria-hidden="true"><svg viewBox="0 0 176 132">
-            <circle class="d-track" cx="88" cy="66" r="44"/>
-            <circle class="d-dot" cx="88" cy="22" r="4.5"/><circle class="d-dot" cx="132" cy="66" r="4.5"/><circle class="d-dot" cx="88" cy="110" r="4.5"/><circle class="d-dot" cx="44" cy="66" r="4.5"/>
-            <text class="d-txt" x="88" y="11" text-anchor="middle">PLAN</text><text class="d-txt" x="140" y="70">WRITE</text><text class="d-txt" x="88" y="129" text-anchor="middle">RUN</text><text class="d-txt" x="36" y="70" text-anchor="end">DEBUG</text>
-            <circle class="d-run" id="loopDot" cx="88" cy="22" r="7"/>
-            <text class="d-txt d-mid" id="loopT" x="88" y="70" text-anchor="middle">TRY 1</text>
-          </svg></div>
-        </div>
-        <p>The system that came first. LLM agents solve a machine learning task the way a practitioner does: read the task, write the training code, run it, read the errors and the scores, and try again with what they learned.</p>
-        <div class="score" aria-label="PiML against AIDE on 26 MLE-Bench competitions">
-          <div><strong>41% <span>vs 31%</span></strong><span>runs above the median</span></div>
-          <div><strong>29.5% <span>vs 23%</span></strong><span>medal rate</span></div>
-        </div>
-        <p class="aside">Against AIDE, the strongest earlier system, on 26 MLE-Bench competitions.</p>
-        <p><a class="more" href="https://proceedings.mlr.press/v293/chopde25a.html" rel="noopener">Read the paper →</a></p>
-      </article>
+    <div class="tl" id="tl">
+      <span class="tl-go" id="tlGo" aria-hidden="true"></span><span class="tl-dot" id="tlDot" aria-hidden="true"></span>
 
-      <article class="card wide also reveal">
-        <div><span class="tag">Also from those years</span>
-          <h3>Not only benchmarks</h3></div>
-        <div class="alsogrid">
-          <div><b>A report writer</b><p>A multi-step agent system that reads the solution and the analysis from every stage of a run and writes the business and ML report, charts included.</p></div>
-          <div><b>A multimodal chatbot</b><p>Built and served on Ray Serve and Kubernetes.</p></div>
-          <div><b>Coding agents, early</b><p>Early agentic coding systems.</p></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="production">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="num">02</span>
-      <h2>Production: one system, paying customers</h2>
-      <p class="sec-sub">Research rewards the best run. Production punishes the worst one. I went to find out what that changes.</p>
-    </div>
-    <div class="work">
-      <article class="card wide reveal" id="cardProd">
-        <div>
-          <span class="tag hot">Production</span><span class="tag">2026</span>
-          <h3>An AI system for accounts receivable</h3>
-          <p class="meta">Mirian AI · Founding AI Engineer</p>
-          <p>It follows up with a company's customers about their open invoices and does the routine work from start to finish. People handle the exceptions, and anything that involves money.</p>
-          <p>I was the company's second engineer and the only one on this system. It was live with paying customers within eight weeks.</p>
-          <div class="chips"><span>Go</span><span>PostgreSQL</span><span>Temporal</span><span>Next.js</span><span>AWS</span><span>LLM APIs</span></div>
-          <div class="weeks" id="weeks" aria-hidden="true"><svg></svg></div>
-        </div>
-        <div>
-          <div class="perm perm-sm" role="group" aria-label="A toy panel of agent permissions">
-        <div class="perm-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>what_the_agent_may_do.txt</div>
-        <ul>
-          <li><span id="p1">Write the wording</span><button class="sw" type="button" role="switch" aria-checked="true" aria-labelledby="p1" data-kind="on"></button></li>
-          <li><span id="p2">Write a number</span><button class="sw" type="button" role="switch" aria-checked="false" aria-labelledby="p2" data-kind="off"></button></li>
-          <li><span id="p3">Decide anything about money</span><button class="sw" type="button" role="switch" aria-checked="false" aria-labelledby="p3" data-kind="off"></button></li>
-          <li><span id="p4">Press send without a person</span><button class="sw" type="button" role="switch" aria-checked="false" aria-labelledby="p4" data-kind="off"></button></li>
-          <li><span id="p5">Sulk about all of the above</span><button class="sw" type="button" role="switch" aria-checked="true" aria-labelledby="p5" data-kind="sulk"></button></li>
-        </ul>
-        <p class="perm-status"><span id="permType" aria-hidden="true">status: compliant, mildly resentful</span><span class="sr" id="permStatus" role="status" aria-live="polite">status: compliant, mildly resentful</span></p>
+      <div class="stop small" id="roorkee">
+        <a class="yr" href="#roorkee">2022</a>
+        <h3>IIT Roorkee</h3>
+        <p class="meta">B.Tech</p>
       </div>
-          <p class="perm-hint">Its rules. Try to switch one on.</p>
+
+      <div class="stop small" id="plaksha">
+        <a class="yr" href="#plaksha">2023</a>
+        <h3>Plaksha University</h3>
+        <p class="meta">Tech Leaders Program</p>
+      </div>
+
+      <div class="stop big" id="research">
+        <a class="yr" href="#research">2023 to 2026</a>
+        <h3 class="stop-t">Fractal Analytics</h3>
+        <p class="meta">AI research · systems that work alone</p>
+        <p class="stop-sub">Three years on the AI research team. The question was always the same: how long can a system keep improving on its own?</p>
+
+        <div class="fork">
+          <div class="col">
+            <article class="card pcard reveal" id="cardEvolve">
+              <div class="art" role="button" tabindex="0" aria-label="Play the 24-hour dial again" data-replay="cardEvolve">
+                <div class="diag" aria-hidden="true"><svg viewBox="0 0 120 126">
+                  <circle class="d-track" cx="60" cy="56" r="44"/>
+                  <circle class="d-go" id="dialGo" cx="60" cy="56" r="44" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 60 56)"/>
+                  <line class="d-ink" id="dialHand" x1="60" y1="56" x2="60" y2="22"/>
+                  <circle class="d-dot" cx="60" cy="56" r="5"/>
+                  <text class="d-txt d-mid" id="dialT" x="60" y="122" text-anchor="middle">0 H</text>
+                </svg><span class="dcap" id="dialCap">hands off</span></div>
+              </div>
+              <div class="body">
+                <div class="tags"><span class="tag sun">Research</span><span class="tag">Manuscript</span></div>
+                <h4>PiEvolve</h4>
+                <p class="meta">Fractal Analytics · I led it</p>
+                <p>A multi-agent system that works on one machine learning problem for about 24 hours and runs hundreds of experiments in that time.</p>
+                <div class="score one" aria-label="PiEvolve on MLE-Bench">
+                  <div><strong>#1</strong><span>on OpenAI's MLE-Bench when we submitted it</span></div>
+                </div>
+                <p class="aside">Leaderboards move. It was true when we said it.</p>
+                <details class="fold"><summary>More about PiEvolve</summary>
+                  <p>It drafts solutions, improves them, merges the good ones and learns from its own failures.</p>
+                  <p>The agents, every prompt and the code template are my work. The scoring model was joint work with a teammate.</p>
+                  <p class="aside">It is a manuscript for now, so there is no link yet.</p>
+                </details>
+              </div>
+            </article>
+
+            <div class="leaves" id="notes">
+              <h4 class="lf-h">What the work taught me</h4>
+              <p class="lf-sub">The agent is the small part of a system. The rest is evaluation, memory, retries and tracing. Each of these notes cost at least one bad afternoon.</p>
+              <details class="twig note" name="note"><summary><span class="lf-t"><span>A judge from the same family is a character witness.</span></span></summary><p>Agents sometimes wrote code so wasteful that the server ran out of memory and a whole run was lost. I added a judge to read every solution first. It did not help until the judge and the agent were on different model families.</p></details>
+              <details class="twig note" name="note"><summary><span class="lf-t"><span>You cannot talk to every model the same way.</span></span></summary><p>GPT models did best with the context first and the instructions after. Claude models followed an instruction better when it came with the reason. I know people like both.</p></details>
+              <details class="twig note" name="note"><summary><span class="lf-t"><span>Sometimes the right instruction is "check your work less".</span></span></summary><p>We had about 24 hours per problem. Lighter validation meant a slightly noisier score and many more experiments. More ideas were worth more than steadier scores.</p></details>
+              <details class="twig note" name="note"><summary><span class="lf-t"><span>A long run has many ways to die.</span></span></summary><p>Rate limits and server errors, mostly. So every model call went through one function that retries and waits longer each time, and every step was saved so a run could resume where it stopped.</p></details>
+              <details class="twig note" name="note"><summary><span class="lf-t"><span>Show the agent its best and its worst.</span></span></summary><p>An agent learns little from a list of everything it has tried. Each new attempt saw one very good solution, one very bad one, and a short summary of the rest.</p></details>
+              <details class="twig note" name="note"><summary><span class="lf-t"><span>If you cannot look at it afterwards, do not ship it.</span></span></summary><p>Trace every model call. When an output reads wrong, you want to see what the model was given and what it wrote. The alternative is a séance.</p></details>
+            </div>
+          </div>
+
+          <div class="col">
+            <article class="card pcard reveal" id="cardPiml">
+              <div class="art" role="button" tabindex="0" aria-label="Run the loop again" data-replay="cardPiml">
+                <div class="diag big" aria-hidden="true"><svg viewBox="0 0 176 132">
+                  <circle class="d-track" cx="88" cy="66" r="44"/>
+                  <circle class="d-dot" cx="88" cy="22" r="4.5"/><circle class="d-dot" cx="132" cy="66" r="4.5"/><circle class="d-dot" cx="88" cy="110" r="4.5"/><circle class="d-dot" cx="44" cy="66" r="4.5"/>
+                  <text class="d-txt" x="88" y="11" text-anchor="middle">PLAN</text><text class="d-txt" x="140" y="70">WRITE</text><text class="d-txt" x="88" y="129" text-anchor="middle">RUN</text><text class="d-txt" x="36" y="70" text-anchor="end">DEBUG</text>
+                  <circle class="d-run" id="loopDot" cx="88" cy="22" r="7"/>
+                  <text class="d-txt d-mid" id="loopT" x="88" y="70" text-anchor="middle">TRY 1</text>
+                </svg></div>
+              </div>
+              <div class="body">
+                <div class="tags"><span class="tag sun">Research</span><span class="tag">AutoML 2025</span></div>
+                <h4>PiML</h4>
+                <p class="meta">Fractal Analytics · Co-author</p>
+                <p>LLM agents solve a machine learning task the way a practitioner does.</p>
+                <div class="score" aria-label="PiML against AIDE on 26 MLE-Bench competitions">
+                  <div><strong>41% <span>vs 31%</span></strong><span>runs above the median</span></div>
+                  <div><strong>29.5% <span>vs 23%</span></strong><span>medal rate</span></div>
+                </div>
+                <p class="aside">Against AIDE, the strongest earlier system, on 26 MLE-Bench competitions.</p>
+                <p><a class="more" href="https://proceedings.mlr.press/v293/chopde25a.html" rel="noopener">Read the paper →</a></p>
+                <details class="fold"><summary>More about PiML</summary>
+                  <p>The system that came first. The agents read the task, write the training code, run it, read the errors and the scores, and try again with what they learned.</p>
+                </details>
+              </div>
+            </article>
+
+            <div class="leaves" id="stories">
+              <h4 class="lf-h">Two true stories</h4>
+              <p class="lf-sub">For when you want to know what I am like when the plan fails. Which it does.</p>
+              <div class="twig story">
+                <div class="lf-row"><span class="lf-k">The unplanned paper</span><button class="count" id="count" type="button" aria-label="Run the 48-hour countdown again" data-replay="story"><b id="cnt">48:00</b><i id="cntL">hours left</i></button></div>
+                <h4>Accepted at a conference we never meant to submit to</h4>
+                <p class="punch">I do not recommend this as a process. It is also my most successful process.</p>
+                <details class="fold"><summary>The long version</summary>
+                  <p>PiML was not written for AutoML. We wrote it for another conference, which said no. AutoML asked for something different, so we ran new experiments overnight, made new figures and rewrote the whole paper in two days. It was accepted.</p>
+                </details>
+              </div>
+              <div class="twig story">
+                <div class="flight" id="flight" aria-hidden="true">
+                  <svg>
+                    <path class="route" id="fRoute"/><path class="flown" id="fFlown"/>
+                    <circle class="dot" id="fA" r="5"/><circle class="dot" id="fB" r="5"/>
+                    <text class="city" id="fAt">HYD</text><text class="city" id="fBt" text-anchor="end">JFK</text>
+                    <text class="city landed" id="fBn" text-anchor="end">no signal</text>
+                    <g class="plane" id="fPlane"><path d="M-15 -2 L15 0 L-15 9 L-9 2 Z"/><path class="fold" d="M-9 2 L15 0 L-11 -8 Z"/></g>
+                  </svg>
+                </div>
+                <span class="lf-k">JFK</span>
+                <h4>New York, with no phone</h4>
+                <p class="punch">I build systems that recover from failure. Sometimes I am the system.</p>
+                <details class="fold"><summary>The long version</summary>
+                  <p>I flew to New York to present that paper. I landed at JFK alone, with an international eSIM ready, and found out my phone did not support US network bands. At all. I had read that the premium cabs carry wifi, so I booked one, asked the driver to share his connection, and got to my hotel. Then I ordered a phone that worked, and spent two days getting around New York on public wifi until it arrived.</p>
+                </details>
+              </div>
+            </div>
+          </div>
         </div>
-      </article>
-    </div>
-  </div>
-</section>
 
-<section class="notes" id="notes">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="num">03</span>
-      <h2>What the work taught me</h2>
-      <p class="sec-sub">The agent is the small part of a system. The rest is evaluation, memory, retries and tracing. Each of these notes cost at least one bad afternoon.</p>
-    </div>
-    <div class="notegrid">
-      <div class="note reveal"><h3><span>A judge from the same family is a character witness.</span></h3><p>Agents sometimes wrote code so wasteful that the server ran out of memory and a whole run was lost. I added a judge to read every solution first. It did not help until the judge and the agent were on different model families.</p></div>
-      <div class="note reveal"><h3><span>You cannot talk to every model the same way.</span></h3><p>GPT models did best with the context first and the instructions after. Claude models followed an instruction better when it came with the reason. I know people like both.</p></div>
-      <div class="note reveal"><h3><span>Sometimes the right instruction is "check your work less".</span></h3><p>We had about 24 hours per problem. Lighter validation meant a slightly noisier score and many more experiments. More ideas were worth more than steadier scores.</p></div>
-      <div class="note reveal"><h3><span>A long run has many ways to die.</span></h3><p>Rate limits and server errors, mostly. So every model call went through one function that retries and waits longer each time, and every step was saved so a run could resume where it stopped.</p></div>
-      <div class="note reveal"><h3><span>Show the agent its best and its worst.</span></h3><p>An agent learns little from a list of everything it has tried. Each new attempt saw one very good solution, one very bad one, and a short summary of the rest.</p></div>
-      <div class="note reveal"><h3><span>If you cannot look at it afterwards, do not ship it.</span></h3><p>Trace every model call. When an output reads wrong, you want to see what the model was given and what it wrote. The alternative is a séance.</p></div>
-    </div>
-  </div>
-</section>
+        <p class="alsoline"><span class="lf-k">Also from those years</span>A report writer, a multimodal chatbot, and coding agents, early.</p>
+        <details class="fold"><summary>Not only benchmarks</summary>
+          <div class="alsogrid">
+            <div><b>A report writer</b><p>A multi-step agent system that reads the solution and the analysis from every stage of a run and writes the business and ML report, charts included.</p></div>
+            <div><b>A multimodal chatbot</b><p>Built and served on Ray Serve and Kubernetes.</p></div>
+            <div><b>Coding agents, early</b><p>Early agentic coding systems.</p></div>
+          </div>
+        </details>
+      </div>
 
-<section id="quests">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="num">04</span>
-      <h2>Side quests</h2>
-      <p class="sec-sub">What happens when nobody gives me a deadline.</p>
-    </div>
-    <div class="quests">
-      <article class="card pommy reveal">
-        <div class="pic" aria-hidden="true"><img src="https://raw.githubusercontent.com/kirubanath/Pommy-public/main/docs/assets/pommy.png" alt="" onerror="this.replaceWith(document.createTextNode('🍅'))"></div>
-        <div>
-          <span class="tag hot">macOS app</span><span class="tag">Swift</span>
-          <h3>Pommy</h3>
-          <p>A focus timer for the Mac, narrated by a tomato with opinions. It keeps time, logs your sessions to Notion, and wrote its own documentation.</p>
-          <blockquote>"I don't send your data anywhere you didn't ask me to. I am a tomato, not a startup."</blockquote>
-          <p><a class="more" href="https://github.com/kirubanath/Pommy-public" rel="noopener">Meet the tomato →</a></p>
+      <div class="stop big" id="production">
+        <a class="yr" href="#production">2026</a>
+        <h3 class="stop-t">Mirian AI</h3>
+        <p class="meta">Founding AI Engineer · one system, paying customers</p>
+        <p class="stop-sub">Research rewards the best run. Production punishes the worst one. I went to find out what that changes.</p>
+
+        <div class="solo">
+          <article class="card prod reveal" id="cardProd">
+            <div>
+              <span class="tag hot">Production</span><span class="tag">2026</span>
+              <h4>An AI system for accounts receivable</h4>
+              <p>It follows up with a company's customers about their open invoices and does the routine work from start to finish. People handle the exceptions, and anything that involves money.</p>
+              <p>I was the company's second engineer and the only one on this system. It was live with paying customers within eight weeks.</p>
+              <div class="chips"><span>Go</span><span>PostgreSQL</span><span>Temporal</span><span>Next.js</span><span>AWS</span><span>LLM APIs</span></div>
+              <div class="weeks" id="weeks" role="button" tabindex="0" aria-label="Play the eight weeks again" data-replay="cardProd"><svg aria-hidden="true"></svg></div>
+            </div>
+            <div>
+              <div class="perm perm-sm" role="group" aria-label="A toy panel of agent permissions">
+                <div class="perm-bar"><button class="dots" id="permDots" type="button" aria-label="Close this window"><i></i><i></i><i></i></button>what_the_agent_may_do.txt</div>
+                <ul>
+                  <li><span id="p1">Write the wording</span><button class="sw" type="button" role="switch" aria-checked="true" aria-labelledby="p1" data-kind="on"></button></li>
+                  <li><span id="p2">Write a number</span><button class="sw" type="button" role="switch" aria-checked="false" aria-labelledby="p2" data-kind="off"></button></li>
+                  <li><span id="p3">Decide anything about money</span><button class="sw" type="button" role="switch" aria-checked="false" aria-labelledby="p3" data-kind="off"></button></li>
+                  <li><span id="p4">Press send without a person</span><button class="sw" type="button" role="switch" aria-checked="false" aria-labelledby="p4" data-kind="off"></button></li>
+                  <li><span id="p5">Sulk about all of the above</span><button class="sw" type="button" role="switch" aria-checked="true" aria-labelledby="p5" data-kind="sulk"></button></li>
+                </ul>
+                <p class="perm-status"><span id="permType" aria-hidden="true">status: compliant, mildly resentful</span><span class="sr" id="permStatus" role="status" aria-live="polite">status: compliant, mildly resentful</span></p>
+              </div>
+              <p class="perm-hint">Its rules. Try to switch one on.</p>
+            </div>
+          </article>
         </div>
-      </article>
-      <article class="card reveal">
-        <span class="tag">This website</span>
-        <h3>You are looking at it</h3>
-        <p>One HTML file and four fonts. No framework, no build step, no trackers, no cookies and therefore no cookie banner.</p>
-        <p class="aside">An AI agent drafted it under my direction. It was not allowed to invent a single fact about me.</p>
-      </article>
-      <!-- JOB-SEARCH-AGENTS CARD: remove this comment's two marker lines to show it once the repository is public.
-      <article class="card reveal" style="grid-column:1/-1">
-        <span class="tag sun">Open source</span><span class="tag">Agents</span>
-        <h3>Five agents that run my job search</h3>
-        <p>They read the job sites, draft the letters and keep score in a spreadsheet. They are not allowed to click Apply. A person does that part, and the person is me.</p>
-        <p><a class="more" href="https://github.com/kirubanath/job-search-agents" rel="noopener">See how it works →</a></p>
-      </article>
-      -->
-    </div>
-  </div>
-</section>
+      </div>
 
-<section class="notes" id="stories">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="num">05</span>
-      <h2>Two true stories</h2>
-      <p class="sec-sub">For when you want to know what I am like when the plan fails. Which it does.</p>
+      <div class="stop big" id="quests">
+        <a class="yr" href="#quests">Off hours</a>
+        <h3 class="stop-t">Side quests</h3>
+        <p class="stop-sub">What happens when there is no deadline.</p>
+
+        <div class="fork">
+          <div class="col">
+            <article class="card pommy reveal">
+              <button class="pic" id="pommyPic" type="button" aria-label="Call Pommy"><img src="https://raw.githubusercontent.com/kirubanath/Pommy-public/main/docs/assets/pommy.png" alt="" onerror="this.replaceWith(document.createTextNode('🍅'))"></button>
+              <div>
+                <span class="tag hot">macOS app</span><span class="tag">Swift</span>
+                <h4>Pommy</h4>
+                <p>A focus timer for the Mac, narrated by a tomato with opinions.</p>
+                <p><a class="more" href="https://github.com/kirubanath/Pommy-public" rel="noopener">Meet the tomato →</a></p>
+                <details class="fold"><summary>More about Pommy</summary>
+                  <p>It keeps time, logs your sessions to Notion, and wrote its own documentation.</p>
+                  <blockquote>"I don't send your data anywhere you didn't ask me to. I am a tomato, not a startup."</blockquote>
+                </details>
+              </div>
+            </article>
+          </div>
+          <div class="col">
+            <article class="card reveal">
+              <span class="tag">This website</span>
+              <h4>You are looking at it</h4>
+              <p>One HTML file and four fonts. No framework, no build step, no trackers, no cookies and therefore no cookie banner.</p>
+              <p class="aside">An AI agent drafted it under my direction. It was not allowed to invent a single fact about me.</p>
+              <p><a class="more" href="https://github.com/kirubanath/kirubanath.github.io" rel="noopener">Read the source →</a></p>
+              <p class="meta" id="weight" hidden></p>
+            </article>
+          </div>
+          <div class="col wide">
+            <article class="card reveal">
+              <span class="tag sun">Open source</span><span class="tag">Agents</span>
+              <h4>Five agents that run my job search</h4>
+              <p>They read the job sites, draft the letters and keep score in a spreadsheet. They are not allowed to click Apply. A person does that part, and the person is me.</p>
+              <p><a class="more" href="https://github.com/kirubanath/job-search-agents" rel="noopener">See how it works →</a></p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="stop end">
+        <a class="yr" href="#contact">Next</a>
+        <h3 class="stop-t"><a href="#contact">Say hello <span aria-hidden="true">↓</span></a></h3>
+      </div>
     </div>
-    <div class="flight" id="flight" aria-hidden="true">
-      <svg>
-        <path class="route" id="fRoute"/><path class="flown" id="fFlown"/>
-        <circle class="dot" id="fA" r="5"/><circle class="dot" id="fB" r="5"/>
-        <text class="city" id="fAt">HYD</text><text class="city" id="fBt" text-anchor="end">JFK</text>
-        <text class="city landed" id="fBn" text-anchor="end">no signal</text>
-        <g class="plane" id="fPlane"><path d="M-15 -2 L15 0 L-15 9 L-9 2 Z"/><path class="fold" d="M-9 2 L15 0 L-11 -8 Z"/></g>
-      </svg>
-    </div>
-    <div class="stories">
-      <article class="card story reveal">
-        <div class="cardhead"><span class="tag sun">The paper nobody planned</span><span class="count" id="count" aria-hidden="true"><b id="cnt">48:00</b><i id="cntL">hours left</i></span></div>
-        <h3>Accepted at a conference we never meant to submit to</h3>
-        <p>PiML was not written for AutoML. We wrote it for another conference, which said no. AutoML asked for something different, so we ran new experiments overnight, made new figures and rewrote the whole paper in two days. It was accepted.</p>
-        <p class="punch">I do not recommend this as a process. It is also my most successful process.</p>
-      </article>
-      <article class="card story reveal">
-        <span class="tag hot">JFK</span>
-        <h3>New York, with no phone</h3>
-        <p>I flew to New York to present that paper. I landed at JFK alone, with an international eSIM ready, and found out my phone did not support US network bands. At all. I had read that the premium cabs carry wifi, so I booked one, asked the driver to share his connection, and got to my hotel. Then I ordered a phone that worked, and spent two days getting around New York on public wifi until it arrived.</p>
-        <p class="punch">I build systems that recover from failure. Sometimes I am the system.</p>
-      </article>
-    </div>
+    <p class="sr">The route so far: IIT Roorkee, B.Tech, 2022. Plaksha University, Tech Leaders Program, 2023. Fractal Analytics, AI research, 2023 to 2026. Mirian AI, Founding AI Engineer, 2026.</p>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
     <div class="sec-head">
-      <span class="num">06</span>
+      <a class="num" href="#faq">02</a>
       <h2>Questions nobody asked</h2>
       <p class="sec-sub">Answered anyway.</p>
     </div>
@@ -744,6 +886,7 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
       else{ var on=sw.getAttribute('aria-checked')==='true'; sw.setAttribute('aria-checked',on?'false':'true'); say(on?'status: compliant, suspiciously cheerful':'status: compliant, mildly resentful'); }
     });
   });
+  var pd=document.getElementById('permDots'); if(pd) pd.addEventListener('click',function(){ touched=true; say('This window does not close. Nice try.'); });
   if(!calm){
     var sneaks=['The agent just tried that one itself. Denied.','It tried again while you were reading. Still no.','Persistent little thing. No.'], n=0;
     var sneak=setInterval(function(){
@@ -761,20 +904,24 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
     var log=$('log'), st=$('logState'); if(!log) return;
     var li=log.querySelectorAll('li'), i=0;
     if(calm){ li.forEach(function(x){x.classList.add('on');}); st.textContent='status: done'; return; }
+    var tm=0, dots=$('logDots');
+    if(dots) dots.addEventListener('click',function(){ if(calm) return; clearTimeout(tm); li.forEach(function(x){x.classList.remove('on');}); i=0; st.textContent='status: running'; tm=setTimeout(step,350); });
     function step(){
-      if(i<li.length){ li[i].classList.add('on'); i++; st.textContent=i<li.length?'status: running':'status: done'; setTimeout(step,i<li.length?1500:6500); }
-      else{ li.forEach(function(x){x.classList.remove('on');}); i=0; st.textContent='status: running'; setTimeout(step,900); }
+      if(i<li.length){ li[i].classList.add('on'); i++; st.textContent=i<li.length?'status: running':'status: done'; tm=setTimeout(step,i<li.length?1500:6500); }
+      else{ li.forEach(function(x,k){ if(k>0) x.classList.remove('on'); }); i=1; st.textContent='status: running'; tm=setTimeout(step,1400); }
     }
-    setTimeout(step,900);
+    for(var k=0;k<3;k++){ li[k].classList.add('on'); } i=3;
+    tm=setTimeout(step,1400);
   })();
 
   /* drawings that follow the scroll */
   var tracked=[], traf=0, tlast=0, PACE=2800;
   function track(el,fn,start,span){ if(el) tracked.push({el:el,fn:fn,start:start||.7,span:span||.5,cur:-1,last:-2}); }
+  function trackView(el,fn){ if(el) tracked.push({el:el,fn:fn,view:true,cur:-1,last:-2}); }
   function tick(ts){
     traf=0; var vh=window.innerHeight||800, dt=tlast&&ts?Math.min(80,ts-tlast):16, busy=false; tlast=ts||0;
     tracked.forEach(function(t){
-      var r=t.el.getBoundingClientRect(), goal=calm?1:Math.max(0,Math.min(1,(vh*t.start-r.top)/(vh*t.span)));
+      var r=t.el.getBoundingClientRect(), goal=calm?1:Math.max(0,Math.min(1,t.view?(vh-r.top)/(r.height+vh*0.12):(vh*t.start-r.top)/(vh*t.span)));
       if(calm||t.cur<0) t.cur=goal;
       else if(goal>t.cur) t.cur=Math.min(goal,t.cur+dt/PACE);
       else if(goal<t.cur) t.cur=Math.max(goal,t.cur-dt/PACE*2.5);
@@ -789,18 +936,18 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
   function el(tag,attrs,text){ var e=document.createElementNS(NS,tag); for(var k in attrs) e.setAttribute(k,attrs[k]); if(text!=null) e.textContent=text; return e; }
 
   /* PiEvolve: a 24-hour dial */
-  track($('cardEvolve'),function(p){
+  trackView(document.querySelector('#cardEvolve .art'),function(p){
     $('dialGo').setAttribute('stroke-dasharray',(p*100).toFixed(1)+' 100');
     $('dialHand').setAttribute('transform','rotate('+(p*360).toFixed(1)+' 60 56)');
     $('dialT').textContent=Math.round(p*24)+' H'; $('dialCap').classList.toggle('on',p>=1);
-  },.7,.5);
+  });
 
   /* PiML: plan, write, run, debug, and again */
-  track($('cardPiml'),function(p){
+  trackView(document.querySelector('#cardPiml .art'),function(p){
     var laps=p*3, a=laps*2*Math.PI-Math.PI/2;
     $('loopDot').setAttribute('cx',(88+44*Math.cos(a)).toFixed(1)); $('loopDot').setAttribute('cy',(66+44*Math.sin(a)).toFixed(1));
     $('loopT').textContent=p>=1?'AGAIN':'TRY '+(Math.min(3,Math.floor(laps)+1));
-  },.7,.5);
+  });
 
   /* Mirian: eight weeks to live */
   (function(){
@@ -810,54 +957,82 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
       x1=8; x2=W-62;
       svg.appendChild(el('path',{'class':'d-track',d:'M'+x1+' '+y+' H'+x2}));
       go=el('path',{'class':'d-go',d:'M'+x1+' '+y+' H'+x1}); svg.appendChild(go);
-      for(var i=0;i<8;i++){ var x=x1+(x2-x1)*i/7; svg.appendChild(el('circle',{'class':'d-dot',cx:x,cy:y,r:4})); svg.appendChild(el('text',{'class':'d-txt',x:x,y:y+24,'text-anchor':'middle'},(i===0?'WEEK ':'')+(i+1))); }
+      for(var i=0;i<8;i++){ var x=x1+(x2-x1)*i/7; svg.appendChild(el('circle',{'class':'d-dot',cx:x,cy:y,r:4})); svg.appendChild(el('text',{'class':'d-txt',x:x,y:y+24,'text-anchor':'middle'},(i===0&&W>430?'WEEK ':'')+(i+1))); }
       svg.appendChild(el('path',{'class':'d-ink',d:'M'+(x2+1)+' '+(y+2)+' V'+(y-25)}));
       svg.appendChild(el('path',{'class':'d-flag',d:'M'+(x2+2)+' '+(y-24)+' h50 l-8 8.5 l8 8.5 h-50 z'}));
       svg.appendChild(el('text',{'class':'d-txt d-live',x:x2+8,y:y-11.8},'LIVE'));
       mark=el('circle',{'class':'d-run',cx:x1,cy:y,r:7}); svg.appendChild(mark);
     }
     lay();
-    track($('cardProd'),function(p){ var x=x1+(x2-x1)*p; mark.setAttribute('cx',x.toFixed(1)); go.setAttribute('d','M'+x1+' '+y+' H'+x.toFixed(1)); box.classList.toggle('done',p>=1); },.7,.5);
+    trackView(box,function(p){ var x=x1+(x2-x1)*p; mark.setAttribute('cx',x.toFixed(1)); go.setAttribute('d','M'+x1+' '+y+' H'+x.toFixed(1)); box.classList.toggle('done',p>=1); });
     var wt; window.addEventListener('resize',function(){clearTimeout(wt); wt=setTimeout(function(){lay(); tracked.forEach(function(t){t.last=-2;}); askTick();},200);});
   })();
 
-  /* the route so far */
+  /* the route: the line follows the scroll, and each stop lights up when the line reaches it */
   (function(){
-    var box=$('path'); if(!box) return; var svg=box.querySelector('svg'), route, flown, mark, dots=[], len=0;
-    var stops=[['IIT Roorkee','B.TECH, 2022','2022'],['Plaksha','TECH LEADERS, 2023','2023'],['Fractal Analytics','AI RESEARCH, 2023 TO 2026','2023-26'],['Mirian AI','FOUNDING AI ENGINEER, 2026','2026']];
-    function lay(){
-      var W=box.clientWidth, small=W<640; while(svg.firstChild) svg.removeChild(svg.firstChild); dots=[];
-      var x1=small?34:70, x2=W-(small?64:150), y=44, step=(x2-x1)/3, d='M'+x1+' '+y;
-      for(var i=1;i<=3;i++){ var xa=x1+step*(i-1), xb=x1+step*i; d+=' C'+(xa+step*.35)+' '+(y+(i%2?-26:26))+','+(xb-step*.35)+' '+(y+(i%2?-26:26))+','+xb+' '+y; }
-      d+=' C'+(x2+30)+' '+(y+20)+','+(x2+(small?34:80))+' '+(y-14)+','+(x2+(small?50:120))+' '+(y-6);
-      route=el('path',{'class':'route',d:d}); flown=el('path',{'class':'flown',d:d}); svg.appendChild(route); svg.appendChild(flown);
-      len=route.getTotalLength(); flown.style.strokeDasharray=len+' '+len;
-      stops.forEach(function(st,i){ var x=x1+step*i, c=el('circle',{'class':'dot',cx:x,cy:y,r:6}); svg.appendChild(c); dots.push([c,x]);
-        svg.appendChild(el('text',{'class':'city name',x:x,y:y+34,'text-anchor':'middle'},small&&i===2?'Fractal':st[0]));
-        svg.appendChild(el('text',{'class':'city',x:x,y:y+54,'text-anchor':'middle'},small?st[2]:st[1])); });
-      mark=el('circle',{'class':'d-run',cx:x1,cy:y,r:7}); svg.appendChild(mark);
+    var tl=$('tl'); if(!tl) return; var go=$('tlGo'), dot=$('tlDot'), stops=tl.querySelectorAll('.stop'), raf=0;
+    function draw(){
+      raf=0; var r=tl.getBoundingClientRect(), vh=window.innerHeight||800, max=Math.max(0,stops[stops.length-1].offsetTop+10); tl.style.setProperty('--tlh',max+'px');
+      var h=calm?max:Math.max(0,Math.min(max,vh*0.58-r.top-6));
+      go.style.height=h.toFixed(1)+'px'; dot.style.transform='translateY('+h.toFixed(1)+'px)';
+      for(var i=0;i<stops.length;i++) stops[i].classList.toggle('on',calm||stops[i].offsetTop+10<=h+6);
     }
-    lay();
-    track(box,function(p){ var at=route.getPointAtLength(p*len); mark.setAttribute('cx',at.x.toFixed(1)); mark.setAttribute('cy',at.y.toFixed(1)); flown.style.strokeDashoffset=(len*(1-p)).toFixed(1);
-      dots.forEach(function(dd){ dd[0].classList.toggle('on',at.x>=dd[1]-2); }); },.85,.45);
-    var pt; window.addEventListener('resize',function(){clearTimeout(pt); pt=setTimeout(function(){lay(); tracked.forEach(function(t){t.last=-2;}); askTick();},200);});
+    function ask(){ if(!raf) raf=requestAnimationFrame(draw); }
+    draw(); window.addEventListener('scroll',ask,{passive:true}); window.addEventListener('resize',ask);
+    document.addEventListener('toggle',function(){ ask(); askTick(); },true);
   })();
 
   /* the paper: 48 hours, counting down */
-  track($('count')&&$('count').closest('.card'),function(p){
+  trackView($('count'),function(p){
     if(p>=1){ $('cnt').textContent='00:00'; $('cntL').textContent='submitted'; }
     else{ var m=Math.round((1-p)*48*60); $('cnt').textContent=('0'+Math.floor(m/60)).slice(-2)+':'+('0'+m%60).slice(-2); $('cntL').textContent='hours left'; }
-  },.7,.5);
+  });
 
   /* field notes: the highlighter follows your reading */
   (function(){
-    var notes=document.querySelectorAll('.note'); if(!notes.length) return;
+    var notes=document.querySelectorAll('.twig.note'); if(!notes.length) return;
     if(calm||!('IntersectionObserver' in window)){ notes.forEach(function(n){n.classList.add('read');}); return; }
-    var io2=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('read'); io2.unobserve(e.target);} });},{rootMargin:'0px 0px -38% 0px'});
-    notes.forEach(function(n,i){ n.querySelector('h3 span').style.transitionDelay=(i%3*140)+'ms'; io2.observe(n); });
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('read'); io2.unobserve(e.target);} });},{rootMargin:'0px 0px -30% 0px'});
+    notes.forEach(function(n){ io2.observe(n); });
   })();
   askTick();
 
+
+  /* drawings play again when you click them */
+  function replay(el){ if(!el) return; tracked.forEach(function(t){ if(t.el===el){ t.cur=0; t.last=-2; } }); tlast=0; askTick(); }
+  document.querySelectorAll('[data-replay]').forEach(function(b){
+    function go(){ replay(b); }
+    b.addEventListener('click',go);
+    if(b.tagName!=='BUTTON') b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
+  });
+
+  /* a dot on the line takes you to its stop */
+  (function(){
+    var tl=$('tl'); if(!tl) return;
+    tl.addEventListener('click',function(e){ var st=e.target; if(st.classList&&st.classList.contains('stop')&&e.clientX<st.getBoundingClientRect().left){ var a=st.querySelector('.yr'); if(a) a.click(); } });
+  })();
+
+  /* the top bar shows where you are */
+  (function(){
+    var links=[].slice.call(document.querySelectorAll('.nav nav a[href^="#"]')), raf=0; if(!links.length) return;
+    function spy(){
+      raf=0; var best=null, lim=(window.innerHeight||800)*0.42;
+      links.forEach(function(a){ var t=document.getElementById(a.getAttribute('href').slice(1)); if(!t) return; var top=t.getBoundingClientRect().top; if(top<=lim&&(!best||top>best[1])) best=[a,top]; });
+      links.forEach(function(a){ var on=!!best&&best[0]===a; a.classList.toggle('here',on); if(on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); });
+    }
+    window.addEventListener('scroll',function(){ if(!raf) raf=requestAnimationFrame(spy); },{passive:true}); spy();
+  })();
+
+  /* the real size of this page, measured in your browser */
+  (function(){
+    var w=$('weight'); if(!w||!window.performance||!performance.getEntriesByType) return;
+    function show(){
+      var n=performance.getEntriesByType('navigation')[0]; if(!n||!n.decodedBodySize) return;
+      function kb(x){ return Math.round(x/1024)+' KB'; }
+      w.textContent='This page: '+kb(n.decodedBodySize)+' of HTML'+(n.encodedBodySize&&n.encodedBodySize<n.decodedBodySize*0.9?', sent as '+kb(n.encodedBodySize):'')+'.'; w.hidden=false;
+    }
+    if(document.readyState==='complete') show(); else window.addEventListener('load',function(){ setTimeout(show,0); });
+  })();
 
   /* the tomato */
   var buf='', taps=0, toastT=null;
@@ -885,6 +1060,7 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
   if(!calm) setTimeout(function(){ if(!document.hidden) pommy(); },38000);
   document.addEventListener('keydown',function(e){ if(e.key&&e.key.length===1){ buf=(buf+e.key.toLowerCase()).slice(-5); if(buf==='pommy'){buf=''; pommy();} } });
   var tb=$('tomBtn'); if(tb) tb.addEventListener('click',pommy);
+  var pp=$('pommyPic'); if(pp) pp.addEventListener('click',pommy);
   var logo=document.querySelector('.logo'); if(logo) logo.addEventListener('click',function(){ taps++; if(taps>=5){taps=0; pommy();} });
   try{console.log('%cYou opened the console. Of course you did.','font:600 14px system-ui'); console.log('Nothing is hidden here. Press p, o, m, m, y on the page instead.');}catch(e){}
 
@@ -893,7 +1069,7 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
   /* the paper plane: it follows the scroll from Hyderabad to New York */
   (function(){
     var f=$('flight'); if(!f) return;
-    var route=$('fRoute'), flown=$('fFlown'), plane=$('fPlane'), len=0, raf=0;
+    var route=$('fRoute'), flown=$('fFlown'), plane=$('fPlane'), len=0, raf=0, over=null;
     function lay(){
       var W=f.clientWidth, H=f.clientHeight, x1=34, x2=W-34, y=H-22, d='M'+x1+' '+y+' Q'+(W/2)+' '+(-H*0.55)+' '+x2+' '+y;
       route.setAttribute('d',d); flown.setAttribute('d',d); len=route.getTotalLength();
@@ -904,13 +1080,14 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
     }
     function draw(){
       raf=0; if(!len) return;
-      var rc=f.getBoundingClientRect(), vh=window.innerHeight||800, t=calm?1:Math.max(0,Math.min(1,(vh*0.88-rc.top)/(vh*0.55)));
+      var rc=f.getBoundingClientRect(), vh=window.innerHeight||800, t=calm?1:(over!=null?over:Math.max(0,Math.min(1,(vh*0.94-rc.top)/(vh*0.42))));
       var e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2, at=route.getPointAtLength(e*len), nx=route.getPointAtLength(Math.min(len,e*len+1));
       var ang=Math.atan2(nx.y-at.y,nx.x-at.x)*180/Math.PI; if(e>=1) ang=8;
       plane.setAttribute('transform','translate('+at.x.toFixed(1)+' '+(at.y-9).toFixed(1)+') rotate('+ang.toFixed(1)+')');
       flown.style.strokeDashoffset=(len*(1-e)).toFixed(1); f.classList.toggle('done',e>=1);
     }
     function ask(){ if(!raf) raf=requestAnimationFrame(draw); }
+    f.addEventListener('click',function(){ if(calm||over!=null) return; var t0=null; over=0; (function fly(ts){ if(ts){ if(t0==null) t0=ts; over=Math.min(1,(ts-t0)/2600); draw(); } if(over<1) requestAnimationFrame(fly); else over=null; })(); });
     lay(); window.addEventListener('scroll',ask,{passive:true}); var ft; window.addEventListener('resize',function(){clearTimeout(ft); ft=setTimeout(lay,150);});
   })();
 
