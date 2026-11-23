@@ -289,7 +289,7 @@ blockquote{margin:0 0 12px;font-style:italic;color:var(--muted);border-left:4px 
 @keyframes fall{to{transform:translateY(calc(100vh + 80px)) rotate(300deg)}}
 
 /* the paper plane above the two stories */
-.flight{position:relative;height:84px;margin:0 0 22px}
+.flight{position:relative;height:58px;flex:1;max-width:270px;min-width:150px;margin:0 0 20px}
 .flight svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .flight .route{fill:none;stroke:color-mix(in srgb,var(--ink) 38%,transparent);stroke-width:2;stroke-dasharray:2 9;stroke-linecap:round}
 .flight .flown{fill:none;stroke:var(--tomato);stroke-width:2.5;stroke-linecap:round}
@@ -506,6 +506,60 @@ a.stat::after{right:14px;top:16px}
 @media (max-width:480px){.eyebrow{font-size:.72rem;letter-spacing:.07em}.stat,a.stat{padding:18px 12px 16px}.numgrid>.stat:first-child,.numgrid>.stat:nth-child(3){padding-left:2px}}
 @media (prefers-reduced-motion:reduce){.scr rect,.steam,.leafy,.chair.wob{animation:none}.steam{opacity:.6}}
 
+/* one piece of work = one row that fits one screen: read across, then move down */
+.unit{margin-bottom:46px}
+.pcard.wide>.result{padding:0 24px 4px}
+.pcard.wide>.result .score{margin:6px 0 12px}
+.pcard.wide>details.fold{padding:0 24px 22px;margin-top:8px}
+.lf-head{margin-bottom:6px}
+.lf-head .lf-sub{margin:4px 0 10px}
+@media (min-width:981px){
+  .pcard.wide{display:grid;grid-template-columns:232px minmax(0,1fr) minmax(0,372px);grid-template-rows:1fr auto}
+  .pcard.wide>.art{grid-row:1/3;height:auto;min-height:214px;border-bottom:0;border-right:2px solid var(--line)}
+  .pcard.wide>.body{padding:22px 26px 6px;display:block}
+  .pcard.wide>.body p:last-child{margin-bottom:0}
+  .pcard.wide>.result{padding:22px 26px 6px 0;display:flex;flex-direction:column;justify-content:center}
+  .pcard.wide>.result .score{margin:0 0 12px}
+  .pcard.wide>.result p{margin:0 0 10px}
+  .pcard.wide>details.fold{grid-column:2/-1;padding:0 26px 20px;margin-top:6px}
+  .leaves.wide{padding:22px 0 0 28px}
+  .lf-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+  .lf-head .lf-h{margin:0}
+  .lf-head .lf-sub{margin:0;flex:1;min-width:20em}
+  .twigs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 34px;align-items:start}
+  .twigs.two{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 44px}
+  .leaves.wide .twig::before{display:none}
+  .leaves.wide .twig.story{padding-top:8px}
+  .pcard .art.low{height:150px}
+  .prod .perm li{padding:8px 0}
+  #production .leaves{display:flex;align-items:baseline;gap:24px;padding-top:18px}
+  #production .leaves .lf-h{margin:0;white-space:nowrap}
+  #production .leaves .twig{padding:0;flex:1}
+  #production .leaves .twig::before{display:none}
+}
+/* sizing: the first screen is exactly one screen, and large screens get a larger page, not wider margins */
+html{font-size:clamp(16px,calc(9.9px + 0.424vw),19px)}
+body{font-size:1.0625rem}
+.wrap{max-width:clamp(1120px,74vw,1400px)}
+@media (min-width:901px) and (min-height:560px){
+  .hero{--nh:11.2rem;display:grid;align-items:center;padding:0;min-height:calc(100svh - 62px - var(--nh))}
+  .hero .wrap{width:100%;padding-top:28px;padding-bottom:28px}
+  .scene{max-width:min(32.5rem,calc((100svh - 62px - var(--nh,11.2rem) - 104px) * 1.4))}
+  .numbers{padding:0}
+  .numgrid{min-height:var(--nh,11.2rem);border-bottom:0}
+  .numgrid>.stat{display:flex;flex-direction:column;justify-content:center;padding-top:0;padding-bottom:0}
+  .numgrid>.stat p{min-height:3.3em}
+  .numnote{margin:0;padding:14px 0 0;border-top:1.5px solid color-mix(in srgb,var(--line) 35%,transparent)}
+}
+@media (min-width:901px) and (min-height:560px) and (max-height:760px){
+  .hero,.numbers{--nh:8.2rem}
+  .hero .wrap{padding-top:18px;padding-bottom:18px}
+  h1{margin-bottom:24px}
+  .stat b{font-size:2.5rem}
+  .stat p{margin-top:5px}
+  .scene-cap{margin-top:8px}
+}
+
 /* a link shows where it landed */
 .stop-t,.lf-h,.sec-head h2{width:fit-content;border-radius:6px}
 .landed>.stop-t,.landed>.lf-h,.landed .sec-head h2,.landed>h3{animation:landed 2s ease .25s both}
@@ -603,7 +657,7 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
         <path class="s-paper" d="M434 240 h22 v18 a4 4 0 0 1 -4 4 h-14 a4 4 0 0 1 -4 -4 Z"/><path class="s-line" d="M456 245 q10 1 0 12"/>
         <path class="steam" d="M441 232 q-4 -6 0 -11 q4 -5 0 -11"/><path class="steam s2" d="M450 232 q-4 -6 0 -11 q4 -5 0 -11"/>
       </svg>
-      <p class="scene-cap" id="scCap">The desk is empty on purpose.</p>
+      <p class="scene-cap" id="scCap" aria-live="polite"></p>
     </div>
   </div>
 </div>
@@ -649,9 +703,8 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
         <p class="meta">AI research · systems that work alone</p>
         <p class="stop-sub">Three years on the AI research team. The question was always the same: how long can a system keep improving on its own?</p>
 
-        <div class="fork">
-          <div class="col">
-            <article class="card pcard reveal" id="cardEvolve">
+        <div class="solo unit">
+            <article class="card pcard wide reveal" id="cardEvolve">
               <div class="art" role="button" tabindex="0" aria-label="Play the 24-hour dial again" data-replay="cardEvolve">
                 <div class="diag" aria-hidden="true"><svg viewBox="0 0 120 126">
                   <circle class="d-track" cx="60" cy="56" r="44"/>
@@ -666,11 +719,14 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
                 <h4>PiEvolve</h4>
                 <p class="meta">Fractal Analytics · I led it</p>
                 <p>A multi-agent system that works on one machine learning problem for about 24 hours and runs hundreds of experiments in that time.</p>
+              </div>
+              <div class="result">
                 <div class="score one" aria-label="PiEvolve on MLE-Bench">
                   <div><strong>#1</strong><span>on OpenAI's MLE-Bench when we submitted it</span></div>
                 </div>
                 <p class="aside">Leaderboards move. It was true when we said it.</p>
-                <details class="fold"><summary>More about PiEvolve</summary>
+              </div>
+              <details class="fold"><summary>More about PiEvolve</summary>
                   <p>It drafts solutions, improves them, merges the good ones and learns from its own failures.</p>
                   <p>The agents, every prompt and the code template are my work. The scoring model was joint work with a teammate.</p>
                   <p class="aside">It is a manuscript for now, so there is no link yet.</p>
@@ -685,22 +741,21 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
                   </ul>
                   <p class="meta">One run, reconstructed. The times are illustrative.</p>
                 </details>
-              </div>
             </article>
-
-            <div class="leaves" id="notes">
-              <h4 class="lf-h">What the work taught me</h4>
-              <p class="lf-sub">The agent is the small part of a system. The rest is evaluation, memory, retries and tracing. Each of these notes cost at least one bad afternoon.</p>
+            <div class="leaves wide" id="notes">
+              <div class="lf-head"><h4 class="lf-h">What the work taught me</h4><p class="lf-sub">The agent is the small part of a system. The rest is evaluation, memory, retries and tracing. Each of these notes cost at least one bad afternoon.</p></div>
+              <div class="twigs">
               <details class="twig note" name="note"><summary><span class="lf-t"><span>A judge from the same family is a character witness.</span></span></summary><p>Agents sometimes wrote code so wasteful that the server ran out of memory and a whole run was lost. I added a judge to read every solution first. It did not help until the judge and the agent were on different model families.</p></details>
               <details class="twig note" name="note"><summary><span class="lf-t"><span>You cannot talk to every model the same way.</span></span></summary><p>GPT models did best with the context first and the instructions after. Claude models followed an instruction better when it came with the reason. I know people like both.</p></details>
               <details class="twig note" name="note"><summary><span class="lf-t"><span>Sometimes the right instruction is "check your work less".</span></span></summary><p>We had about 24 hours per problem. Lighter validation meant a slightly noisier score and many more experiments. More ideas were worth more than steadier scores.</p></details>
               <details class="twig note" name="note"><summary><span class="lf-t"><span>A long run has many ways to die.</span></span></summary><p>Rate limits and server errors, mostly. So every model call went through one function that retries and waits longer each time, and every step was saved so a run could resume where it stopped.</p></details>
               <details class="twig note" name="note"><summary><span class="lf-t"><span>Show the agent its best and its worst.</span></span></summary><p>An agent learns little from a list of everything it has tried. Each new attempt saw one very good solution, one very bad one, and a short summary of the rest.</p></details>
+              </div>
             </div>
-          </div>
+        </div>
 
-          <div class="col">
-            <article class="card pcard reveal" id="cardPiml">
+        <div class="solo unit">
+            <article class="card pcard wide reveal" id="cardPiml">
               <div class="art" role="button" tabindex="0" aria-label="Run the loop again" data-replay="cardPiml">
                 <div class="diag big" aria-hidden="true"><svg viewBox="0 0 176 132">
                   <circle class="d-track" cx="88" cy="66" r="44"/>
@@ -715,21 +770,22 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
                 <h4>PiML</h4>
                 <p class="meta">Fractal Analytics · Co-author</p>
                 <p>LLM agents solve a machine learning task the way a practitioner does.</p>
+              </div>
+              <div class="result">
                 <div class="score" aria-label="PiML against AIDE on 26 MLE-Bench competitions">
                   <div><strong>41% <span>vs 31%</span></strong><span>runs above the median</span></div>
                   <div><strong>29.5% <span>vs 23%</span></strong><span>medal rate</span></div>
                 </div>
                 <p class="aside">Against AIDE, the strongest earlier system, on 26 MLE-Bench competitions.</p>
                 <p><a class="more" href="https://proceedings.mlr.press/v293/chopde25a.html" rel="noopener">Read the paper →</a></p>
-                <details class="fold"><summary>More about PiML</summary>
+              </div>
+              <details class="fold"><summary>More about PiML</summary>
                   <p>The system that came first. The agents read the task, write the training code, run it, read the errors and the scores, and try again with what they learned.</p>
                 </details>
-              </div>
             </article>
-
-            <div class="leaves" id="stories">
-              <h4 class="lf-h">Two true stories</h4>
-              <p class="lf-sub">For when you want to know what I am like when the plan fails. Which it does.</p>
+            <div class="leaves wide" id="stories">
+              <div class="lf-head"><h4 class="lf-h">Two true stories</h4><p class="lf-sub">For when you want to know what I am like when the plan fails. Which it does.</p></div>
+              <div class="twigs two">
               <div class="twig story">
                 <div class="lf-row"><span class="lf-k">The unplanned paper</span><button class="count" id="count" type="button" aria-label="Run the 48-hour countdown again" data-replay="story"><b id="cnt">48:00</b><i id="cntL">hours left</i></button></div>
                 <h4>Accepted at a conference we never meant to submit to</h4>
@@ -739,7 +795,7 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
                 </details>
               </div>
               <div class="twig story">
-                <div class="flight" id="flight" aria-hidden="true">
+                <div class="lf-row"><span class="lf-k">JFK</span><div class="flight" id="flight" aria-hidden="true">
                   <svg>
                     <path class="route" id="fRoute"/><path class="flown" id="fFlown"/>
                     <circle class="dot" id="fA" r="5"/><circle class="dot" id="fB" r="5"/>
@@ -747,16 +803,15 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
                     <text class="city landed" id="fBn" text-anchor="end">no signal</text>
                     <g class="plane" id="fPlane"><path d="M-15 -2 L15 0 L-15 9 L-9 2 Z"/><path class="fold" d="M-9 2 L15 0 L-11 -8 Z"/></g>
                   </svg>
-                </div>
-                <span class="lf-k">JFK</span>
+                </div></div>
                 <h4>New York, with no phone</h4>
                 <p class="punch">I build systems that recover from failure. Sometimes I am the system.</p>
                 <details class="fold"><summary>The long version</summary>
                   <p>I flew to New York to present that paper. I landed at JFK alone, with an international eSIM ready, and found out my phone did not support US network bands. At all. I had read that the premium cabs carry wifi, so I booked one, asked the driver to share his connection, and got to my hotel. Then I ordered a phone that worked, and spent two days getting around New York on public wifi until it arrived.</p>
                 </details>
               </div>
+              </div>
             </div>
-          </div>
         </div>
 
         <div class="solo also">
@@ -1064,7 +1119,7 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
     }
     function mix(a,b,t){var o='#'; for(var i=1;i<7;i+=2){var x=parseInt(a.substr(i,2),16), y=parseInt(b.substr(i,2),16); o+=('0'+Math.round(x+(y-x)*t).toString(16)).slice(-2);} return o;}
     var K=[[0,'#141A33','#2A3158'],[4.5,'#1B2242','#3A3F6B'],[6,'#F2B79A','#F9E3C2'],[8,'#BFDDEE','#F6EBD0'],[16,'#BFDDEE','#F6EBD0'],[17.6,'#F0A77E','#F7D9A8'],[18.8,'#5B4A78','#D98A72'],[20,'#1B2242','#3A3F6B'],[24,'#141A33','#2A3158']];
-    var says=['The desk is empty on purpose.','Still empty. Still working.','The chair has been informed.','It was like this when you got here.'], n=0;
+    var says=['Still empty. Still working.','The chair has been informed.','It was like this when you got here.','The desk is empty on purpose.'], n=-1;
     function paint(){
       var hm=now(), h=hm[0], m=hm[1], t=h+m/60, i=0; while(i<K.length-2&&t>=K[i+1][0]) i++;
       var a=K[i], b=K[i+1], u=(t-a[0])/(b[0]-a[0]);
