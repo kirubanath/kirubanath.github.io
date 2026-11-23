@@ -20,18 +20,18 @@
 @font-face{font-family:"DM Mono";src:url("fonts/dmmono-500.woff2") format("woff2");font-weight:500;font-display:swap}
 
 :root{
-  --bg:#F9F2E6; --paper:#FFFBF3; --ink:#2B241D; --muted:#655A4C; --line:#4B3D30; --clay:#B4583A; --tomato:#2F5D50; --tomato-ink:#FBF6EA; --mustard:#EBD398; --leaf:#2F5D50; --soft:#F1E7D4; --hl:#EBD398; --shade:#DCCDB2;
+  --bg:#FAFBF8; --paper:#FFFFFF; --ink:#222924; --muted:#566059; --line:#3A463F; --clay:#B4583A; --tint:#DDE9DF; --tomato:#2F5D50; --tomato-ink:#FAFBF8; --mustard:#EBD398; --leaf:#2F5D50; --soft:#F0F4EF; --hl:#D6E8D9; --shade:#D3DAD2;
   --shadow:0 4px 0 var(--shade),0 18px 30px -22px rgba(70,48,20,.45);
   --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
   --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 :root[data-theme="dark"]{
-  --bg:#1F1A15; --paper:#2A231C; --ink:#F1E7D6; --muted:#BBAE99; --line:#8A7964; --clay:#E39A76; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#DDBF78; --leaf:#8CC5AE; --soft:#261F18; --hl:#6A5620; --shade:#120E0A;
+  --bg:#1F1A15; --paper:#2A231C; --ink:#F1E7D6; --muted:#BBAE99; --line:#8A7964; --clay:#E39A76; --tint:#DDBF78; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#DDBF78; --leaf:#8CC5AE; --soft:#261F18; --hl:#6A5620; --shade:#120E0A;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#1F1A15; --paper:#2A231C; --ink:#F1E7D6; --muted:#BBAE99; --line:#8A7964; --clay:#E39A76; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#DDBF78; --leaf:#8CC5AE; --soft:#261F18; --hl:#6A5620; --shade:#120E0A;
+    --bg:#1F1A15; --paper:#2A231C; --ink:#F1E7D6; --muted:#BBAE99; --line:#8A7964; --clay:#E39A76; --tint:#DDBF78; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#DDBF78; --leaf:#8CC5AE; --soft:#261F18; --hl:#6A5620; --shade:#120E0A;
   }
 }
 *{box-sizing:border-box}
@@ -115,7 +115,7 @@ h1 mark{background:linear-gradient(var(--tomato),var(--tomato)) no-repeat left c
 .perm-hint{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin:18px 0 0;text-align:center;letter-spacing:.03em}
 
 /* ticker */
-.ticker{border-block:2px solid var(--line);background:var(--mustard);color:#26211C;overflow:hidden;white-space:nowrap}
+.ticker{border-block:2px solid var(--line);background:var(--tint);color:#26211C;overflow:hidden;white-space:nowrap}
 .ticker div{display:inline-block;padding:11px 0;font-family:var(--mono);font-weight:500;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;animation:tick 46s linear infinite}
 .ticker:hover div{animation-play-state:paused}
 .ticker span{margin:0 22px}
@@ -133,7 +133,7 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4vw,3rem);l
 .card{background:var(--paper);border:2px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px 26px 24px;transition:transform .14s ease,box-shadow .14s ease}
 .tag{display:inline-block;font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:0;border-radius:999px;padding:4px 11px;margin:0 6px 14px 0;background:var(--soft)}
 .tag.hot{background:var(--tomato);color:var(--tomato-ink)}
-.tag.sun{background:var(--mustard);color:#26211C}
+.tag.sun{background:var(--tint);color:#26211C}
 h3{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.1;letter-spacing:-.02em;margin:0 0 6px}
 .meta{font-family:var(--mono);font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
 .card p{margin:0 0 12px}
@@ -498,7 +498,7 @@ h1 .nw{white-space:nowrap}
 .numgrid{gap:0;border-block:1.5px solid color-mix(in srgb,var(--line) 35%,transparent)}
 .stat,a.stat{background:none;border:0;border-radius:0;box-shadow:none;padding:26px 24px 24px;border-left:1.5px solid color-mix(in srgb,var(--line) 35%,transparent)}
 .numgrid>.stat:first-child{border-left:0;padding-left:4px}
-a.stat:hover{transform:none;box-shadow:none;background:color-mix(in srgb,var(--mustard) 28%,transparent)}
+a.stat:hover{transform:none;box-shadow:none;background:color-mix(in srgb,var(--tint) 40%,transparent)}
 a.stat::after{right:14px;top:16px}
 .ticker{margin-top:0}
 @media (max-height:760px) and (min-width:901px){.hero{padding:54px 0 48px}.scene{max-width:440px}}
