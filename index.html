@@ -443,6 +443,21 @@ button.count:hover b{text-decoration:underline;text-underline-offset:4px}
 .col.wide{margin-top:28px}
 @media (min-width:981px){.fork>.col.wide{grid-column:1/-1;grid-row:auto;display:block}.fork>.col.wide::before{display:none}}
 @media (max-width:980px){.col.wide{margin-top:0}}
+/* weekends: a shelf that fills and a bike that rides */
+.pcard .art.low{height:176px}
+.pcard .art .diag.shelf{width:300px}
+.pcard .art .diag.road{width:330px}
+.shelf rect{stroke:var(--line);stroke-width:1.6;transition:opacity .25s,transform .35s cubic-bezier(.3,1.5,.5,1);transform-box:fill-box;transform-origin:50% 100%}
+.shelf rect.off{opacity:0;transform:translateY(-14px)}
+.shelf .plank{stroke:var(--line);stroke-width:2.5;stroke-linecap:round}
+.bw{fill:var(--paper);stroke:var(--ink);stroke-width:2.6}
+.bf{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.br{fill:none;stroke:var(--tomato);stroke-width:4.4;stroke-linecap:round;stroke-linejoin:round}
+.bh{fill:var(--clay);stroke:var(--ink);stroke-width:1.6}
+.bt{fill:var(--ink);stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round}
+@media (max-width:760px){.pcard .art.low{height:150px}.pcard .art .diag.shelf{width:236px}.pcard .art .diag.road{width:260px}}
+@media (prefers-reduced-motion:reduce){.shelf rect{transition:none}}
+
 /* fold-outs open smoothly where the browser can do it */
 details.fold::details-content,details.twig::details-content,.faq details::details-content{block-size:0;overflow:clip;opacity:0;transition:block-size .32s ease,opacity .32s ease,content-visibility .32s allow-discrete}
 details.fold[open]::details-content,details.twig[open]::details-content,.faq details[open]::details-content{block-size:auto;opacity:1}
@@ -756,6 +771,53 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
         </div>
       </div>
 
+      <div class="stop big" id="weekends">
+        <a class="yr" href="#weekends">Weekends</a>
+        <h3 class="stop-t">Away from the keyboard</h3>
+        <p class="stop-sub">Books, a bike, and a lot of food.</p>
+
+        <div class="fork">
+          <div class="col">
+            <article class="card pcard reveal" id="cardBooks">
+              <div class="art low" role="button" tabindex="0" aria-label="Stack the books again" data-replay="books">
+                <div class="diag shelf" aria-hidden="true"><svg viewBox="0 0 240 108" id="shelf"></svg></div>
+              </div>
+              <div class="body">
+                <div class="tags"><span class="tag sun">Reading</span></div>
+                <h4>More than 200 books</h4>
+                <p>And a to-read list almost as long. Reading now: Words of Radiance, by Brandon Sanderson.</p>
+                <p><a class="more" href="https://www.goodreads.com/user/show/71110876-kirubananth-sankar" rel="noopener">My shelves on Goodreads →</a></p>
+              </div>
+            </article>
+          </div>
+          <div class="col">
+            <article class="card pcard reveal" id="cardBike">
+              <div class="art low" role="button" tabindex="0" aria-label="Ride again" data-replay="bike">
+                <div class="diag road" aria-hidden="true"><svg viewBox="0 0 260 108">
+                  <path class="d-track" id="rdTrack" d="M16 84 C52 56,84 96,124 76 S196 44,244 62"/>
+                  <path class="d-go" id="rdGo" d="M16 84 C52 56,84 96,124 76 S196 44,244 62"/>
+                  <circle class="d-dot" cx="16" cy="84" r="4.5"/><circle class="d-dot" cx="244" cy="62" r="4.5"/>
+                  <text class="d-txt" x="18" y="104" text-anchor="middle">BLR</text><text class="d-txt" x="236" y="84" text-anchor="middle">COORG</text>
+                  <g id="bike"><g class="bk" transform="scale(1.45)">
+                    <circle class="bw" cx="-10" cy="-7" r="6"/><circle class="bw" cx="10" cy="-7" r="6"/>
+                    <path class="bt" d="M-7 -15.5 h12 l4 5 h-15 z"/><path class="bf" d="M-10 -7 L-4 -15 M6 -15 L10 -7 M-8 -17.5 L0 -17.5 M6 -15 L8.5 -21.5 L11.5 -21.5"/>
+                    <path class="br" d="M-2 -17 Q-3 -28 3 -27 L9 -21"/>
+                    <circle class="bh" cx="2" cy="-31" r="4.6"/>
+                  </g></g>
+                </svg><span class="dcap" id="bikeCap">not in a gang</span></div>
+              </div>
+              <div class="body">
+                <div class="tags"><span class="tag sun">Riding</span></div>
+                <h4>A black Honda CB350</h4>
+                <p>Last ride: Bangalore to Coorg. I am not in a gang. I just like it.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <p class="alsoline"><span class="lf-k">Also</span>I travel mostly to eat. Find a place, try all the food, sleep, come back. Never the tourist spots. One mountain so far: Kheerganga.</p>
+      </div>
+
       <div class="stop end">
         <a class="yr" href="#contact">Next</a>
         <h3 class="stop-t"><a href="#contact">Say hello <span aria-hidden="true">↓</span></a></h3>
@@ -997,6 +1059,30 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
   })();
   askTick();
 
+
+  /* weekends: the shelf fills up, and the bike rides from Bangalore to Coorg */
+  (function(){
+    var svg=$('shelf'); if(!svg) return;
+    var hs=[58,72,50,66,78,54,70,46,62,74,52,68,60], ws=[11,13,10,12,14,10,12,11,13,10,12,11,13], cols=['var(--tomato)','var(--mustard)','var(--clay)','var(--paper)','var(--tomato)','var(--soft)','var(--mustard)','var(--clay)','var(--tomato)','var(--paper)','var(--mustard)','var(--tomato)','var(--clay)'];
+    var x=30, books=[];
+    for(var i=0;i<hs.length;i++){ var r=el('rect',{x:x,y:88-hs[i],width:ws[i],height:hs[i],rx:1.5,fill:cols[i],'class':'off'}); svg.appendChild(r); books.push(r); x+=ws[i]+2.5; }
+    var lg=el('g',{transform:'rotate(-17 '+(x+15)+' 88)'}), lean=el('rect',{x:x+15,y:88-58,width:11,height:58,rx:1.5,fill:'var(--mustard)','class':'off'}); lg.appendChild(lean); svg.appendChild(lg); books.push(lean);
+    svg.appendChild(el('path',{'class':'plank',d:'M12 89.5 H228'}));
+    var txt=el('text',{'class':'d-txt d-mid',x:120,y:105,'text-anchor':'middle'},'0'); svg.appendChild(txt);
+    trackView($('cardBooks').querySelector('.art'),function(p){
+      var n=Math.round(p*books.length); for(var i=0;i<books.length;i++) books[i].classList.toggle('off',i>=n);
+      txt.textContent=p>=1?'200+ AND COUNTING':Math.round(p*200);
+    });
+  })();
+  (function(){
+    var road=$('rdTrack'), go=$('rdGo'), bike=$('bike'); if(!road||!bike) return; var len=road.getTotalLength();
+    go.style.strokeDasharray=len+' '+len;
+    trackView($('cardBike').querySelector('.art'),function(p){
+      var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2, at=road.getPointAtLength(e*len), nx=road.getPointAtLength(Math.min(len,e*len+1)), ang=Math.atan2(nx.y-at.y,nx.x-at.x)*180/Math.PI; if(e>=1) ang=0;
+      bike.setAttribute('transform','translate('+at.x.toFixed(1)+' '+at.y.toFixed(1)+') rotate('+ang.toFixed(1)+')');
+      go.style.strokeDashoffset=(len*(1-e)).toFixed(1); $('bikeCap').classList.toggle('on',p>=1);
+    });
+  })();
 
   /* drawings play again when you click them */
   function replay(el){ if(!el) return; tracked.forEach(function(t){ if(t.el===el){ t.cur=0; t.last=-2; } }); tlast=0; askTick(); }
