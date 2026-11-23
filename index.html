@@ -46,14 +46,23 @@ img{max-width:100%}
 
 /* nav */
 .nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:2px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.nav .wrap{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
 .logo{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.03em;text-decoration:none}
 .logo span{color:var(--tomato)}
 .nav nav{display:flex;gap:22px;align-items:center}
 .nav nav a{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
 .nav nav a:hover{color:var(--tomato)}
-.theme{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
-.theme:hover{background:var(--mustard);color:#26211C}
+/* the pull cord that switches the lights */
+.cord{position:absolute;top:100%;right:40px;width:34px;padding:0 0 6px;border:0;background:none;cursor:grab;display:flex;flex-direction:column;align-items:center;transform-origin:50% 0;touch-action:none;animation:swing 2.2s ease-in-out 1.4s 1}
+.cord:active{cursor:grabbing}
+.cord:hover{animation:swing 1.5s ease-in-out infinite}
+.cord.drag{animation:none}
+.cord-line{display:block;width:2px;height:calc(48px + var(--pull,0px));background:var(--ink);transition:height .4s cubic-bezier(.3,2.2,.4,1)}
+.cord.drag .cord-line{transition:none}
+.cord-knob{display:block;width:16px;height:16px;border-radius:50%;background:var(--mustard);border:2px solid var(--line);margin-top:-1px;box-shadow:0 2px 0 var(--shade);transition:box-shadow .3s}
+.cord.dark .cord-knob{box-shadow:0 0 0 5px rgba(235,211,152,.16),0 0 16px 4px rgba(235,211,152,.6)}
+@keyframes swing{0%,100%{transform:rotate(0)}25%{transform:rotate(8deg)}75%{transform:rotate(-8deg)}}
+@media (max-width:760px){.cord{right:22px}.cord-line{height:calc(20px + var(--pull,0px))}}
 @media (max-width:760px){.nav nav a{display:none}}
 
 /* hero */
@@ -336,7 +345,8 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
   .reveal{opacity:1;transform:none;transition:none}
   .btn,.card,.sw,.sw::after{transition:none}
   .sw.nope,.perm,h1 mark,.perm-status::after{animation:none}
-  .toast,.perm .log li,.note h3 span,.cameo,.cameo .tom2,.cameo .leaf2{transition:none}
+  .toast,.perm .log li,.note h3 span,.cameo,.cameo .tom2,.cameo .leaf2,.cord-line{transition:none}
+  .cord,.cord:hover{animation:none}
   .tree.run svg,.tree.run .legs line{animation:none}
   .sky .orb,.sky .star,.sky .cloud,.tree .canopy{animation:none}
   .sky .orb{transition:none}
@@ -358,7 +368,7 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
       <a href="#quests">Side quests</a>
       <a href="#stories">Stories</a>
       <a href="#faq">FAQ</a>
-      <button class="theme" id="theme" type="button" aria-label="Switch between light and dark">Lights off</button>
+      <button class="cord" id="theme" type="button" aria-label="Pull the cord to switch between light and dark" aria-pressed="false"><span class="cord-line"></span><span class="cord-knob"></span></button>
     </nav>
   </div>
 </header>
@@ -689,10 +699,16 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
 (function(){
   var root=document.documentElement, btn=document.getElementById('theme');
   function current(){return root.getAttribute('data-theme')||(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}
-  function label(){btn.textContent=current()==='dark'?'Lights on':'Lights off';}
+  function label(){var d=current()==='dark'; btn.classList.toggle('dark',d); btn.setAttribute('aria-pressed',d?'true':'false');}
   try{var saved=localStorage.getItem('theme'); if(saved==='dark'||saved==='light') root.setAttribute('data-theme',saved);}catch(e){}
   label();
-  btn.addEventListener('click',function(){var next=current()==='dark'?'light':'dark'; root.setAttribute('data-theme',next); try{localStorage.setItem('theme',next);}catch(e){} label();});
+  function flip(){var next=current()==='dark'?'light':'dark'; root.setAttribute('data-theme',next); try{localStorage.setItem('theme',next);}catch(e){} label();}
+  var py=0, pulling=false, moved=0, skip=false;
+  btn.addEventListener('pointerdown',function(e){pulling=true; moved=0; py=e.clientY; btn.classList.add('drag'); try{btn.setPointerCapture(e.pointerId);}catch(x){}});
+  btn.addEventListener('pointermove',function(e){ if(!pulling) return; moved=Math.max(0,Math.min(52,e.clientY-py)); btn.style.setProperty('--pull',moved+'px'); });
+  function letGo(){ if(!pulling) return; pulling=false; btn.classList.remove('drag'); btn.style.setProperty('--pull','0px'); if(moved>=16){ skip=true; flip(); setTimeout(function(){skip=false;},400); } }
+  btn.addEventListener('pointerup',letGo); btn.addEventListener('pointercancel',letGo);
+  btn.addEventListener('click',function(){ if(skip){skip=false; return;} btn.style.setProperty('--pull','20px'); setTimeout(function(){btn.style.setProperty('--pull','0px'); flip();},170); });
 
   var status=document.getElementById('permStatus'), typed=document.getElementById('permType'), tries=0, touched=false, timer=null;
   var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
