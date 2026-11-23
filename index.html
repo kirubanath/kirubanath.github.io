@@ -236,6 +236,7 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 @keyframes sway{0%,100%{transform:rotate(-1.3deg)}50%{transform:rotate(1.3deg)}}
 @keyframes shake{0%,100%{transform:rotate(0)}15%{transform:rotate(-5deg)}35%{transform:rotate(4.5deg)}55%{transform:rotate(-3.5deg)}75%{transform:rotate(2.5deg)}}
 .sky.night .tree svg{filter:brightness(.58) saturate(.8)}
+@media (max-width:600px){.tree{left:4%;width:112px;height:127px}}
 .leaf{position:absolute;width:11px;height:7px;border-radius:70% 0 70% 0;pointer-events:none;will-change:transform}
 .leaf.fruit{width:auto;height:auto;border-radius:0;background:none !important;font-size:20px;line-height:1}
 .treehint{position:absolute;left:16px;top:12px;font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;color:#26211C;background:rgba(255,253,244,.6);padding:3px 9px;border-radius:999px;pointer-events:none;transition:opacity .3s}
@@ -775,7 +776,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   var buf='', taps=0, toastT=null;
   function toast(t){var el=$('toast'); el.textContent=t; el.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(function(){el.classList.remove('show');},3600);}
   function pommy(){
-    toast('🍅 Pommy says hello. Now go focus.');
+    toast('🍅 Pommy says hello.');
     if(calm) return;
     for(var i=0;i<14;i++){(function(i){var t=document.createElement('span'); t.className='tom'; t.textContent='🍅'; t.setAttribute('aria-hidden','true');
       t.style.left=(4+Math.random()*92)+'vw'; t.style.animationDuration=(2.2+Math.random()*1.8)+'s'; t.style.animationDelay=(i*0.09)+'s';
@@ -828,13 +829,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
       sky.style.setProperty('--s1',mix(a[1],b[1],u)); sky.style.setProperty('--s2',mix(a[2],b[2],u));
       var day=t>=6&&t<18.5, arc=day?(t-6)/12.5:((t+24-18.5)%24)/11.5;
       sky.classList.toggle('night',!day);
-      sky.style.setProperty('--ox',(7+86*arc).toFixed(1)+'%'); sky.style.setProperty('--oy',(78-Math.sin(Math.PI*arc)*58).toFixed(1)+'%');
+      var tr=$('tree'), sr=sky.getBoundingClientRect(), lo=7; if(tr&&sr.width){ lo=Math.min(60,(tr.getBoundingClientRect().right-sr.left+30)/sr.width*100); }
+      sky.style.setProperty('--ox',(lo+(93-lo)*arc).toFixed(1)+'%'); sky.style.setProperty('--oy',(78-Math.sin(Math.PI*arc)*58).toFixed(1)+'%');
       sky.style.setProperty('--oc',day?(t<7.2||t>17.2?'#F4A261':'#F6C644'):'#FFFDF4');
       var hh=h%12===0?12:h%12, tm=hh+':'+('0'+m).slice(-2)+(h<12?' am':' pm');
       var note=t<6?'I am asleep. Write anyway.':t<9?'The day is just starting here.':t<18?'A good time to write.':t<22?'Evening here. I still read messages.':'Late here. I will reply in the morning.';
       line.innerHTML='It is <b>'+tm+'</b> in Hyderabad. '+note;
     }
-    paint(); setInterval(paint,30000);
+    paint(); setInterval(paint,30000); var st; window.addEventListener('resize',function(){clearTimeout(st); st=setTimeout(paint,200);});
   })();
 
 
@@ -842,7 +844,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   (function(){
     var sky=$('sky'), tree=$('tree'), hint=$('treeHint'); if(!sky||!tree) return;
     var shakes=0, greens=['#2F5D50','#3F7A66','#55987F','#8CC5AE','#C9A64B'];
-    var lines={1:'That was a leaf.',2:'It has more.',4:'Go on, then.',5:'Tomatoes do not grow on trees. And yet.',7:'The tree would like a word.',10:'It will grow them back. Carry on.',14:'You have a call to get to, surely.',15:'Another one. I have no explanation.'};
+    var lines={1:'That was a leaf.',2:'It has more.',4:'Go on, then.',5:'Tomatoes do not grow on trees. And yet.',7:'The tree would like a word.',10:'It will grow them back. Carry on.',14:'Fourteen. The tree is keeping count.',15:'Another one. I have no explanation.'};
     function drop(fruit){
       var sr=sky.getBoundingClientRect(), tr=tree.getBoundingClientRect(), a=Math.random()*Math.PI*2, r=Math.sqrt(Math.random())*tr.width*0.34;
       var x=tr.left-sr.left+tr.width*0.5+Math.cos(a)*r, y=tr.top-sr.top+tr.height*0.34+Math.sin(a)*r*0.8, ground=sr.height-(fruit?26:14)-Math.random()*6;
