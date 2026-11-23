@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kirubananth Sankar · AI agents you can leave alone</title>
-<meta name="description" content="AI engineer in Hyderabad. Three years of multi-agent systems that work for a day with nobody steering, one of them first on MLE-Bench at submission, and one agent system taken to paying customers in eight weeks.">
+<title>Kirubananth Sankar · AI systems that work when nobody is watching</title>
+<meta name="description" content="AI engineer in Hyderabad. Three years of multi-agent AI systems that work for a day with nobody steering, one of them first on MLE-Bench at submission, and one AI system taken to paying customers in eight weeks.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Kirubananth Sankar">
-<meta property="og:description" content="I build AI agents you can leave alone. Research to production.">
+<meta property="og:description" content="I build AI systems that work when nobody is watching. Research to production.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kirubanath.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F5D50'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='40' fill='%23FBF6EC'%3Ek.%3C/text%3E%3C/svg%3E">
@@ -61,7 +61,7 @@ img{max-width:100%}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:56px;align-items:center}
 .eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
 .eyebrow b{color:var(--tomato);font-weight:500}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(2.5rem,6.1vw,4.7rem);line-height:1.0;letter-spacing:-.035em;margin:0 0 26px;text-wrap:balance}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.3rem,5vw,3.9rem);line-height:1.0;letter-spacing:-.035em;margin:0 0 26px;text-wrap:balance}
 h1 mark{background:linear-gradient(var(--tomato),var(--tomato)) no-repeat left center/100% 100%;color:var(--tomato-ink);padding:0 .14em;border-radius:.12em;display:inline-block;transform:rotate(-1.6deg);white-space:nowrap;animation:swipe .7s .45s cubic-bezier(.2,.7,.2,1) backwards}
 @keyframes swipe{from{background-size:0% 100%;color:var(--ink)}60%{color:var(--ink)}to{background-size:100% 100%;color:var(--tomato-ink)}}
 .lede{font-size:1.16rem;max-width:36em;margin:0 0 30px;color:var(--ink)}
@@ -323,6 +323,7 @@ footer .fleft{display:flex;flex-direction:column;gap:6px}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .reveal.in{opacity:1;transform:none}
 .note.reveal.in:nth-child(3n+1){transform:rotate(-.5deg)}.note.reveal.in:nth-child(3n){transform:rotate(.5deg)}
+@media (max-width:1100px){h1 mark{display:inline;white-space:normal;transform:none;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:.02em .14em;line-height:1.22}}
 @media (max-width:900px){.hero{padding:48px 0}.hero .wrap{grid-template-columns:1fr;gap:40px}.perm{transform:none;max-width:460px}section{padding:60px 0}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -363,8 +364,8 @@ footer .fleft{display:flex;flex-direction:column;gap:6px}
   <div class="wrap">
     <div>
       <p class="eyebrow"><b>●</b> AI engineer · research to production · Hyderabad</p>
-      <h1>I build AI agents you can <mark>leave alone</mark>.</h1>
-      <p class="lede">Hi, I'm Kirubananth. Eleven letters, take your time. I spent three years in research on multi-agent systems that work on a problem for 24 hours with nobody steering. One of them ranked first on OpenAI's MLE-Bench when we submitted it. Then I took an agent system to <em>paying customers in eight weeks</em>. This page is what I learned on both sides.</p>
+      <h1>I build AI systems that work when <mark>nobody is watching</mark>.</h1>
+      <p class="lede">Hi, I'm Kirubananth. Eleven letters, take your time. I spent three years in research on multi-agent systems that work on a problem for 24 hours with nobody steering. One of them ranked first on OpenAI's MLE-Bench when we submitted it. Then I took an AI system to <em>paying customers in eight weeks</em>. This page is what I learned on both sides.</p>
       <div class="cta">
         <a class="btn primary" href="#research">See the work <span aria-hidden="true">↓</span></a>
         <a class="btn" href="https://proceedings.mlr.press/v293/chopde25a.html" rel="noopener">Read the paper</a>
@@ -372,7 +373,7 @@ footer .fleft{display:flex;flex-direction:column;gap:6px}
     </div>
 
     <div>
-      <div class="perm logcard" aria-label="One 24-hour run of an agent system, shown as a log">
+      <div class="perm logcard" aria-label="One 24-hour run of the system, shown as a log">
         <div class="perm-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>one_run.log</div>
         <ul class="log" id="log">
           <li><time>00:00</time><span>task read, plan drafted</span></li>
@@ -400,7 +401,7 @@ footer .fleft{display:flex;flex-direction:column;gap:6px}
 <section class="numbers" aria-label="A few numbers">
   <div class="wrap">
     <div class="numgrid">
-      <div class="stat reveal"><b>3<small>years</small></b><p>building LLM agent systems</p><i>Research first, then production.</i></div>
+      <div class="stat reveal"><b>3<small>years</small></b><p>building AI systems, most of them multi-agent</p><i>Research first, then production.</i></div>
       <div class="stat reveal"><b>24<small>hours</small></b><p>in a single run, with nobody steering</p><i>Hundreds of experiments in each.</i></div>
       <div class="stat reveal"><b>#1</b><p>on OpenAI's MLE-Bench, at submission</p><i>Leaderboards move. It was true when we said it.</i></div>
       <div class="stat reveal"><b>8<small>weeks</small></b><p>from joining to paying customers</p><i>As the only engineer on the system.</i></div>
@@ -415,7 +416,7 @@ footer .fleft{display:flex;flex-direction:column;gap:6px}
   <div class="wrap">
     <div class="sec-head">
       <span class="num">01</span>
-      <h2>Research: agents that work alone</h2>
+      <h2>Research: systems that work alone</h2>
       <p class="sec-sub">Three years on the AI research team at Fractal Analytics. The question was always the same: how long can a system keep improving with nobody steering it?</p>
     </div>
     <div class="work">
@@ -483,7 +484,7 @@ footer .fleft{display:flex;flex-direction:column;gap:6px}
       <article class="card wide reveal" id="cardProd">
         <div>
           <span class="tag hot">Production</span><span class="tag">2026</span>
-          <h3>An agent system for accounts receivable</h3>
+          <h3>An AI system for accounts receivable</h3>
           <p class="meta">Mirian AI · Founding AI Engineer</p>
           <p>It follows up with a company's customers about their open invoices and does the routine work from start to finish. People handle the exceptions, and anything that involves money.</p>
           <p>I was the company's second engineer and the only one on this system. It was live with paying customers within eight weeks.</p>
@@ -514,7 +515,7 @@ footer .fleft{display:flex;flex-direction:column;gap:6px}
     <div class="sec-head">
       <span class="num">03</span>
       <h2>What the work taught me</h2>
-      <p class="sec-sub">Field notes. Each one cost at least one bad afternoon.</p>
+      <p class="sec-sub">The agent is the small part of a system. The rest is evaluation, memory, retries and tracing. Each of these notes cost at least one bad afternoon.</p>
     </div>
     <div class="notegrid">
       <div class="note reveal"><h3><span>A judge from the same family is a character witness.</span></h3><p>Agents sometimes wrote code so wasteful that the server ran out of memory and a whole run was lost. I added a judge to read every solution first. It did not help until the judge and the agent were on different model families.</p></div>
