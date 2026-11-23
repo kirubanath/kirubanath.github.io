@@ -208,7 +208,9 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .tom{position:fixed;top:-48px;font-size:28px;z-index:25;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(calc(100vh + 80px)) rotate(300deg)}}
-.psst{opacity:.8}
+.psst{opacity:.9}
+.tombtn{font:inherit;font-size:1.15rem;line-height:1;background:none;border:0;padding:2px 4px;cursor:pointer;vertical-align:-2px;transition:transform .15s}
+.tombtn:hover{transform:scale(1.35) rotate(-12deg)}
 
 /* contact */
 .contact{background:var(--tomato);color:var(--tomato-ink);border-block:2px solid var(--line);text-align:center}
@@ -490,7 +492,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   <div class="wrap">
     <span>© 2026 Kirubananth Sankar · All eleven letters reserved.</span>
     <span>An agent drafted this page. A human approved it. That is the whole philosophy.</span>
-    <span class="psst">psst: some things respond if you type the tomato's name.</span>
+    <span class="psst">psst: press the keys p, o, m, m, y. Or just poke this tomato: <button type="button" id="tomBtn" class="tombtn" aria-label="Poke the tomato">🍅</button></span>
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -601,8 +603,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
       document.body.appendChild(t); setTimeout(function(){t.remove();},5200);})(i);}
   }
   document.addEventListener('keydown',function(e){ if(e.key&&e.key.length===1){ buf=(buf+e.key.toLowerCase()).slice(-5); if(buf==='pommy'){buf=''; pommy();} } });
+  var tb=$('tomBtn'); if(tb) tb.addEventListener('click',pommy);
   var logo=document.querySelector('.logo'); if(logo) logo.addEventListener('click',function(){ taps++; if(taps>=5){taps=0; pommy();} });
-  try{console.log('%cYou opened the console. Of course you did.','font:600 14px system-ui'); console.log('Nothing is hidden here. Try typing the tomato\'s name on the page instead.');}catch(e){}
+  try{console.log('%cYou opened the console. Of course you did.','font:600 14px system-ui'); console.log('Nothing is hidden here. Press p, o, m, m, y on the page instead.');}catch(e){}
 
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window && !(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
