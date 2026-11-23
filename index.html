@@ -52,17 +52,27 @@ img{max-width:100%}
 .nav nav{display:flex;gap:22px;align-items:center}
 .nav nav a{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
 .nav nav a:hover{color:var(--tomato)}
-/* the pull cord that switches the lights */
-.cord{position:absolute;top:100%;right:40px;width:34px;padding:0 0 6px;border:0;background:none;cursor:grab;display:flex;flex-direction:column;align-items:center;transform-origin:50% 0;touch-action:none;animation:swing 2.2s ease-in-out 1.4s 1}
-.cord:active{cursor:grabbing}
-.cord:hover{animation:swing 1.5s ease-in-out infinite}
-.cord.drag{animation:none}
-.cord-line{display:block;width:2px;height:calc(48px + var(--pull,0px));background:var(--ink);transition:height .4s cubic-bezier(.3,2.2,.4,1)}
+/* the hanging lamp that switches the lights: it lives inside the top bar */
+.cord{position:relative;align-self:flex-start;width:40px;height:60px;padding:0;border:0;background:none;cursor:pointer;display:block;touch-action:none}
+.cord-in{display:flex;flex-direction:column;align-items:center;transform-origin:50% 0;animation:swing 2.2s ease-in-out 1.4s 1}
+@media (hover:hover){.cord:hover .cord-in{animation:swing 1.6s ease-in-out infinite}.cord:hover .cord-tip{opacity:1;transform:none}}
+.cord.drag{cursor:grabbing}
+.cord.drag .cord-in{animation:none}
+.cord-line{display:block;flex:none;width:2px;height:calc(15px + var(--pull,0px));background:var(--ink);transition:height .4s cubic-bezier(.3,2.2,.4,1)}
 .cord.drag .cord-line{transition:none}
-.cord-knob{display:block;width:16px;height:16px;border-radius:50%;background:var(--mustard);border:2px solid var(--line);margin-top:-1px;box-shadow:0 2px 0 var(--shade);transition:box-shadow .3s}
-.cord.dark .cord-knob{box-shadow:0 0 0 5px rgba(235,211,152,.16),0 0 16px 4px rgba(235,211,152,.6)}
-@keyframes swing{0%,100%{transform:rotate(0)}25%{transform:rotate(8deg)}75%{transform:rotate(-8deg)}}
-@media (max-width:760px){.cord{right:22px}.cord-line{height:calc(20px + var(--pull,0px))}}
+.bulb{display:block;flex:none;width:24px;height:31px;overflow:visible}
+.bulb .cap{fill:var(--ink)}
+.bulb .glass{fill:var(--mustard);stroke:var(--ink);stroke-width:2;transition:fill .3s}
+.bulb .fil{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.bulb .rays{stroke:var(--mustard);stroke-width:2;stroke-linecap:round;transition:opacity .3s}
+.cord .bulb{filter:drop-shadow(0 0 7px rgba(235,190,70,.75))}
+.cord.dark .bulb{filter:none}
+.cord.dark .bulb .glass{fill:transparent}
+.cord.dark .bulb .rays{opacity:0}
+.cord-tip{position:absolute;right:0;top:calc(100% + 10px);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;background:var(--ink);color:var(--bg);padding:4px 9px;border-radius:999px;opacity:0;transform:translateY(-4px);transition:opacity .25s,transform .25s;pointer-events:none}
+.cord-tip::after{content:"";position:absolute;right:16px;bottom:100%;border:4px solid transparent;border-bottom-color:var(--ink)}
+.cord:focus-visible .cord-tip{opacity:1;transform:none}
+@keyframes swing{0%,100%{transform:rotate(0)}25%{transform:rotate(7deg)}75%{transform:rotate(-7deg)}}
 @media (max-width:760px){.nav nav a{display:none}}
 
 /* hero */
@@ -341,6 +351,7 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
 @media (max-width:900px){.hero{padding:48px 0}.hero .wrap{grid-template-columns:1fr;gap:40px}.perm{transform:none;max-width:460px}section{padding:60px 0}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
+  .cord-in,.cord:hover .cord-in{animation:none}
   .ticker div{animation:none;white-space:normal;padding:11px 16px}
   .reveal{opacity:1;transform:none;transition:none}
   .btn,.card,.sw,.sw::after{transition:none}
@@ -368,7 +379,7 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
       <a href="#quests">Side quests</a>
       <a href="#stories">Stories</a>
       <a href="#faq">FAQ</a>
-      <button class="cord" id="theme" type="button" aria-label="Pull the cord to switch between light and dark" aria-pressed="false"><span class="cord-line"></span><span class="cord-knob"></span></button>
+      <button class="cord" id="theme" type="button" aria-label="Switch the lights between light and dark" aria-pressed="false"><span class="cord-in"><span class="cord-line"></span><svg class="bulb" viewBox="0 0 24 31" aria-hidden="true"><path class="rays" d="M2 27 l-2 3 M22 27 l2 3 M12 30 v1"/><rect class="cap" x="8" y="0" width="8" height="7" rx="1.5"/><circle class="glass" cx="12" cy="17" r="10"/><path class="fil" d="M8.5 16 l2 3 1.5 -3 1.5 3 2 -3"/></svg></span><span class="cord-tip" id="cordTip">Turn the lights off</span></button>
     </nav>
   </div>
 </header>
@@ -699,7 +710,7 @@ footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--m
 (function(){
   var root=document.documentElement, btn=document.getElementById('theme');
   function current(){return root.getAttribute('data-theme')||(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}
-  function label(){var d=current()==='dark'; btn.classList.toggle('dark',d); btn.setAttribute('aria-pressed',d?'true':'false');}
+  function label(){var d=current()==='dark'; btn.classList.toggle('dark',d); btn.setAttribute('aria-pressed',d?'true':'false'); var tip=document.getElementById('cordTip'); if(tip) tip.textContent=d?'Turn the lights on':'Turn the lights off';}
   try{var saved=localStorage.getItem('theme'); if(saved==='dark'||saved==='light') root.setAttribute('data-theme',saved);}catch(e){}
   label();
   function flip(){var next=current()==='dark'?'light':'dark'; root.setAttribute('data-theme',next); try{localStorage.setItem('theme',next);}catch(e){} label();}
