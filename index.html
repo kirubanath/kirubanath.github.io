@@ -696,7 +696,6 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
               <details class="twig note" name="note"><summary><span class="lf-t"><span>Sometimes the right instruction is "check your work less".</span></span></summary><p>We had about 24 hours per problem. Lighter validation meant a slightly noisier score and many more experiments. More ideas were worth more than steadier scores.</p></details>
               <details class="twig note" name="note"><summary><span class="lf-t"><span>A long run has many ways to die.</span></span></summary><p>Rate limits and server errors, mostly. So every model call went through one function that retries and waits longer each time, and every step was saved so a run could resume where it stopped.</p></details>
               <details class="twig note" name="note"><summary><span class="lf-t"><span>Show the agent its best and its worst.</span></span></summary><p>An agent learns little from a list of everything it has tried. Each new attempt saw one very good solution, one very bad one, and a short summary of the rest.</p></details>
-              <details class="twig note" name="note"><summary><span class="lf-t"><span>If you cannot look at it afterwards, do not ship it.</span></span></summary><p>Trace every model call. When an output reads wrong, you want to see what the model was given and what it wrote. The alternative is a séance.</p></details>
             </div>
           </div>
 
@@ -804,6 +803,10 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
               <p class="perm-hint">Its rules. Try to switch one on.</p>
             </div>
           </article>
+          <div class="leaves">
+            <h4 class="lf-h">What production taught me</h4>
+            <details class="twig note" name="note"><summary><span class="lf-t"><span>If you cannot look at it afterwards, do not ship it.</span></span></summary><p>Trace every model call. When an output reads wrong, you want to see what the model was given and what it wrote. The alternative is a séance.</p></details>
+          </div>
         </div>
       </div>
 
@@ -832,7 +835,7 @@ details.fold[open]::details-content,details.twig[open]::details-content,.faq det
             <article class="card reveal">
               <span class="tag">This website</span>
               <h4>You are looking at it</h4>
-              <p>One HTML file and four fonts. No framework, no build step, no trackers, no cookies and therefore no cookie banner.</p>
+              <p>One HTML file and four fonts. No framework, no trackers, no cookies and therefore no cookie banner.</p>
               <p class="aside">An AI agent drafted it under my direction. It was not allowed to invent a single fact about me.</p>
               <p><a class="more" href="https://github.com/kirubanath/kirubanath.github.io" rel="noopener">Read the source →</a></p>
               <p class="meta" id="weight" hidden></p>
