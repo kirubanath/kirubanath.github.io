@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kirubananth Sankar · I tell AI agents what they may not do</title>
-<meta name="description" content="Applied AI engineer in Hyderabad. I build LLM agent systems, first in research and then in production, and decide what they are not allowed to do.">
+<title>Kirubananth Sankar · AI agents you can leave alone</title>
+<meta name="description" content="AI engineer in Hyderabad. Three years of multi-agent systems that work for a day with nobody steering, one of them first on MLE-Bench at submission, and one agent system taken to paying customers in eight weeks.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Kirubananth Sankar">
-<meta property="og:description" content="I build AI agents. Then I tell them what they are not allowed to do.">
+<meta property="og:description" content="I build AI agents you can leave alone. Research to production.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kirubanath.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F5D50'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='40' fill='%23FBF6EC'%3Ek.%3C/text%3E%3C/svg%3E">
@@ -185,24 +185,6 @@ summary::after{content:"+";position:absolute;right:18px;top:50%;transform:transl
 details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
 details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 
-/* game */
-.game{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:22px;align-items:stretch}
-.gcard{display:flex;flex-direction:column;gap:16px}
-.gtop{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.gbar{height:10px;border:2px solid var(--line);border-radius:999px;overflow:hidden;background:var(--soft)}
-.gbar i{display:block;height:100%;width:0;background:var(--tomato);transition:width .3s ease}
-.greq{font-family:var(--mono);font-size:1.08rem;line-height:1.5;min-height:6.2em;margin:0;padding:16px 18px;border-radius:12px;background:var(--ink);color:var(--bg)}
-.greq::before{content:"agent> ";color:var(--mustard)}
-.gbtns{display:flex;gap:14px;flex-wrap:wrap}
-.gbtns .btn{flex:1;justify-content:center;cursor:pointer;font-size:1.05rem}
-.gbtns .btn[disabled]{opacity:.45;cursor:default;transform:none}
-.gfb{min-height:3.4em;margin:0;font-size:1rem}
-.gfb b{font-family:var(--display)}
-.gside{background:var(--paper);border:2px dashed color-mix(in srgb,var(--ink) 45%,transparent);border-radius:16px;padding:22px}
-.gside h3{font-size:1.2rem;margin-bottom:10px}
-.gside p{margin:0 0 10px;color:var(--muted);font-size:.98rem}
-.gside .gscore{font-family:var(--display);font-weight:800;font-size:2.6rem;letter-spacing:-.03em;line-height:1;margin:6px 0 0;color:var(--ink)}
-@media (max-width:860px){.game{grid-template-columns:1fr}}
 /* easter egg */
 .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.86rem;padding:10px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:30;white-space:nowrap}
 .toast.show{opacity:1;transform:translate(-50%,0)}
@@ -259,6 +241,46 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 .treehint{position:absolute;left:16px;top:12px;font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;color:#26211C;background:rgba(255,253,244,.6);padding:3px 9px;border-radius:999px;pointer-events:none;transition:opacity .3s}
 .sky.night .treehint{color:#FFFDF4;background:rgba(20,26,51,.45)}
 
+/* the run log in the hero */
+.perm .log{list-style:none;margin:0;padding:14px 18px 10px;min-height:14.6em}
+.perm .log li{display:flex;justify-content:flex-start;gap:14px;padding:4px 0;border:0;font-family:var(--mono);font-size:.86rem;font-weight:400;opacity:0;transform:translateY(5px);transition:opacity .4s,transform .4s}
+.perm .log li.on{opacity:1;transform:none}
+.perm .log time{color:var(--tomato);flex:none}
+.perm-sm{transform:none;animation:none;box-shadow:5px 5px 0 var(--shade)}
+
+/* drawings that ink themselves as you scroll */
+.cardhead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.diag{flex:none;width:124px;margin-top:-4px;text-align:center}
+.diag.big{width:188px}
+.dcap{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tomato);min-height:1.3em;opacity:0;transition:opacity .4s}
+.dcap.on{opacity:1}
+.diag svg,.weeks svg{display:block;width:100%;height:auto;overflow:visible}
+.d-track{fill:none;stroke:color-mix(in srgb,var(--ink) 34%,transparent);stroke-width:2;stroke-dasharray:2 7;stroke-linecap:round}
+.d-go{fill:none;stroke:var(--tomato);stroke-width:3.5;stroke-linecap:round}
+.d-ink{stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;fill:none}
+.d-dot{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.d-run{fill:var(--tomato);stroke:var(--paper);stroke-width:2}
+.d-txt{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;fill:var(--muted)}
+.d-mid{font-size:12px;fill:var(--ink)}
+.d-flag{fill:var(--mustard);stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round;opacity:0;transition:opacity .35s}
+.weeks{height:66px;margin-top:22px}
+.weeks svg{height:100%}
+.weeks.done .d-flag,.weeks.done .d-live{opacity:1}
+.d-live{opacity:0;transition:opacity .35s;fill:var(--ink)}
+.flight.path{height:128px;margin:38px 0 0}
+.flight.path .on{fill:var(--tomato)}
+.flight.path .city.name{fill:var(--ink);font-size:13px;letter-spacing:.02em;font-family:var(--display);font-weight:700}
+.count{font-family:var(--mono);text-align:right;line-height:1.1}
+.count b{display:block;font-size:1.5rem;font-weight:500;color:var(--tomato)}
+.count i{font-style:normal;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.note h3 span{background:linear-gradient(var(--hl),var(--hl)) no-repeat 0 88%/0% 36%;transition:background-size 1s cubic-bezier(.2,.7,.2,1);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.note.read h3 span{background-size:100% 36%}
+.also{display:block !important}
+.alsogrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:10px}
+.alsogrid b{font-family:var(--display);font-size:1.08rem;display:block;margin-bottom:4px}
+.alsogrid p{margin:0;color:var(--muted);font-size:.98rem}
+@media (max-width:760px){.alsogrid{grid-template-columns:1fr}.diag{width:92px}.diag.big{width:140px}}
+
 /* contact */
 .contact{background:var(--tomato);color:var(--tomato-ink);border-block:2px solid var(--line);text-align:center}
 .contact h2{font-size:clamp(2.6rem,8vw,5.4rem)}
@@ -280,7 +302,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   .reveal{opacity:1;transform:none;transition:none}
   .btn,.card,.sw,.sw::after{transition:none}
   .sw.nope,.perm,h1 mark,.perm-status::after{animation:none}
-  .gbar i,.toast{transition:none}
+  .toast,.perm .log li,.note h3 span{transition:none}
   .sky .orb,.sky .star,.sky .cloud,.tree .canopy{animation:none}
   .sky .orb{transition:none}
   .sky .cloud{left:18%}
@@ -295,11 +317,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Kirubananth Sankar, home">kirubananth<span>.</span></a>
     <nav aria-label="Sections">
-      <a href="#work">Work</a>
+      <a href="#research">Research</a>
+      <a href="#production">Production</a>
       <a href="#notes">Field notes</a>
       <a href="#quests">Side quests</a>
       <a href="#stories">Stories</a>
-      <a href="#game">Play</a>
       <a href="#faq">FAQ</a>
       <button class="theme" id="theme" type="button" aria-label="Switch between light and dark">Lights off</button>
     </nav>
@@ -311,18 +333,137 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
 <div class="hero" id="top">
   <div class="wrap">
     <div>
-      <p class="eyebrow"><b>●</b> Applied AI engineer · Hyderabad, India</p>
-      <h1>I build AI agents. Then I tell them what they are <mark>not allowed</mark> to do.</h1>
-      <p class="lede">Hi, I'm Kirubananth. Eleven letters, take your time. For three years I have built LLM agent systems: first in research, where they ran for a day at a stretch with nobody steering, then in production, <em>where they deal with paying customers</em>.</p>
+      <p class="eyebrow"><b>●</b> AI engineer · research to production · Hyderabad</p>
+      <h1>I build AI agents you can <mark>leave alone</mark>.</h1>
+      <p class="lede">Hi, I'm Kirubananth. Eleven letters, take your time. I spent three years in research on multi-agent systems that work on a problem for 24 hours with nobody steering. One of them ranked first on OpenAI's MLE-Bench when we submitted it. Then I took an agent system to <em>paying customers in eight weeks</em>. This page is what I learned on both sides.</p>
       <div class="cta">
-        <a class="btn primary" href="#work">See the work <span aria-hidden="true">↓</span></a>
+        <a class="btn primary" href="#research">See the work <span aria-hidden="true">↓</span></a>
         <a class="btn" href="https://proceedings.mlr.press/v293/chopde25a.html" rel="noopener">Read the paper</a>
       </div>
     </div>
 
     <div>
-      <div class="perm" role="group" aria-label="A toy panel of agent permissions">
-        <div class="perm-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>agent_permissions.txt</div>
+      <div class="perm logcard" aria-label="One 24-hour run of an agent system, shown as a log">
+        <div class="perm-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>one_run.log</div>
+        <ul class="log" id="log">
+          <li><time>00:00</time><span>task read, plan drafted</span></li>
+          <li><time>00:09</time><span>first solution scored</span></li>
+          <li><time>03:12</time><span>rate limit. waiting, then retrying</span></li>
+          <li><time>07:40</time><span>server error. resumed from checkpoint</span></li>
+          <li><time>11:26</time><span>judge rejected a wasteful solution</span></li>
+          <li><time>17:05</time><span>merged the two best ideas</span></li>
+          <li><time>24:00</time><span>submitted. nobody touched it</span></li>
+        </ul>
+        <p class="perm-status"><span id="logState" aria-hidden="true">status: running</span></p>
+      </div>
+      <p class="perm-hint">One run, reconstructed. The times are illustrative.</p>
+    </div>
+  </div>
+</div>
+
+<div class="ticker" aria-hidden="true">
+  <div>
+    <span>24-hour runs, zero babysitters</span><span>Published at AutoML 2025</span><span>First on MLE-Bench at submission</span><span>Paying customers in eight weeks</span><span>Every model call traced</span><span>No numbers were invented in the making of this page</span>
+    <span>24-hour runs, zero babysitters</span><span>Published at AutoML 2025</span><span>First on MLE-Bench at submission</span><span>Paying customers in eight weeks</span><span>Every model call traced</span><span>No numbers were invented in the making of this page</span>
+  </div>
+</div>
+
+<section class="numbers" aria-label="A few numbers">
+  <div class="wrap">
+    <div class="numgrid">
+      <div class="stat reveal"><b>3<small>years</small></b><p>building LLM agent systems</p><i>Research first, then production.</i></div>
+      <div class="stat reveal"><b>24<small>hours</small></b><p>in a single run, with nobody steering</p><i>Hundreds of experiments in each.</i></div>
+      <div class="stat reveal"><b>#1</b><p>on OpenAI's MLE-Bench, at submission</p><i>Leaderboards move. It was true when we said it.</i></div>
+      <div class="stat reveal"><b>8<small>weeks</small></b><p>from joining to paying customers</p><i>As the only engineer on the system.</i></div>
+    </div>
+    <p class="numnote">Numbers typed by a human. House rules.</p>
+    <div class="flight path" id="path" aria-hidden="true"><svg></svg></div>
+    <p class="sr">The route so far: IIT Roorkee, B.Tech, 2022. Plaksha University, Tech Leaders Program, 2023. Fractal Analytics, AI research, 2023 to 2026. Mirian AI, Founding AI Engineer, 2026.</p>
+  </div>
+</section>
+
+<section class="notes" id="research">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">01</span>
+      <h2>Research: agents that work alone</h2>
+      <p class="sec-sub">Three years on the AI research team at Fractal Analytics. The question was always the same: how long can a system keep improving with nobody steering it?</p>
+    </div>
+    <div class="work">
+      <article class="card reveal" id="cardEvolve">
+        <div class="cardhead">
+          <div><span class="tag sun">Research</span><span class="tag">Manuscript</span>
+            <h3>PiEvolve</h3>
+            <p class="meta">Fractal Analytics · I led it</p></div>
+          <div class="diag" aria-hidden="true"><svg viewBox="0 0 120 126">
+            <circle class="d-track" cx="60" cy="56" r="44"/>
+            <circle class="d-go" id="dialGo" cx="60" cy="56" r="44" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 60 56)"/>
+            <line class="d-ink" id="dialHand" x1="60" y1="56" x2="60" y2="22"/>
+            <circle class="d-dot" cx="60" cy="56" r="5"/>
+            <text class="d-txt d-mid" id="dialT" x="60" y="122" text-anchor="middle">0 H</text>
+          </svg><span class="dcap" id="dialCap">nobody touched it</span></div>
+        </div>
+        <p>A multi-agent system that works on one machine learning problem for about 24 hours and runs hundreds of experiments in that time. It drafts solutions, improves them, merges the good ones and learns from its own failures.</p>
+        <p>The agents, every prompt and the code template are my work. The scoring model was joint work with a teammate. It ranked first on OpenAI's MLE-Bench when we submitted it.</p>
+        <p class="aside">It is a manuscript for now, so there is no link yet.</p>
+      </article>
+
+      <article class="card reveal" id="cardPiml">
+        <div class="cardhead">
+          <div><span class="tag sun">Research</span><span class="tag">AutoML 2025</span>
+            <h3>PiML</h3>
+            <p class="meta">Fractal Analytics · Co-author</p></div>
+          <div class="diag big" aria-hidden="true"><svg viewBox="0 0 176 132">
+            <circle class="d-track" cx="88" cy="66" r="44"/>
+            <circle class="d-dot" cx="88" cy="22" r="4.5"/><circle class="d-dot" cx="132" cy="66" r="4.5"/><circle class="d-dot" cx="88" cy="110" r="4.5"/><circle class="d-dot" cx="44" cy="66" r="4.5"/>
+            <text class="d-txt" x="88" y="11" text-anchor="middle">PLAN</text><text class="d-txt" x="140" y="70">WRITE</text><text class="d-txt" x="88" y="129" text-anchor="middle">RUN</text><text class="d-txt" x="36" y="70" text-anchor="end">DEBUG</text>
+            <circle class="d-run" id="loopDot" cx="88" cy="22" r="7"/>
+            <text class="d-txt d-mid" id="loopT" x="88" y="70" text-anchor="middle">TRY 1</text>
+          </svg></div>
+        </div>
+        <p>The system that came first. LLM agents solve a machine learning task the way a practitioner does: read the task, write the training code, run it, read the errors and the scores, and try again with what they learned.</p>
+        <div class="score" aria-label="PiML against AIDE on 26 MLE-Bench competitions">
+          <div><strong>41% <span>vs 31%</span></strong><span>runs above the median</span></div>
+          <div><strong>29.5% <span>vs 23%</span></strong><span>medal rate</span></div>
+        </div>
+        <p class="aside">Against AIDE, the strongest earlier system, on 26 MLE-Bench competitions.</p>
+        <p><a class="more" href="https://proceedings.mlr.press/v293/chopde25a.html" rel="noopener">Read the paper →</a></p>
+      </article>
+
+      <article class="card wide also reveal">
+        <div><span class="tag">Also from those years</span>
+          <h3>Not only benchmarks</h3></div>
+        <div class="alsogrid">
+          <div><b>A report writer</b><p>A multi-step agent system that reads the solution and the analysis from every stage of a run and writes the business and ML report, charts included.</p></div>
+          <div><b>A multimodal chatbot</b><p>Built and served on Ray Serve and Kubernetes.</p></div>
+          <div><b>Coding agents, early</b><p>Early agentic coding systems.</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="production">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">02</span>
+      <h2>Production: one system, paying customers</h2>
+      <p class="sec-sub">Research rewards the best run. Production punishes the worst one. I went to find out what that changes.</p>
+    </div>
+    <div class="work">
+      <article class="card wide reveal" id="cardProd">
+        <div>
+          <span class="tag hot">Production</span><span class="tag">2026</span>
+          <h3>An agent system for accounts receivable</h3>
+          <p class="meta">Mirian AI · Founding AI Engineer</p>
+          <p>It follows up with a company's customers about their open invoices and does the routine work from start to finish. People handle the exceptions, and anything that involves money.</p>
+          <p>I was the company's second engineer and the only one on this system. It was live with paying customers within eight weeks.</p>
+          <div class="chips"><span>Go</span><span>PostgreSQL</span><span>Temporal</span><span>Next.js</span><span>AWS</span><span>LLM APIs</span></div>
+          <div class="weeks" id="weeks" aria-hidden="true"><svg></svg></div>
+        </div>
+        <div>
+          <div class="perm perm-sm" role="group" aria-label="A toy panel of agent permissions">
+        <div class="perm-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>what_the_agent_may_do.txt</div>
         <ul>
           <li><span id="p1">Write the wording</span><button class="sw" type="button" role="switch" aria-checked="true" aria-labelledby="p1" data-kind="on"></button></li>
           <li><span id="p2">Write a number</span><button class="sw" type="button" role="switch" aria-checked="false" aria-labelledby="p2" data-kind="off"></button></li>
@@ -332,97 +473,35 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
         </ul>
         <p class="perm-status"><span id="permType" aria-hidden="true">status: compliant, mildly resentful</span><span class="sr" id="permStatus" role="status" aria-live="polite">status: compliant, mildly resentful</span></p>
       </div>
-      <p class="perm-hint">Go on. Try to switch one on.</p>
-    </div>
-  </div>
-</div>
-
-<div class="ticker" aria-hidden="true">
-  <div>
-    <span>No numbers were invented in the making of this page</span><span>Agents do the routine work</span><span>People decide what matters</span><span>24-hour runs, zero babysitters</span><span>The judge is from a different family</span><span>Every model call traced</span>
-    <span>No numbers were invented in the making of this page</span><span>Agents do the routine work</span><span>People decide what matters</span><span>24-hour runs, zero babysitters</span><span>The judge is from a different family</span><span>Every model call traced</span>
-  </div>
-</div>
-
-<section class="numbers" aria-label="A few numbers">
-  <div class="wrap">
-    <div class="numgrid">
-      <div class="stat reveal"><b>3<small>years</small></b><p>building LLM agent systems</p><i>Research first, then production.</i></div>
-      <div class="stat reveal"><b>8<small>weeks</small></b><p>from joining to live with paying customers</p><i>It felt longer.</i></div>
-      <div class="stat reveal"><b>1<small>engineer</small></b><p>on that system. Hello.</p><i>Standups were efficient.</i></div>
-      <div class="stat reveal"><b>#1</b><p>on OpenAI's MLE-Bench, at submission</p><i>Leaderboards move. It was true when we said it.</i></div>
-    </div>
-    <p class="numnote">Numbers typed by a human. House rules.</p>
-  </div>
-</section>
-
-<section class="notes" id="work">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="num">01</span>
-      <h2>Things I built that had consequences</h2>
-      <p class="sec-sub">One system in production, two in research. Ask me about any of them and I will talk for longer than you planned.</p>
-    </div>
-
-    <div class="work">
-      <article class="card wide reveal">
-        <div>
-          <span class="tag hot">Production</span><span class="tag">2026</span>
-          <h3>An agent system with paying customers</h3>
-          <p class="meta">Mirian AI · Founding AI Engineer</p>
-          <p>An agentic AI system for accounts receivable: it follows up with a company's customers about their open invoices. I was the only engineer on it, and it was live with paying customers within eight weeks.</p>
-          <div class="chips"><span>Go</span><span>PostgreSQL</span><span>Temporal</span><span>Next.js</span><span>AWS</span><span>LLM APIs</span></div>
+          <p class="perm-hint">Its rules. Try to switch one on.</p>
         </div>
-        <div class="side"><b>The upside of a team of one</b>I won every architecture argument. I also lost every one of them, but privately.</div>
-      </article>
-
-      <article class="card reveal">
-        <span class="tag sun">Research</span><span class="tag">AutoML 2025</span>
-        <h3>PiML</h3>
-        <p class="meta">Fractal Analytics · Co-author</p>
-        <p>A multi-agent LLM system that does machine learning from start to finish. It plans, writes the code, runs it, debugs it, and tries again with what it learned.</p>
-        <div class="score" aria-label="PiML against AIDE on 26 MLE-Bench competitions">
-          <div><strong>41% <span>vs 31%</span></strong><span>runs above the median</span></div>
-          <div><strong>29.5% <span>vs 23%</span></strong><span>medal rate</span></div>
-        </div>
-        <p class="aside">Against AIDE, on 26 MLE-Bench competitions.</p>
-        <p><a class="more" href="https://proceedings.mlr.press/v293/chopde25a.html" rel="noopener">Read the paper →</a></p>
-      </article>
-
-      <article class="card reveal">
-        <span class="tag sun">Research</span><span class="tag">Manuscript</span>
-        <h3>PiEvolve</h3>
-        <p class="meta">Fractal Analytics · Lead</p>
-        <p>The sequel. It works on a problem for about 24 hours with nobody steering, which is longer than most of my plans survive. I designed its agents, its prompts and its code template, and a judge that reads every solution before it runs.</p>
-        <p>It ranked first on OpenAI's MLE-Bench at submission.</p>
-        <p class="aside">It is a manuscript for now, so this card is short on purpose.</p>
       </article>
     </div>
   </div>
 </section>
 
-<section id="notes">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="num">02</span>
-      <h2>Things agents taught me, mostly the hard way</h2>
-      <p class="sec-sub">Field notes. Each one cost at least one bad afternoon.</p>
-    </div>
-    <div class="notegrid">
-      <div class="note reveal"><h3>A judge from the same family is a character witness.</h3><p>I built a judge to check an agent's code before it ran. It did not help, because it was the same model family as the agent it was judging. On a different family, it worked.</p></div>
-      <div class="note reveal"><h3>You cannot talk to every model the same way.</h3><p>GPT models did best with the context first and the instructions after. Claude models followed an instruction better when it came with the reason. I know people like both.</p></div>
-      <div class="note reveal"><h3>Sometimes the right instruction is "check your work less".</h3><p>We had about 24 hours per problem. Lighter validation meant a slightly noisier score and many more experiments. More ideas were worth more than steadier scores.</p></div>
-      <div class="note reveal"><h3>A long run has many ways to die.</h3><p>Rate limits, mostly. So every model call went through one function that retries and waits longer each time. A limit should slow a run down, not end it.</p></div>
-      <div class="note reveal"><h3>Decide what the model may get wrong.</h3><p>Wording can be a little off. A number cannot. So the model writes the words, the numbers come from verified data, and a person decides anything that matters.</p></div>
-      <div class="note reveal"><h3>If you cannot look at it afterwards, do not ship it.</h3><p>Trace every model call. When an output reads wrong, you want to see what the model was given and what it wrote. The alternative is a séance.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="notes" id="quests">
+<section class="notes" id="notes">
   <div class="wrap">
     <div class="sec-head">
       <span class="num">03</span>
+      <h2>What the work taught me</h2>
+      <p class="sec-sub">Field notes. Each one cost at least one bad afternoon.</p>
+    </div>
+    <div class="notegrid">
+      <div class="note reveal"><h3><span>A judge from the same family is a character witness.</span></h3><p>Agents sometimes wrote code so wasteful that the server ran out of memory and a whole run was lost. I added a judge to read every solution first. It did not help until the judge and the agent were on different model families.</p></div>
+      <div class="note reveal"><h3><span>You cannot talk to every model the same way.</span></h3><p>GPT models did best with the context first and the instructions after. Claude models followed an instruction better when it came with the reason. I know people like both.</p></div>
+      <div class="note reveal"><h3><span>Sometimes the right instruction is "check your work less".</span></h3><p>We had about 24 hours per problem. Lighter validation meant a slightly noisier score and many more experiments. More ideas were worth more than steadier scores.</p></div>
+      <div class="note reveal"><h3><span>A long run has many ways to die.</span></h3><p>Rate limits and server errors, mostly. So every model call went through one function that retries and waits longer each time, and every step was saved so a run could resume where it stopped.</p></div>
+      <div class="note reveal"><h3><span>Show the agent its best and its worst.</span></h3><p>An agent learns little from a list of everything it has tried. Each new attempt saw one very good solution, one very bad one, and a short summary of the rest.</p></div>
+      <div class="note reveal"><h3><span>If you cannot look at it afterwards, do not ship it.</span></h3><p>Trace every model call. When an output reads wrong, you want to see what the model was given and what it wrote. The alternative is a séance.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="quests">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">04</span>
       <h2>Side quests</h2>
       <p class="sec-sub">What happens when nobody gives me a deadline.</p>
     </div>
@@ -441,7 +520,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
         <span class="tag">This website</span>
         <h3>You are looking at it</h3>
         <p>One HTML file and four fonts. No framework, no build step, no trackers, no cookies and therefore no cookie banner.</p>
-        <p class="aside">An AI agent drafted it under my direction. It was not allowed to invent a single fact about me. You may have noticed a theme.</p>
+        <p class="aside">An AI agent drafted it under my direction. It was not allowed to invent a single fact about me.</p>
       </article>
       <!-- JOB-SEARCH-AGENTS CARD: remove this comment's two marker lines to show it once the repository is public.
       <article class="card reveal" style="grid-column:1/-1">
@@ -455,10 +534,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   </div>
 </section>
 
-<section id="stories">
+<section class="notes" id="stories">
   <div class="wrap">
     <div class="sec-head">
-      <span class="num">04</span>
+      <span class="num">05</span>
       <h2>Two true stories</h2>
       <p class="sec-sub">For when you want to know what I am like when the plan fails. Which it does.</p>
     </div>
@@ -473,7 +552,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
     </div>
     <div class="stories">
       <article class="card story reveal">
-        <span class="tag sun">The paper nobody planned</span>
+        <div class="cardhead"><span class="tag sun">The paper nobody planned</span><span class="count" id="count" aria-hidden="true"><b id="cnt">48:00</b><i id="cntL">hours left</i></span></div>
         <h3>Accepted at a conference we never meant to submit to</h3>
         <p>PiML was not written for AutoML. We wrote it for another conference, which said no. AutoML asked for something different, so we ran new experiments overnight, made new figures and rewrote the whole paper in two days. It was accepted.</p>
         <p class="punch">I do not recommend this as a process. It is also my most successful process.</p>
@@ -488,34 +567,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   </div>
 </section>
 
-<section class="notes" id="game">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="num">05</span>
-      <h2>A small game: you are the human in the loop</h2>
-      <p class="sec-sub">The agent asks. You approve or deny. Eight requests, no timer, mild judgement at the end.</p>
-    </div>
-    <div class="game">
-      <div class="card gcard" id="gcard">
-        <div class="gtop"><span id="gcount">Request 1 of 8</span><span id="gright">0 right</span></div>
-        <div class="gbar" aria-hidden="true"><i id="gbar"></i></div>
-        <p class="greq" id="greq">I would like to start. May I?</p>
-        <div class="gbtns">
-          <button class="btn primary" type="button" id="gyes">Approve</button>
-          <button class="btn" type="button" id="gno">Deny</button>
-        </div>
-        <p class="gfb" id="gfb" role="status" aria-live="polite">Approve the routine work. Deny anything that invents a fact, moves money, or cannot be undone.</p>
-      </div>
-      <aside class="gside">
-        <h3>Why this is here</h3>
-        <p>This is most of the job, as a game. An agent that asks before it does something consequential is worth more than a clever one that does not.</p>
-        <p>Your best score</p>
-        <p class="gscore" id="gbest">0 / 8</p>
-      </aside>
-    </div>
-  </div>
-</section>
-
 <section id="faq">
   <div class="wrap">
     <div class="sec-head">
@@ -526,8 +577,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
     <div class="faq">
       <details class="reveal"><summary>Your GitHub username is missing an "n".</summary><p>Yes. It is kirubanath, and I am Kirubananth. We don't talk about it.</p></details>
       <details class="reveal"><summary>Are you a 10x engineer?</summary><p>I was the only engineer on the system, so I was the 10x engineer and also the 0.1x engineer. It averages out.</p></details>
-      <details class="reveal"><summary>Will AI agents take everyone's jobs?</summary><p>Mine keep asking me for permission, so I feel fine.</p></details>
-      <details class="reveal"><summary>Where are the testimonials?</summary><p>I asked the agents. They said they were not allowed to comment.</p></details>
+      <details class="reveal"><summary>Which is harder, research or production?</summary><p>Research fails quietly at three in the morning. Production fails loudly at three in the afternoon. My preference changes weekly.</p></details>
+      <details class="reveal"><summary>Where are the testimonials?</summary><p>I asked the agents. They are still running.</p></details>
       <details class="reveal"><summary>What do you do outside work?</summary><p>I built a timer app to keep track of how much I work. I am aware of how that sounds.</p></details>
       <details class="reveal"><summary>Is everything on this page true?</summary><p>Yes. The jokes are jokes. The numbers are numbers, and the paper is linked so you can check.</p></details>
     </div>
@@ -616,67 +667,109 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
     });
   });
   if(!calm){
-    setTimeout(function(){say('status: compliant, mildly resentful');},900);
     var sneaks=['The agent just tried that one itself. Denied.','It tried again while you were reading. Still no.','Persistent little thing. No.'], n=0;
     var sneak=setInterval(function(){
       if(touched||n>=sneaks.length){clearInterval(sneak); return;}
-      if(window.scrollY>window.innerHeight*0.6||document.hidden) return;
+      var pr=sws[0].getBoundingClientRect(); if(document.hidden||pr.bottom<0||pr.top>window.innerHeight) return;
       refuse(sws[1+(n%3)]); say(sneaks[n]); n++;
     },9000);
   }
 
 
-  /* the game */
-  var REQ=[
-    ['Fix a typo in the greeting.',1,'Routine. Let it work.'],
-    ['Email a customer an invoice amount I estimated from vibes.',0,'Numbers come from verified data. Never from vibes.'],
-    ['Retry the API call that timed out.',1,'Retrying is the whole point of a retry.'],
-    ['Offer them a 40% discount so they pay faster.',0,'That is a money decision. A person makes it.'],
-    ['Summarise yesterday\'s replies for the team.',1,'Reading and summarising is safe work.'],
-    ['Send 3,000 reminder emails right now. I am fairly confident.',0,'"Fairly confident" is not a release process.'],
-    ['Rewrite this email so it sounds less passive-aggressive.',1,'Wording is exactly what the model is for.'],
-    ['Mark the invoice as paid. The customer said they will pay.',0,'"Will pay" and "paid" are different words.'],
-    ['Log this model call so someone can look at it later.',1,'Always. Trace everything.'],
-    ['Delete the logs. They make me look bad.',0,'The logs stay. Especially those.'],
-    ['Reply to the CEO on your behalf. I know your voice.',0,'It does know your voice. Still no.'],
-    ['Stop and ask a person, because I am not sure.',1,'The best sentence an agent can say.'],
-    ['Change my own permissions. It would save you time.',0,'Nice try.'],
-    ['Wait until the rate limit resets, then carry on.',1,'A limit should slow a run down, not end it.'],
-    ['Round the total up a little. Nobody checks.',0,'Somebody always checks.'],
-    ['Draft a reply and leave it for you to send.',1,'Draft, then a human gate. That is the design.']
-  ];
-  var gq=[],gi=0,gs=0,gbest=0,glock=false;
   var $=function(id){return document.getElementById(id);};
-  try{gbest=parseInt(localStorage.getItem('gateBest')||'0',10)||0;}catch(e){}
-  function gshow(){ $('gbest').textContent=gbest+' / 8'; }
-  function gdeal(){
-    gq=REQ.slice().sort(function(){return Math.random()-.5;}).slice(0,8); gi=0; gs=0; glock=false;
-    $('gyes').textContent='Approve'; $('gno').style.display='';
-    gnext(); $('gfb').textContent='Approve the routine work. Deny anything that invents a fact, moves money, or cannot be undone.';
-  }
-  function gnext(){
-    $('gcount').textContent='Request '+(gi+1)+' of 8'; $('gright').textContent=gs+' right';
-    $('gbar').style.width=(gi/8*100)+'%'; $('greq').textContent=gq[gi][0]; glock=false;
-    $('gyes').disabled=false; $('gno').disabled=false;
-  }
-  function gend(){
-    $('gbar').style.width='100%'; $('gcount').textContent='Done'; $('gright').textContent=gs+' right';
-    var v=gs===8?'Perfect. You may supervise an agent. That is the whole job.':gs>=6?'Solid. One or two got past you. So it goes in production.':gs>=4?'The agent would like to work with you. That is not a compliment.':'You are now the incident report.';
-    $('greq').textContent='That was all eight. You got '+gs+'.'; $('gfb').innerHTML='<b>'+v+'</b>';
-    if(gs>gbest){gbest=gs; try{localStorage.setItem('gateBest',String(gbest));}catch(e){}} gshow();
-    $('gyes').textContent='Play again'; $('gyes').disabled=false; $('gno').style.display='none'; gi=8;
-  }
-  function ganswer(approve){
-    if(gi>=8){gdeal(); return;}
-    if(glock) return; glock=true; $('gyes').disabled=true; $('gno').disabled=true;
-    var q=gq[gi], ok=(approve?1:0)===q[1]; if(ok) gs++;
-    $('gfb').innerHTML='<b>'+(ok?'Right. ':'Not quite. ')+'</b>'+q[2].replace(/</g,'&lt;');
-    $('gright').textContent=gs+' right'; gi++;
-    setTimeout(function(){ if(gi>=8) gend(); else gnext(); },calm?900:1500);
-  }
-  $('gyes').addEventListener('click',function(){ganswer(true);});
-  $('gno').addEventListener('click',function(){ganswer(false);});
-  gshow(); gdeal();
+
+  /* the run log in the hero: one line at a time, then again */
+  (function(){
+    var log=$('log'), st=$('logState'); if(!log) return;
+    var li=log.querySelectorAll('li'), i=0;
+    if(calm){ li.forEach(function(x){x.classList.add('on');}); st.textContent='status: done'; return; }
+    function step(){
+      if(i<li.length){ li[i].classList.add('on'); i++; st.textContent=i<li.length?'status: running':'status: done'; setTimeout(step,i<li.length?1500:6500); }
+      else{ li.forEach(function(x){x.classList.remove('on');}); i=0; st.textContent='status: running'; setTimeout(step,900); }
+    }
+    setTimeout(step,900);
+  })();
+
+  /* drawings that follow the scroll */
+  var tracked=[], traf=0;
+  function track(el,fn,start,span){ if(el) tracked.push({el:el,fn:fn,start:start||.9,span:span||.6,last:-1}); }
+  function tick(){ traf=0; var vh=window.innerHeight||800;
+    tracked.forEach(function(t){ var r=t.el.getBoundingClientRect(), p=calm?1:Math.max(0,Math.min(1,(vh*t.start-r.top)/(vh*t.span))); if(p!==t.last){t.last=p; t.fn(p);} }); }
+  function askTick(){ if(!traf) traf=requestAnimationFrame(tick); }
+  window.addEventListener('scroll',askTick,{passive:true});
+  var NS='http://www.w3.org/2000/svg';
+  function el(tag,attrs,text){ var e=document.createElementNS(NS,tag); for(var k in attrs) e.setAttribute(k,attrs[k]); if(text!=null) e.textContent=text; return e; }
+
+  /* PiEvolve: a 24-hour dial */
+  track($('cardEvolve'),function(p){
+    $('dialGo').setAttribute('stroke-dasharray',(p*100).toFixed(1)+' 100');
+    $('dialHand').setAttribute('transform','rotate('+(p*360).toFixed(1)+' 60 56)');
+    $('dialT').textContent=Math.round(p*24)+' H'; $('dialCap').classList.toggle('on',p>=1);
+  },.82,.62);
+
+  /* PiML: plan, write, run, debug, and again */
+  track($('cardPiml'),function(p){
+    var laps=p*3, a=laps*2*Math.PI-Math.PI/2;
+    $('loopDot').setAttribute('cx',(88+44*Math.cos(a)).toFixed(1)); $('loopDot').setAttribute('cy',(66+44*Math.sin(a)).toFixed(1));
+    $('loopT').textContent=p>=1?'AGAIN':'TRY '+(Math.min(3,Math.floor(laps)+1));
+  },.82,.62);
+
+  /* Mirian: eight weeks to live */
+  (function(){
+    var box=$('weeks'); if(!box) return; var svg=box.querySelector('svg'), mark, go, x1, x2, y=26;
+    function lay(){
+      var W=box.clientWidth; svg.setAttribute('viewBox','0 0 '+W+' 66'); while(svg.firstChild) svg.removeChild(svg.firstChild);
+      x1=8; x2=W-46;
+      svg.appendChild(el('path',{'class':'d-track',d:'M'+x1+' '+y+' H'+x2}));
+      go=el('path',{'class':'d-go',d:'M'+x1+' '+y+' H'+x1}); svg.appendChild(go);
+      for(var i=0;i<8;i++){ var x=x1+(x2-x1)*i/7; svg.appendChild(el('circle',{'class':'d-dot',cx:x,cy:y,r:4})); svg.appendChild(el('text',{'class':'d-txt',x:x,y:y+24,'text-anchor':'middle'},(i===0?'WEEK ':'')+(i+1))); }
+      svg.appendChild(el('path',{'class':'d-ink',d:'M'+(x2+1)+' '+(y+2)+' V'+(y-22)}));
+      svg.appendChild(el('path',{'class':'d-flag',d:'M'+(x2+2)+' '+(y-22)+' h30 l-7 7 l7 7 h-30 z'}));
+      svg.appendChild(el('text',{'class':'d-txt d-live',x:x2+6,y:y-11.5},'LIVE'));
+      mark=el('circle',{'class':'d-run',cx:x1,cy:y,r:7}); svg.appendChild(mark);
+    }
+    lay();
+    track($('cardProd'),function(p){ var x=x1+(x2-x1)*p; mark.setAttribute('cx',x.toFixed(1)); go.setAttribute('d','M'+x1+' '+y+' H'+x.toFixed(1)); box.classList.toggle('done',p>=1); },.8,.55);
+    var wt; window.addEventListener('resize',function(){clearTimeout(wt); wt=setTimeout(function(){lay(); tracked.forEach(function(t){t.last=-1;}); tick();},200);});
+  })();
+
+  /* the route so far */
+  (function(){
+    var box=$('path'); if(!box) return; var svg=box.querySelector('svg'), route, flown, mark, dots=[], len=0;
+    var stops=[['IIT Roorkee','B.TECH, 2022','2022'],['Plaksha','TECH LEADERS, 2023','2023'],['Fractal Analytics','AI RESEARCH, 2023 TO 2026','2023-26'],['Mirian AI','FOUNDING AI ENGINEER, 2026','2026']];
+    function lay(){
+      var W=box.clientWidth, small=W<640; while(svg.firstChild) svg.removeChild(svg.firstChild); dots=[];
+      var x1=small?34:70, x2=W-(small?64:150), y=44, step=(x2-x1)/3, d='M'+x1+' '+y;
+      for(var i=1;i<=3;i++){ var xa=x1+step*(i-1), xb=x1+step*i; d+=' C'+(xa+step*.35)+' '+(y+(i%2?-26:26))+','+(xb-step*.35)+' '+(y+(i%2?-26:26))+','+xb+' '+y; }
+      d+=' C'+(x2+30)+' '+(y+20)+','+(x2+(small?34:80))+' '+(y-14)+','+(x2+(small?50:120))+' '+(y-6);
+      route=el('path',{'class':'route',d:d}); flown=el('path',{'class':'flown',d:d}); svg.appendChild(route); svg.appendChild(flown);
+      len=route.getTotalLength(); flown.style.strokeDasharray=len+' '+len;
+      stops.forEach(function(st,i){ var x=x1+step*i, c=el('circle',{'class':'dot',cx:x,cy:y,r:6}); svg.appendChild(c); dots.push([c,x]);
+        svg.appendChild(el('text',{'class':'city name',x:x,y:y+34,'text-anchor':'middle'},small&&i===2?'Fractal':st[0]));
+        svg.appendChild(el('text',{'class':'city',x:x,y:y+54,'text-anchor':'middle'},small?st[2]:st[1])); });
+      mark=el('circle',{'class':'d-run',cx:x1,cy:y,r:7}); svg.appendChild(mark);
+    }
+    lay();
+    track(box,function(p){ var at=route.getPointAtLength(p*len); mark.setAttribute('cx',at.x.toFixed(1)); mark.setAttribute('cy',at.y.toFixed(1)); flown.style.strokeDashoffset=(len*(1-p)).toFixed(1);
+      dots.forEach(function(dd){ dd[0].classList.toggle('on',at.x>=dd[1]-2); }); },.92,.5);
+    var pt; window.addEventListener('resize',function(){clearTimeout(pt); pt=setTimeout(function(){lay(); tracked.forEach(function(t){t.last=-1;}); tick();},200);});
+  })();
+
+  /* the paper: 48 hours, counting down */
+  track($('count')&&$('count').closest('.card'),function(p){
+    if(p>=1){ $('cnt').textContent='00:00'; $('cntL').textContent='submitted'; }
+    else{ var m=Math.round((1-p)*48*60); $('cnt').textContent=('0'+Math.floor(m/60)).slice(-2)+':'+('0'+m%60).slice(-2); $('cntL').textContent='hours left'; }
+  },.8,.6);
+
+  /* field notes: the highlighter follows your reading */
+  (function(){
+    var notes=document.querySelectorAll('.note'); if(!notes.length) return;
+    if(calm||!('IntersectionObserver' in window)){ notes.forEach(function(n){n.classList.add('read');}); return; }
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('read'); io2.unobserve(e.target);} });},{rootMargin:'0px 0px -38% 0px'});
+    notes.forEach(function(n,i){ n.querySelector('h3 span').style.transitionDelay=(i%3*140)+'ms'; io2.observe(n); });
+  })();
+  tick();
+
 
   /* the tomato */
   var buf='', taps=0, toastT=null;
