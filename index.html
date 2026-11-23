@@ -190,9 +190,6 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .tom{position:fixed;top:-48px;font-size:28px;z-index:25;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(calc(100vh + 80px)) rotate(300deg)}}
-.psst{opacity:.9}
-.tombtn{font:inherit;font-size:1.15rem;line-height:1;background:none;border:0;padding:2px 4px;cursor:pointer;vertical-align:-2px;transition:transform .15s}
-.tombtn:hover{transform:scale(1.35) rotate(-12deg)}
 
 /* the paper plane above the two stories */
 .flight{position:relative;height:96px;margin:-8px 0 26px}
@@ -308,6 +305,17 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 .cameo.talk .say2{opacity:1;transform:none}
 @media (max-width:600px){.cameo{right:4%;transform:translateY(105%) scale(.82);transform-origin:100% 100%}.cameo.up{transform:scale(.82)}}
 
+footer{padding:44px 0 40px;font-family:var(--mono);font-size:.8rem;color:var(--muted);letter-spacing:.02em}
+.ftop{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:22px 40px}
+.ftop .logo{color:var(--ink)}
+.ftop p{margin:8px 0 0;font-family:var(--body);font-size:.98rem;letter-spacing:0;color:var(--ink)}
+.ftop nav{display:flex;flex-wrap:wrap;gap:10px 26px;padding-top:6px}
+.ftop nav a{text-transform:uppercase;letter-spacing:.07em;text-decoration:none;color:var(--ink);border-bottom:2px solid transparent;padding-bottom:2px}
+.ftop nav a:hover{border-bottom-color:var(--tomato)}
+.fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px 24px;margin-top:30px;padding-top:20px;border-top:1.5px dashed color-mix(in srgb,var(--ink) 30%,transparent)}
+.tombtn{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);padding:5px 14px 5px 10px;cursor:pointer;transition:transform .12s ease,background .12s ease}
+.tombtn:hover{background:var(--mustard);color:#26211C;transform:translateY(-2px) rotate(-2deg)}
+
 /* contact */
 .contact{background:var(--tomato);color:var(--tomato-ink);border-block:2px solid var(--line);text-align:center}
 .contact h2{font-size:clamp(2.6rem,8vw,5.4rem)}
@@ -316,9 +324,6 @@ details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 .contact .btn{color:#26211C;background:#FFFCF5;border-color:#26211C;box-shadow:4px 4px 0 rgba(0,0,0,.3)}
 .contact .btn:hover{box-shadow:6px 6px 0 rgba(0,0,0,.3)}
 
-footer{padding:34px 0 46px;font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.02em}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px 40px}
-footer .fleft{display:flex;flex-direction:column;gap:6px}
 
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .reveal.in{opacity:1;transform:none}
@@ -658,8 +663,19 @@ footer .fleft{display:flex;flex-direction:column;gap:6px}
 
 <footer>
   <div class="wrap">
-    <div class="fleft"><span>© 2026 Kirubananth Sankar</span><span>An agent drafted this page. A human approved it. That is the whole philosophy.</span></div>
-    <span class="psst">psst: poke the tomato <button type="button" id="tomBtn" class="tombtn" aria-label="Poke the tomato">🍅</button> or press p, o, m, m, y.</span>
+    <div class="ftop">
+      <div><a class="logo" href="#top" aria-label="Back to the top">kirubananth<span>.</span></a><p>AI systems that work when nobody is watching.</p></div>
+      <nav aria-label="Elsewhere">
+        <a href="https://www.linkedin.com/in/kirubananth-sankar/" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/kirubanath" rel="noopener">GitHub</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=ZL0v87wAAAAJ" rel="noopener">Google Scholar</a>
+        <a href="https://proceedings.mlr.press/v293/chopde25a.html" rel="noopener">The paper</a>
+      </nav>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Kirubananth Sankar. An agent drafted this page. A human approved it.</span>
+      <button type="button" id="tomBtn" class="tombtn" aria-label="Poke the tomato">🍅 <span>poke the tomato</span></button>
+    </div>
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
