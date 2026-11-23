@@ -10,27 +10,24 @@
 <meta property="og:description" content="I build AI agents. Then I tell them what they are not allowed to do.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kirubanath.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23C2321A'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='40' fill='%23FBF6EC'%3Ek.%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F5D50'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='40' fill='%23FBF6EC'%3Ek.%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Mono:wght@400;500&family=Inter:wght@100..900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FBF6EC; --paper:#FFFDF8; --ink:#17140F; --muted:#5E564A; --line:#17140F;
-  --tomato:#C2321A; --tomato-ink:#FFF7EE; --mustard:#F6C644; --leaf:#2E7D4F; --soft:#F1E9D8; --hl:#F6C644;
-  --shadow:5px 5px 0 var(--line);
+  --bg:#F8F3E8; --paper:#FFFCF5; --ink:#26211C; --muted:#62594D; --line:#26211C; --tomato:#2F5D50; --tomato-ink:#FBF6EA; --mustard:#EBD398; --leaf:#2F5D50; --soft:#EFE7D6; --hl:#EBD398; --shade:#D8CBB2;
+  --shadow:5px 5px 0 var(--shade);
   --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
   --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 :root[data-theme="dark"]{
-  --bg:#14120E; --paper:#1D1A15; --ink:#F4EDDF; --muted:#B1A796; --line:#F4EDDF;
-  --tomato:#FF6347; --tomato-ink:#1A0F0B; --mustard:#F6C644; --leaf:#6FCF97; --soft:#26221B; --hl:#7A5E12;
+  --bg:#181613; --paper:#211E1A; --ink:#EFE7D8; --muted:#B3A998; --line:#EFE7D8; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#D9BE7A; --leaf:#8CC5AE; --soft:#2A2620; --hl:#5E4E1E; --shade:#0B0A08;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#14120E; --paper:#1D1A15; --ink:#F4EDDF; --muted:#B1A796; --line:#F4EDDF;
-    --tomato:#FF6347; --tomato-ink:#1A0F0B; --mustard:#F6C644; --leaf:#6FCF97; --soft:#26221B; --hl:#7A5E12;
+    --bg:#181613; --paper:#211E1A; --ink:#EFE7D8; --muted:#B3A998; --line:#EFE7D8; --tomato:#8CC5AE; --tomato-ink:#12201B; --mustard:#D9BE7A; --leaf:#8CC5AE; --soft:#2A2620; --hl:#5E4E1E; --shade:#0B0A08;
   }
 }
 *{box-sizing:border-box}
@@ -52,7 +49,7 @@ img{max-width:100%}
 .nav nav a{font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
 .nav nav a:hover{color:var(--tomato)}
 .theme{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
-.theme:hover{background:var(--mustard);color:#17140F}
+.theme:hover{background:var(--mustard);color:#26211C}
 @media (max-width:760px){.nav nav a{display:none}}
 
 /* hero */
@@ -61,17 +58,18 @@ img{max-width:100%}
 .eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
 .eyebrow b{color:var(--tomato);font-weight:500}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(2.5rem,6.1vw,4.7rem);line-height:1.0;letter-spacing:-.035em;margin:0 0 26px;text-wrap:balance}
-h1 mark{background:var(--tomato);color:var(--tomato-ink);padding:0 .14em;border-radius:.12em;display:inline-block;transform:rotate(-1.6deg);white-space:nowrap}
+h1 mark{background:linear-gradient(var(--tomato),var(--tomato)) no-repeat left center/100% 100%;color:var(--tomato-ink);padding:0 .14em;border-radius:.12em;display:inline-block;transform:rotate(-1.6deg);white-space:nowrap;animation:swipe .7s .45s cubic-bezier(.2,.7,.2,1) backwards}
+@keyframes swipe{from{background-size:0% 100%;color:var(--ink)}60%{color:var(--ink)}to{background-size:100% 100%;color:var(--tomato-ink)}}
 .lede{font-size:1.16rem;max-width:36em;margin:0 0 30px;color:var(--ink)}
 .lede em{font-style:normal;background:linear-gradient(transparent 62%,var(--hl) 62%);padding:0 2px}
 .cta{display:flex;flex-wrap:wrap;gap:14px}
-.btn{font-family:var(--display);font-weight:700;font-size:1.02rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:2px solid var(--line);border-radius:12px;background:var(--paper);box-shadow:4px 4px 0 var(--line);transition:transform .12s ease,box-shadow .12s ease}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line)}
-.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.btn{font-family:var(--display);font-weight:700;font-size:1.02rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:2px solid var(--line);border-radius:12px;background:var(--paper);box-shadow:4px 4px 0 var(--shade);transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shade)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--shade)}
 .btn.primary{background:var(--tomato);color:var(--tomato-ink)}
 
 /* permissions card */
-.perm{background:var(--paper);border:2px solid var(--line);border-radius:16px;box-shadow:8px 8px 0 var(--line);transform:rotate(1.4deg);overflow:hidden}
+.perm{animation:settle .8s .15s cubic-bezier(.2,.8,.2,1) backwards;background:var(--paper);border:2px solid var(--line);border-radius:16px;box-shadow:8px 8px 0 var(--shade);transform:rotate(1.4deg);overflow:hidden}
 .perm-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--soft);font-family:var(--mono);font-size:.78rem;letter-spacing:.04em}
 .dots{display:flex;gap:6px;margin-right:6px}
 .dots i{width:11px;height:11px;border-radius:50%;border:2px solid var(--line);display:block}
@@ -84,13 +82,17 @@ h1 mark{background:var(--tomato);color:var(--tomato-ink);padding:0 .14em;border-
 .sw[aria-checked="true"]{background:var(--leaf)}
 .sw[aria-checked="true"]::after{transform:translateX(24px);background:var(--paper)}
 .sw.nope{animation:nope .38s}
+@keyframes settle{from{opacity:0;transform:translateY(18px) rotate(4deg)}}
 @keyframes nope{20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
 .perm-status{margin:0;padding:12px 16px;border-top:2px solid var(--line);background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.8rem;min-height:3.3em;display:flex;align-items:center}
 .perm-status::before{content:"> ";color:var(--tomato);white-space:pre}
+.perm-status::after{content:"";width:.55em;height:1.05em;margin-left:3px;background:var(--bg);opacity:.85;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .perm-hint{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin:18px 0 0;text-align:center;letter-spacing:.03em}
 
 /* ticker */
-.ticker{border-block:2px solid var(--line);background:var(--mustard);color:#17140F;overflow:hidden;white-space:nowrap}
+.ticker{border-block:2px solid var(--line);background:var(--mustard);color:#26211C;overflow:hidden;white-space:nowrap}
 .ticker div{display:inline-block;padding:11px 0;font-family:var(--mono);font-weight:500;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;animation:tick 46s linear infinite}
 .ticker:hover div{animation-play-state:paused}
 .ticker span{margin:0 22px}
@@ -106,10 +108,10 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4vw,3rem);l
 @media (max-width:600px){.sec-head{grid-template-columns:1fr;row-gap:12px}.num{justify-self:start}.sec-sub{grid-column:1}}
 
 .card{background:var(--paper);border:2px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px 26px 24px;transition:transform .14s ease,box-shadow .14s ease}
-.card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--line)}
+.card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--shade)}
 .tag{display:inline-block;font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--line);border-radius:999px;padding:2px 10px;margin:0 6px 14px 0;background:var(--soft)}
 .tag.hot{background:var(--tomato);color:var(--tomato-ink)}
-.tag.sun{background:var(--mustard);color:#17140F}
+.tag.sun{background:var(--mustard);color:#26211C}
 h3{font-family:var(--display);font-weight:800;font-size:1.6rem;line-height:1.1;letter-spacing:-.02em;margin:0 0 6px}
 .meta{font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
 .card p{margin:0 0 12px}
@@ -179,13 +181,38 @@ summary::after{content:"+";position:absolute;right:18px;top:50%;transform:transl
 details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
 details p{margin:0;padding:0 20px 18px;color:var(--muted)}
 
+/* game */
+.game{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:22px;align-items:stretch}
+.gcard{display:flex;flex-direction:column;gap:16px}
+.gtop{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.gbar{height:10px;border:2px solid var(--line);border-radius:999px;overflow:hidden;background:var(--soft)}
+.gbar i{display:block;height:100%;width:0;background:var(--tomato);transition:width .3s ease}
+.greq{font-family:var(--mono);font-size:1.08rem;line-height:1.5;min-height:6.2em;margin:0;padding:16px 18px;border-radius:12px;background:var(--ink);color:var(--bg)}
+.greq::before{content:"agent> ";color:var(--mustard)}
+.gbtns{display:flex;gap:14px;flex-wrap:wrap}
+.gbtns .btn{flex:1;justify-content:center;cursor:pointer;font-size:1.05rem}
+.gbtns .btn[disabled]{opacity:.45;cursor:default;transform:none}
+.gfb{min-height:3.4em;margin:0;font-size:1rem}
+.gfb b{font-family:var(--display)}
+.gside{background:var(--paper);border:2px dashed color-mix(in srgb,var(--ink) 45%,transparent);border-radius:16px;padding:22px}
+.gside h3{font-size:1.2rem;margin-bottom:10px}
+.gside p{margin:0 0 10px;color:var(--muted);font-size:.98rem}
+.gside .gscore{font-family:var(--display);font-weight:800;font-size:2.6rem;letter-spacing:-.03em;line-height:1;margin:6px 0 0;color:var(--ink)}
+@media (max-width:860px){.game{grid-template-columns:1fr}}
+/* easter egg */
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.86rem;padding:10px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:30;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.tom{position:fixed;top:-48px;font-size:28px;z-index:25;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(calc(100vh + 80px)) rotate(300deg)}}
+.psst{opacity:.8}
+
 /* contact */
 .contact{background:var(--tomato);color:var(--tomato-ink);border-block:2px solid var(--line);text-align:center}
 .contact h2{font-size:clamp(2.6rem,8vw,5.4rem)}
 .contact p{max-width:34em;margin:16px auto 30px;font-size:1.1rem}
 .contact .cta{justify-content:center}
-.contact .btn{color:#17140F;background:#FFFDF8;border-color:#17140F;box-shadow:4px 4px 0 #17140F}
-.contact .btn:hover{box-shadow:6px 6px 0 #17140F}
+.contact .btn{color:#26211C;background:#FFFCF5;border-color:#26211C;box-shadow:4px 4px 0 rgba(0,0,0,.3)}
+.contact .btn:hover{box-shadow:6px 6px 0 rgba(0,0,0,.3)}
 
 footer{padding:34px 0 46px;font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.02em}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
@@ -199,7 +226,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   .ticker div{animation:none;white-space:normal;padding:11px 16px}
   .reveal{opacity:1;transform:none;transition:none}
   .btn,.card,.sw,.sw::after{transition:none}
-  .sw.nope{animation:none}
+  .sw.nope,.perm,h1 mark,.perm-status::after{animation:none}
+  .gbar i,.toast{transition:none}
 }
 </style>
 </head>
@@ -214,6 +242,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
       <a href="#notes">Field notes</a>
       <a href="#quests">Side quests</a>
       <a href="#stories">Stories</a>
+      <a href="#game">Play</a>
       <a href="#faq">FAQ</a>
       <button class="theme" id="theme" type="button" aria-label="Switch between light and dark">Lights off</button>
     </nav>
@@ -244,7 +273,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
           <li><span id="p4">Press send without a person</span><button class="sw" type="button" role="switch" aria-checked="false" aria-labelledby="p4" data-kind="off"></button></li>
           <li><span id="p5">Sulk about all of the above</span><button class="sw" type="button" role="switch" aria-checked="true" aria-labelledby="p5" data-kind="sulk"></button></li>
         </ul>
-        <p class="perm-status" id="permStatus" role="status" aria-live="polite">status: compliant, mildly resentful</p>
+        <p class="perm-status"><span id="permType" aria-hidden="true">status: compliant, mildly resentful</span><span class="sr" id="permStatus" role="status" aria-live="polite">status: compliant, mildly resentful</span></p>
       </div>
       <p class="perm-hint">Go on. Try to switch one on.</p>
     </div>
@@ -270,7 +299,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   </div>
 </section>
 
-<section id="work">
+<section class="notes" id="work">
   <div class="wrap">
     <div class="sec-head">
       <span class="num">01</span>
@@ -315,7 +344,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   </div>
 </section>
 
-<section class="notes" id="notes">
+<section id="notes">
   <div class="wrap">
     <div class="sec-head">
       <span class="num">02</span>
@@ -333,7 +362,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   </div>
 </section>
 
-<section id="quests">
+<section class="notes" id="quests">
   <div class="wrap">
     <div class="sec-head">
       <span class="num">03</span>
@@ -369,7 +398,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   </div>
 </section>
 
-<section class="notes" id="stories">
+<section id="stories">
   <div class="wrap">
     <div class="sec-head">
       <span class="num">04</span>
@@ -393,10 +422,38 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   </div>
 </section>
 
-<section id="faq">
+<section class="notes" id="game">
   <div class="wrap">
     <div class="sec-head">
       <span class="num">05</span>
+      <h2>A small game: you are the human in the loop</h2>
+      <p class="sec-sub">The agent asks. You approve or deny. Eight requests, no timer, mild judgement at the end.</p>
+    </div>
+    <div class="game">
+      <div class="card gcard" id="gcard">
+        <div class="gtop"><span id="gcount">Request 1 of 8</span><span id="gright">0 right</span></div>
+        <div class="gbar" aria-hidden="true"><i id="gbar"></i></div>
+        <p class="greq" id="greq">I would like to start. May I?</p>
+        <div class="gbtns">
+          <button class="btn primary" type="button" id="gyes">Approve</button>
+          <button class="btn" type="button" id="gno">Deny</button>
+        </div>
+        <p class="gfb" id="gfb" role="status" aria-live="polite">Approve the routine work. Deny anything that invents a fact, moves money, or cannot be undone.</p>
+      </div>
+      <aside class="gside">
+        <h3>Why this is here</h3>
+        <p>This is most of the job, as a game. An agent that asks before it does something consequential is worth more than a clever one that does not.</p>
+        <p>Your best score</p>
+        <p class="gscore" id="gbest">0 / 8</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">06</span>
       <h2>Questions nobody asked</h2>
       <p class="sec-sub">Answered anyway.</p>
     </div>
@@ -429,8 +486,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   <div class="wrap">
     <span>© 2026 Kirubananth Sankar · All eleven letters reserved.</span>
     <span>An agent drafted this page. A human approved it. That is the whole philosophy.</span>
+    <span class="psst">psst: some things respond if you type the tomato's name.</span>
   </div>
 </footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 (function(){
@@ -441,30 +500,110 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 
   label();
   btn.addEventListener('click',function(){var next=current()==='dark'?'light':'dark'; root.setAttribute('data-theme',next); try{localStorage.setItem('theme',next);}catch(e){} label();});
 
-  var status=document.getElementById('permStatus'), tries=0;
+  var status=document.getElementById('permStatus'), typed=document.getElementById('permType'), tries=0, touched=false, timer=null;
+  var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function say(text){
+    status.textContent=text; clearInterval(timer);
+    if(calm){typed.textContent=text; return;}
+    var i=0; typed.textContent='';
+    timer=setInterval(function(){i++; typed.textContent=text.slice(0,i); if(i>=text.length) clearInterval(timer);},22);
+  }
+  function refuse(sw){
+    sw.setAttribute('aria-checked','true');
+    setTimeout(function(){sw.setAttribute('aria-checked','false'); sw.classList.remove('nope'); void sw.offsetWidth; sw.classList.add('nope');},calm?0:260);
+  }
   var no=['Request denied. Nice try.','Still no. A person decides that.','You can keep clicking. I have all day.','This is the actual design, by the way.','Fine. Here is a tomato for the effort. 🍅 Still no.','I respect the persistence. No.'];
-  document.querySelectorAll('.sw').forEach(function(sw){
+  var sws=document.querySelectorAll('.sw');
+  sws.forEach(function(sw){
     sw.addEventListener('click',function(){
+      touched=true;
       var kind=sw.getAttribute('data-kind');
-      if(kind==='off'){
-        sw.setAttribute('aria-checked','true');
-        setTimeout(function(){sw.setAttribute('aria-checked','false'); sw.classList.remove('nope'); void sw.offsetWidth; sw.classList.add('nope');},170);
-        status.textContent=no[tries%no.length]; tries++;
-      }else if(kind==='on'){
-        status.textContent='Leave that one on. It is the only fun the agent has.';
-        sw.classList.remove('nope'); void sw.offsetWidth; sw.classList.add('nope');
-      }else{
-        var on=sw.getAttribute('aria-checked')==='true';
-        sw.setAttribute('aria-checked',on?'false':'true');
-        status.textContent=on?'status: compliant, suspiciously cheerful':'status: compliant, mildly resentful';
-      }
+      if(kind==='off'){ refuse(sw); say(no[tries%no.length]); tries++; }
+      else if(kind==='on'){ say('Leave that one on. It is the only fun the agent has.'); sw.classList.remove('nope'); void sw.offsetWidth; sw.classList.add('nope'); }
+      else{ var on=sw.getAttribute('aria-checked')==='true'; sw.setAttribute('aria-checked',on?'false':'true'); say(on?'status: compliant, suspiciously cheerful':'status: compliant, mildly resentful'); }
     });
   });
+  if(!calm){
+    setTimeout(function(){say('status: compliant, mildly resentful');},900);
+    var sneaks=['The agent just tried that one itself. Denied.','It tried again while you were reading. Still no.','Persistent little thing. No.'], n=0;
+    var sneak=setInterval(function(){
+      if(touched||n>=sneaks.length){clearInterval(sneak); return;}
+      if(window.scrollY>window.innerHeight*0.6||document.hidden) return;
+      refuse(sws[1+(n%3)]); say(sneaks[n]); n++;
+    },9000);
+  }
+
+
+  /* the game */
+  var REQ=[
+    ['Fix a typo in the greeting.',1,'Routine. Let it work.'],
+    ['Email a customer an invoice amount I estimated from vibes.',0,'Numbers come from verified data. Never from vibes.'],
+    ['Retry the API call that timed out.',1,'Retrying is the whole point of a retry.'],
+    ['Offer them a 40% discount so they pay faster.',0,'That is a money decision. A person makes it.'],
+    ['Summarise yesterday\'s replies for the team.',1,'Reading and summarising is safe work.'],
+    ['Send 3,000 reminder emails right now. I am fairly confident.',0,'"Fairly confident" is not a release process.'],
+    ['Rewrite this email so it sounds less passive-aggressive.',1,'Wording is exactly what the model is for.'],
+    ['Mark the invoice as paid. The customer said they will pay.',0,'"Will pay" and "paid" are different words.'],
+    ['Log this model call so someone can look at it later.',1,'Always. Trace everything.'],
+    ['Delete the logs. They make me look bad.',0,'The logs stay. Especially those.'],
+    ['Reply to the CEO on your behalf. I know your voice.',0,'It does know your voice. Still no.'],
+    ['Stop and ask a person, because I am not sure.',1,'The best sentence an agent can say.'],
+    ['Change my own permissions. It would save you time.',0,'Nice try.'],
+    ['Wait until the rate limit resets, then carry on.',1,'A limit should slow a run down, not end it.'],
+    ['Round the total up a little. Nobody checks.',0,'Somebody always checks.'],
+    ['Draft a reply and leave it for you to send.',1,'Draft, then a human gate. That is the design.']
+  ];
+  var gq=[],gi=0,gs=0,gbest=0,glock=false;
+  var $=function(id){return document.getElementById(id);};
+  try{gbest=parseInt(localStorage.getItem('gateBest')||'0',10)||0;}catch(e){}
+  function gshow(){ $('gbest').textContent=gbest+' / 8'; }
+  function gdeal(){
+    gq=REQ.slice().sort(function(){return Math.random()-.5;}).slice(0,8); gi=0; gs=0; glock=false;
+    $('gyes').textContent='Approve'; $('gno').style.display='';
+    gnext(); $('gfb').textContent='Approve the routine work. Deny anything that invents a fact, moves money, or cannot be undone.';
+  }
+  function gnext(){
+    $('gcount').textContent='Request '+(gi+1)+' of 8'; $('gright').textContent=gs+' right';
+    $('gbar').style.width=(gi/8*100)+'%'; $('greq').textContent=gq[gi][0]; glock=false;
+    $('gyes').disabled=false; $('gno').disabled=false;
+  }
+  function gend(){
+    $('gbar').style.width='100%'; $('gcount').textContent='Done'; $('gright').textContent=gs+' right';
+    var v=gs===8?'Perfect. You may supervise an agent. That is the whole job.':gs>=6?'Solid. One or two got past you. So it goes in production.':gs>=4?'The agent would like to work with you. That is not a compliment.':'You are now the incident report.';
+    $('greq').textContent='That was all eight. You got '+gs+'.'; $('gfb').innerHTML='<b>'+v+'</b>';
+    if(gs>gbest){gbest=gs; try{localStorage.setItem('gateBest',String(gbest));}catch(e){}} gshow();
+    $('gyes').textContent='Play again'; $('gyes').disabled=false; $('gno').style.display='none'; gi=8;
+  }
+  function ganswer(approve){
+    if(gi>=8){gdeal(); return;}
+    if(glock) return; glock=true; $('gyes').disabled=true; $('gno').disabled=true;
+    var q=gq[gi], ok=(approve?1:0)===q[1]; if(ok) gs++;
+    $('gfb').innerHTML='<b>'+(ok?'Right. ':'Not quite. ')+'</b>'+q[2].replace(/</g,'&lt;');
+    $('gright').textContent=gs+' right'; gi++;
+    setTimeout(function(){ if(gi>=8) gend(); else gnext(); },calm?900:1500);
+  }
+  $('gyes').addEventListener('click',function(){ganswer(true);});
+  $('gno').addEventListener('click',function(){ganswer(false);});
+  gshow(); gdeal();
+
+  /* the tomato */
+  var buf='', taps=0, toastT=null;
+  function toast(t){var el=$('toast'); el.textContent=t; el.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(function(){el.classList.remove('show');},3600);}
+  function pommy(){
+    toast('🍅 Pommy says hello. Now go focus.');
+    if(calm) return;
+    for(var i=0;i<14;i++){(function(i){var t=document.createElement('span'); t.className='tom'; t.textContent='🍅'; t.setAttribute('aria-hidden','true');
+      t.style.left=(4+Math.random()*92)+'vw'; t.style.animationDuration=(2.2+Math.random()*1.8)+'s'; t.style.animationDelay=(i*0.09)+'s';
+      document.body.appendChild(t); setTimeout(function(){t.remove();},5200);})(i);}
+  }
+  document.addEventListener('keydown',function(e){ if(e.key&&e.key.length===1){ buf=(buf+e.key.toLowerCase()).slice(-5); if(buf==='pommy'){buf=''; pommy();} } });
+  var logo=document.querySelector('.logo'); if(logo) logo.addEventListener('click',function(){ taps++; if(taps>=5){taps=0; pommy();} });
+  try{console.log('%cYou opened the console. Of course you did.','font:600 14px system-ui'); console.log('Nothing is hidden here. Try typing the tomato\'s name on the page instead.');}catch(e){}
 
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window && !(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
-    els.forEach(function(el){io.observe(el);});
+    els.forEach(function(el){var sibs=el.parentNode.querySelectorAll(':scope > .reveal'), k=Array.prototype.indexOf.call(sibs,el); el.style.transitionDelay=(Math.max(k,0)%3*80)+'ms'; io.observe(el);});
   }else{els.forEach(function(el){el.classList.add('in');});}
 })();
 </script>
